@@ -1,0 +1,85 @@
+# Backend-API (Mongoose) Schema Index
+
+_Last synced: 2026-04-28T10:58:23+00:00_
+
+Static-extracted from `wise/backend-api/src/models/*.js`. One row per model declaration.
+
+| Collection | Model | File |
+| --- | --- | --- |
+| [`CertificateTemplate`](mongo/CertificateTemplate.md) | `CertificateTemplate` | `src/models/CertificateTemplate.js` |
+| [`Chat`](mongo/Chat.md) | `Chat` | `src/models/Chat.js` |
+| [`ChatMessage`](mongo/ChatMessage.md) | `ChatMessage` | `src/models/ChatMessage.js` |
+| [`ChessGame`](mongo/ChessGame.md) | `ChessGame` | `src/models/ChessGame.js` |
+| [`ClassParticipant`](mongo/ClassParticipant.md) | `ClassParticipant` | `src/models/ClassParticipant.js` |
+| [`ClassroomCertificate`](mongo/ClassroomCertificate.md) | `ClassroomCertificate` | `src/models/ClassroomCertificate.js` |
+| [`ClassroomCertificateConfig`](mongo/ClassroomCertificateConfig.md) | `ClassroomCertificateConfig` | `src/models/ClassroomCertificateConfig.js` |
+| [`ClassroomFee`](mongo/ClassroomFee.md) | `ClassroomFee` | `src/models/ClassroomFee.js` |
+| [`ClassroomPublicProfile`](mongo/ClassroomPublicProfile.md) | `ClassroomPublicProfile` | `src/models/ClassroomPublicProfile.js` |
+| [`ClassroomSection`](mongo/ClassroomSection.md) | `ClassroomSection` | `src/models/ClassroomSection.js` |
+| [`Contract`](mongo/Contract.md) | `Contract` | `src/models/Contract.js` |
+| [`ContractSubmission`](mongo/ContractSubmission.md) | `ContractSubmission` | `src/models/ContractSubmission.js` |
+| [`Coupon`](mongo/Coupon.md) | `Coupon` | `src/models/Coupon.js` |
+| [`DeletedFile`](mongo/DeletedFile.md) | `DeletedFile` | `src/models/DeletedFile.js` |
+| [`EmailSupression`](mongo/EmailSupression.md) | `EmailSupression` | `src/models/EmailSupression.js` |
+| [`Entity`](mongo/Entity.md) | `Entity` | `src/models/Entity.js` |
+| [`EntityInteraction`](mongo/EntityInteraction.md) | `EntityInteraction` | `src/models/EntityInteraction.js` |
+| [`Event`](mongo/Event.md) | `event` | `src/models/DBEvent.js` |
+| [`FeedbackForm`](mongo/FeedbackForm.md) | `FeedbackForm` | `src/models/FeedbackForm.js` |
+| [`GoogleCalendarEvent`](mongo/GoogleCalendarEvent.md) | `GoogleCalendarEvent` | `src/models/GoogleCalendarEvent.js` |
+| [`Institute`](mongo/Institute.md) | `Institute` | `src/models/Institute.js` |
+| [`InstituteGroup`](mongo/InstituteGroup.md) | `InstituteGroup` | `src/models/InstituteGroup.js` |
+| [`InstituteGroupMember`](mongo/InstituteGroupMember.md) | `InstituteGroupMember` | `src/models/InstituteGroupMember.js` |
+| [`InstituteLeaderboardConfig`](mongo/InstituteLeaderboardConfig.md) | `InstituteLeaderboardConfig` | `src/models/InstituteLeaderboardConfig.js` |
+| [`InstituteLocations`](mongo/InstituteLocations.md) | `InstituteLocations` | `src/models/InstituteLocations.js` |
+| [`InstituteParticipant`](mongo/InstituteParticipant.md) | `InstituteParticipant` | `src/models/InstituteParticipant.js` |
+| [`InstitutePublicProfile`](mongo/InstitutePublicProfile.md) | `InstitutePublicProfile` | `src/models/InstitutePublicProfile.js` |
+| [`InstituteTags`](mongo/InstituteTags.md) | `InstituteTags` | `src/models/InstituteTags.js` |
+| [`Lead`](mongo/Lead.md) | `Lead` | `src/models/Lead.js` |
+| [`Leaderboard`](mongo/Leaderboard.md) | `Leaderboard` | `src/models/Leaderboard.js` |
+| [`LensEvent`](mongo/LensEvent.md) | `LensEvent` | `src/models/LensEvent.js` |
+| [`LensRoomConfig`](mongo/LensRoomConfig.md) | `LensRoomConfig` | `src/models/LensRoomConfig.js` |
+| [`LinkedGoogleCalendar`](mongo/LinkedGoogleCalendar.md) | `LinkedGoogleCalendar` | `src/models/LinkedGoogleCalendar.js` |
+| [`LiveClassDiscussion`](mongo/LiveClassDiscussion.md) | `LiveClassDiscussion` | `src/models/LiveClassDiscussion.js` |
+| [`LiveClassInsight`](mongo/LiveClassInsight.md) | `LiveClassInsight` | `src/models/LiveClassInsight.js` |
+| [`LiveClassLeaderboard`](mongo/LiveClassLeaderboard.md) | `LiveClassLeaderboard` | `src/models/LiveClassLeaderboard.js` |
+| [`LiveClassPoll`](mongo/LiveClassPoll.md) | `LiveClassPoll` | `src/models/LiveClassPoll.js` |
+| [`LiveClassTest`](mongo/LiveClassTest.md) | `LiveClassTest` | `src/models/LiveClassTest.js` |
+| [`ManualAttendance`](mongo/ManualAttendance.md) | `ManualAttendance` | `src/models/ManualAttendance.js` |
+| [`PencilSpaceEntity`](mongo/PencilSpaceEntity.md) | `PencilSpaceEntity` | `src/models/PencilSpaceEntity.js` |
+| [`PollVote`](mongo/PollVote.md) | `PollVote` | `src/models/PollVote.js` |
+| [`PremiumOrder`](mongo/PremiumOrder.md) | `PremiumOrder` | `src/models/PremiumOrder.js` |
+| [`RawChat`](mongo/RawChat.md) | `RawChat` | `src/models/RawChat.js` |
+| [`RawRecording`](mongo/RawRecording.md) | `RawRecording` | `src/models/RawRecording.js` |
+| [`RawSessionTranscript`](mongo/RawSessionTranscript.md) | `RawSessionTranscript` | `src/models/RawSessionTranscript.js` |
+| [`RawZoomAttendance`](mongo/RawZoomAttendance.md) | `RawZoomAttendance` | `src/models/RawZoomAttendance.js` |
+| [`RawZoomSummary`](mongo/RawZoomSummary.md) | `RawZoomSummary` | `src/models/RawZoomSummary.js` |
+| [`RegistrationForm`](mongo/RegistrationForm.md) | `RegistrationForm` | `src/models/RegistrationForm.js` |
+| [`RegistrationFormSubmission`](mongo/RegistrationFormSubmission.md) | `RegistrationFormSubmission` | `src/models/RegistrationFormSubmission.js` |
+| [`SavedCommunication`](mongo/SavedCommunication.md) | `SavedCommunication` | `src/models/SavedCommunication.js` |
+| [`Sequence`](mongo/Sequence.md) | `Sequence` | `src/models/Sequence.js` |
+| [`SessionAIData`](mongo/SessionAIData.md) | `SessionAIData` | `src/models/SessionAIData.js` |
+| [`SessionCredit`](mongo/SessionCredit.md) | `SessionCredit` | `src/models/SessionCredit.js` |
+| [`SessionFeedbackSubmission`](mongo/SessionFeedbackSubmission.md) | `SessionFeedbackSubmission` | `src/models/SessionFeedbackSubmission.js` |
+| [`TaxRuleGroup`](mongo/TaxRuleGroup.md) | `TaxRuleGroup` | `src/models/TaxRuleGroup.js` |
+| [`TeacherLeave`](mongo/TeacherLeave.md) | `TeacherLeave` | `src/models/TeacherLeave.js` |
+| [`TeacherPublicProfile`](mongo/TeacherPublicProfile.md) | `TeacherPublicProfile` | `src/models/TeacherPublicProfile.js` |
+| [`TempData`](mongo/TempData.md) | `TempData` | `src/models/TempData.js` |
+| [`UserStreamingInfo`](mongo/UserStreamingInfo.md) | `UserStreamingInfo` | `src/models/UserUsageInfo.js` |
+| [`VendorConfiguration`](mongo/VendorConfiguration.md) | `VendorConfiguration` | `src/models/VendorConfiguration.js` |
+| [`VendorIntegration`](mongo/VendorIntegration.md) | `VendorIntegration` | `src/models/ClientIntegration.js` |
+| [`VideoKeyRecord`](mongo/VideoKeyRecord.md) | `VideoKeyRecord` | `src/models/VideoKeyRecord.js` |
+| [`Whitelabel`](mongo/Whitelabel.md) | `Whitelabel` | `src/models/Whitelabel.js` |
+| [`WorkingHoursSchedule`](mongo/WorkingHoursSchedule.md) | `WorkingHoursSchedule` | `src/models/WorkingHoursSchedule.js` |
+| [`announcements`](mongo/announcements.md) | `announcements` | `src/models/Discussion.js` |
+| [`assignments`](mongo/assignments.md) | `assignments` | `src/models/Assessment.js` |
+| [`class`](mongo/class.md) | `class` | `src/models/Classroom.js` |
+| [`feeStructure`](mongo/feeStructure.md) | `feeStructure` | `src/models/FeeStructure.js` |
+| [`liveclassagendas`](mongo/liveclassagendas.md) | `LiveClassAgenda` | `src/models/LiveClassAgenda.js` |
+| [`study materials`](mongo/study materials.md) | `studyMaterials` | `src/models/Resource.js` |
+| [`tags`](mongo/tags.md) | `tags` | `src/models/tags.js` |
+| [`temp_user`](mongo/temp_user.md) | `tempUser` | `src/models/TempUser.js` |
+| [`transaction`](mongo/transaction.md) | `transaction` | `src/models/Transaction.js` |
+| [`user`](mongo/user.md) | `user` | `src/models/User.js` |
+| [`userPreference`](mongo/userPreference.md) | `userPreference` | `src/models/userPreference.js` |
+| [`verification`](mongo/verification.md) | `verification` | `src/models/Verification.js` |
+| [`zoom`](mongo/zoom.md) | `zoom` | `src/models/Session.js` |

@@ -110,6 +110,18 @@ The MCP server has its own runtime redaction set (`loginpin, phonenumber, email,
 
 If you discover a new leak class, add the leaf name or value pattern to the constants at the top of `sync_schemas.py` and re-run with `--scrub` to fix the existing markdown without re-querying Athena.
 
+## Source-of-truth (Mongoose) schemas
+
+The Athena warehouse is fed from MongoDB via the `wise/backend-api` repo's Mongoose schemas. To capture the *de jure* schema (what the application code declares), `scripts/sync_backend_api.py` static-parses each `models/*.js` and writes one Markdown per collection under `schemas/source/mongo/`, with nested sub-schemas resolved into a flat path tree, refs / enums / indexes preserved, and a candidate Athena table name suggested.
+
+```bash
+.venv/bin/python scripts/sync_backend_api.py --backend-api ~/Documents/wise/backend-api
+```
+
+No Mongo connection is required and no values are sampled — only field names and types are read from source — so the redaction policy that protects `sync_schemas.py` does not apply here.
+
+The intended downstream uses are: (a) diffing against the inferred Athena schema to find extraction gaps, (b) confirming canonical join keys, and (c) sanity-checking field-name conventions when writing SQL.
+
 ## Updating the knowledge base
 
 - **Schema regen**: `python scripts/sync_schemas.py` — idempotent. Anything below `<!-- HUMAN NOTES BELOW -->` in each table file is preserved across runs, so add hand-written notes there.
