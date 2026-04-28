@@ -42,6 +42,39 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `creditsConsumed` | `Number` |  |  |  |  |  |
 | `metadata` | `Object` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_21 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.find` × 7
+- `.findOne` × 4
+- `.aggregate` × 3
+- `.findOneAndUpdate` × 2
+- `.deleteMany` × 2
+- `.insertMany` × 1
+- `.deleteOne` × 1
+- `.updateOne` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `sessionId` × 2
+- `userId` × 1
+
+### Top call sites
+
+- `src/services/instituteService.js` × 6
+- `src/services/sessionCreditService.js` × 4
+- `src/controllers/LensInMeetingController.js` × 2
+- `src/services/instituteAnalyticsService.js` × 2
+- `src/workers/dataTransferWorker.js` × 2
+- `src/services/lensAnalyticsService.js` × 1
+- `src/services/DemoAccountService.js` × 1
+- `src/services/classroomCleanupService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

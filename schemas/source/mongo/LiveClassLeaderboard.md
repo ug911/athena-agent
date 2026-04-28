@@ -29,6 +29,22 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `pointsTable[].userId` | `String` |  |  | required |  |  |
 | `pointsTable[].pointsDistribution` | `<PointsDistributionSchema>` |  |  |  | {} |  |
 
+## Usage (from backend-api)
+
+_8 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOneAndUpdate` × 3
+- `.findOne` × 3
+- `.create` × 1
+- `.updateOne` × 1
+
+### Top call sites
+
+- `src/services/lensLeaderboardService.js` × 6
+- `src/services/lensAnalyticsService.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

@@ -160,6 +160,40 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `settings.privacyPolicyLink` | `String` |  |  |  |  |  |
 | `metadata` | `Object` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_65 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 31
+- `.find` × 11
+- `.aggregate` × 5
+- `.updateMany` × 4
+- `.updateOne` × 4
+- `.exists` × 4
+- `.create` × 3
+- `.deleteOne` × 1
+- `.findOneAndUpdate` × 1
+- `.countDocuments` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `ownerId` × 9
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 8
+- `src/services/instituteService.js` × 8
+- `src/controllers/ParentController.js` × 5
+- `src/controllers/UserController.js` × 4
+- `src/services/instituteAdmissionService.js` × 4
+- `src/controllers/IntegrationTestController.js` × 2
+- `src/controllers/PublicController.js` × 2
+- `src/services/contractService.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

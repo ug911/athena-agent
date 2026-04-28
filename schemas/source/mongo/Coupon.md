@@ -43,6 +43,25 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `target.instituteId` | `ObjectId` | `Institute` |  |  |  |  |
 | `target.classroomsToSkip` | `Array<ObjectId>` | `class` |  |  |  |  |
 
+## Usage (from backend-api)
+
+_12 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 6
+- `.create` × 1
+- `.findByIdAndUpdate` × 1
+- `.deleteOne` × 1
+- `.findOneAndUpdate` × 1
+- `.find` × 1
+- `.countDocuments` × 1
+
+### Top call sites
+
+- `src/services/couponService.js` × 11
+- `src/services/feeService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

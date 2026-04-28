@@ -115,6 +115,43 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `meetingStatus` | `String` |  | <VALID_STATUSES> |  | STATUS_ENDED |  |
 | `password` | `String` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_174 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 56
+- `.find` × 33
+- `.updateOne` × 30
+- `.aggregate` × 26
+- `.create` × 9
+- `.updateMany` × 9
+- `.findOneAndUpdate` × 3
+- `.deleteMany` × 3
+- `.bulkWrite` × 2
+- `.exists` × 1
+- `.findById` × 1
+- `.insertMany` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `classId` × 9
+- `userId` × 5
+
+### Top call sites
+
+- `src/services/meetingService.js` × 28
+- `src/controllers/TeacherController.js` × 22
+- `src/services/instituteService.js` × 22
+- `src/services/meetingAttendanceService.js` × 7
+- `src/services/classroomService.js` × 6
+- `src/services/meetingRecordingService.js` × 6
+- `src/services/classroomCleanupService.js` × 6
+- `src/controllers/InstituteController.js` × 5
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

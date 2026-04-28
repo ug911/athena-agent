@@ -44,6 +44,31 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `allowZoomForHost` | `Boolean` |  |  |  | false |  |
 | `agendaIds` | `Array<ObjectId>` | `LiveClassAgenda` |  |  |  |  |
 
+## Usage (from backend-api)
+
+_13 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 7
+- `.updateOne` × 5
+- `.find` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `agendaIds` × 2
+
+### Top call sites
+
+- `src/services/lensAgendaService.js` × 6
+- `src/services/lensAnalyticsService.js` × 3
+- `src/controllers/UserController.js` × 1
+- `src/controllers/LensInMeetingController.js` × 1
+- `src/controllers/InstituteController.js` × 1
+- `src/controllers/LensController.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

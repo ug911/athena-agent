@@ -49,6 +49,33 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `planMetadata.unitCount` | `Number` |  |  |  |  |  |
 | `planMetadata.unitAmount` | `amountSchema` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_44 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 18
+- `.findOneAndUpdate` × 6
+- `.find` × 5
+- `.create` × 4
+- `.updateOne` × 4
+- `.exists` × 3
+- `.aggregate` × 2
+- `.updateMany` × 1
+- `.findById` × 1
+
+### Top call sites
+
+- `src/services/premiumService.js` × 15
+- `src/controllers/DevAPIController.js` × 8
+- `src/services/communications/commCreditService.js` × 6
+- `src/controllers/PremiumController.js` × 4
+- `src/services/premiumStreamingService.js` × 4
+- `src/services/dataCheckService.js` × 3
+- `src/controllers/InternalController.js` × 1
+- `src/services/storageService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

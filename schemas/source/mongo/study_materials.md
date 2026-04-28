@@ -46,6 +46,39 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `thumbnail` | `String` |  |  |  |  |  |
 | `metadata` | `Object` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_34 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 8
+- `.aggregate` × 7
+- `.updateOne` × 6
+- `.find` × 6
+- `.deleteMany` × 2
+- `.insertMany` × 2
+- `.create` × 1
+- `.findOneAndUpdate` × 1
+- `.updateMany` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `userId` × 1
+
+### Top call sites
+
+- `src/services/resourceLibraryService.js` × 10
+- `src/workers/dataTransferWorker.js` × 6
+- `src/controllers/ResourceController.js` × 5
+- `src/services/classroomService.js` × 3
+- `src/workers/videoConversionWorker.js` × 2
+- `src/controllers/UserController.js` × 1
+- `src/services/classroomSectionService.js` × 1
+- `src/services/classroomCleanupService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

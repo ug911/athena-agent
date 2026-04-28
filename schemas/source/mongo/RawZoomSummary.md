@@ -31,6 +31,22 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `summaries[].summaryDetails` | `Array` |  |  |  |  |  |
 | `summaries[].meetingUUID` | `String` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_3 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 1
+- `.insertMany` × 1
+- `.findOneAndUpdate` × 1
+
+### Top call sites
+
+- `src/controllers/UserController.js` × 1
+- `src/services/DemoAccountService.js` × 1
+- `src/services/meetingRecordingService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

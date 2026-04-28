@@ -34,6 +34,21 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `videoLink` | `String` |  |  |  |  |  |
 | `rating` | `Number` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_3 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 1
+- `.findOneAndUpdate` × 1
+- `.find` × 1
+
+### Top call sites
+
+- `src/services/classroomService.js` × 2
+- `src/controllers/InstituteController.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

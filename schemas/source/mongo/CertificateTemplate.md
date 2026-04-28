@@ -36,6 +36,20 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `variables[].style` | `String` |  |  |  |  |  |
 | `variables[].stylable` | `Boolean` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_2 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.find` × 1
+- `.findOne` × 1
+
+### Top call sites
+
+- `src/controllers/TeacherController.js` × 1
+- `src/services/classroomCertificateService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

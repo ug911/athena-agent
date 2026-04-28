@@ -50,6 +50,23 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `agendaId` | `ObjectId` | `LiveClassAgenda` |  |  |  |  |
 | `testId` | `ObjectId` | `LiveClassTest` |  |  |  |  |
 
+## Usage (from backend-api)
+
+_14 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.updateMany` × 4
+- `.create` × 3
+- `.findOneAndUpdate` × 3
+- `.find` × 2
+- `.updateOne` × 1
+- `.findOne` × 1
+
+### Top call sites
+
+- `src/services/lensAnalyticsService.js` × 14
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

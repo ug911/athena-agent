@@ -36,6 +36,22 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `deletedAt` | `Date` |  |  |  |  |  |
 | `skipValidation` | `Boolean` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_5 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.updateOne` × 3
+- `.find` × 1
+- `.insertMany` × 1
+
+### Top call sites
+
+- `src/services/fileDeletionService.js` × 2
+- `src/workers/fileDeletionWorker.js` × 2
+- `src/services/s3UploadService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

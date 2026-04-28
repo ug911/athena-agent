@@ -32,6 +32,19 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `expiresAt` | `Date` |  |  |  | () => moment().add(180, 'day').toDate() |  |
 | `payload` | `Object` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_2 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOneAndUpdate` × 1
+- `.aggregate` × 1
+
+### Top call sites
+
+- `src/services/eventService.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

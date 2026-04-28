@@ -34,6 +34,25 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `namespace` | `String` |  |  | required |  |  |
 | `indexFile` | `String` |  |  | required |  |  |
 
+## Usage (from backend-api)
+
+_6 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 2
+- `.find` × 1
+- `.create` × 1
+- `.updateMany` × 1
+- `.deleteMany` × 1
+
+### Top call sites
+
+- `src/services/classroomService.js` × 3
+- `src/controllers/KeyServerController.js` × 1
+- `src/workers/dataTransferWorker.js` × 1
+- `src/workers/fileDeletionWorker.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

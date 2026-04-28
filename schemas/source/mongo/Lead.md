@@ -32,6 +32,24 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `phoneNumber` | `String` |  |  | required |  |  |
 | `registrationToken` | `String` |  |  | required | () => Math.random().toString(36).slic… |  |
 
+## Usage (from backend-api)
+
+_5 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 3
+- `.findOneAndUpdate` × 1
+- `.find` × 1
+
+### Top call sites
+
+- `src/controllers/UnauthController.js` × 1
+- `src/services/lensAnalyticsService.js` × 1
+- `src/services/classroomService.js` × 1
+- `src/services/meetingService.js` × 1
+- `src/services/lensReportsService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

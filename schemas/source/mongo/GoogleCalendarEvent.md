@@ -34,6 +34,29 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `linkedGoogleCalendarId` | `ObjectId` | `LinkedGoogleCalendar` |  |  |  |  |
 | `sessionId` | `ObjectId` | `zoom` |  |  |  |  |
 
+## Usage (from backend-api)
+
+_13 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.find` × 8
+- `.deleteMany` × 3
+- `.bulkWrite` × 2
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `sessionId` × 2
+
+### Top call sites
+
+- `src/services/GoogleCalendarIntegrationService.js` × 9
+- `src/services/teacherAvailabilityService.js` × 2
+- `src/services/demoProductService.js` × 1
+- `src/workers/dataTransferWorker.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

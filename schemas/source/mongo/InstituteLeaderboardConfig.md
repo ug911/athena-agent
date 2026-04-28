@@ -34,6 +34,32 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `levels[].title` | `String` |  |  | required |  |  |
 | `levels[].thresholdPoints` | `Number` |  |  | required |  |  |
 
+## Usage (from backend-api)
+
+_7 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 3
+- `.findOneAndUpdate` × 1
+- `.find` × 1
+- `.create` × 1
+- `.deleteOne` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `instituteId` × 1
+
+### Top call sites
+
+- `src/services/leaderboardService.js` × 3
+- `src/controllers/InstituteController.js` × 1
+- `src/services/DemoAccountService.js` × 1
+- `src/services/instituteService.js` × 1
+- `src/services/studentReportsServiceV2.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

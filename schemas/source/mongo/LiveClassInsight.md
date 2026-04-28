@@ -96,6 +96,35 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `plugins[].type` | `String` |  | LIVE_CLASS_PLUGIN_TYPE_CHESS_GAME |  |  |  |
 | `plugins[].data` | `Object` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_41 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 19
+- `.updateOne` × 11
+- `.findOneAndUpdate` × 5
+- `.aggregate` × 4
+- `.find` × 2
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `sessionId` × 1
+
+### Top call sites
+
+- `src/services/lensAnalyticsService.js` × 28
+- `src/controllers/LensController.js` × 4
+- `src/services/meetingService.js` × 3
+- `src/controllers/LensInMeetingController.js` × 1
+- `src/services/liveClassDiscussionService.js` × 1
+- `src/services/leaderboardService.js` × 1
+- `src/services/instituteService.js` × 1
+- `src/services/studentReportsServiceV2.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

@@ -44,6 +44,30 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `allTimePointsTable[].totalPoints` | `Number` |  |  | required |  |  |
 | `allTimePointsTable[].rank` | `Number` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_7 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.aggregate` × 2
+- `.updateOne` × 2
+- `.find` × 1
+- `.deleteOne` × 1
+- `.findOne` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `classId` × 1
+
+### Top call sites
+
+- `src/services/leaderboardService.js` × 5
+- `src/services/classroomCleanupService.js` × 1
+- `src/services/studentReportsServiceV2.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

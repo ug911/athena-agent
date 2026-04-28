@@ -28,6 +28,27 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `type` | `String` |  | <MEMBER_TYPES> | required |  |  |
 | `memberId` | `ObjectId` |  |  | required |  |  |
 
+## Usage (from backend-api)
+
+_13 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.find` × 5
+- `.findOne` × 2
+- `.create` × 2
+- `.deleteOne` × 2
+- `.deleteMany` × 1
+- `.aggregate` × 1
+
+### Top call sites
+
+- `src/services/instituteGroupService.js` × 9
+- `src/controllers/TeacherController.js` × 1
+- `src/services/classroomService.js` × 1
+- `src/services/instituteService.js` × 1
+- `src/services/instituteAdmissionService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

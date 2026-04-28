@@ -27,6 +27,21 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `instituteId` | `ObjectId` | `Institute` |  | required |  |  |
 | `tags` | `Array<String>` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_5 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 2
+- `.updateOne` × 2
+- `.findOneAndUpdate` × 1
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 3
+- `src/services/instituteService.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

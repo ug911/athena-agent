@@ -92,6 +92,41 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `metadata` | `Object` |  |  |  |  |  |
 | `instituteZoomPoolName` | `String` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_213 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 109
+- `.updateOne` × 42
+- `.find` × 37
+- `.findOneAndUpdate` × 10
+- `.aggregate` × 4
+- `.create` × 4
+- `.exists` × 2
+- `.updateMany` × 2
+- `.deleteMany` × 1
+- `.populate` × 1
+- `.findById` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `parentIds` × 1
+
+### Top call sites
+
+- `src/services/loginService.js` × 21
+- `src/controllers/InstituteController.js` × 17
+- `src/controllers/TeacherController.js` × 16
+- `src/controllers/UserController.js` × 14
+- `src/services/instituteService.js` × 11
+- `src/services/feeService.js` × 11
+- `src/controllers/DevAPIController.js` × 10
+- `src/services/instituteAdmissionService.js` × 8
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

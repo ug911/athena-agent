@@ -26,6 +26,21 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `posts[].entityId` | `String` |  |  | required |  |  |
 | `posts[].entityType` | `String` |  | assessment, discussion, session, resource, test | required |  |  |
 
+## Usage (from backend-api)
+
+_7 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 4
+- `.updateOne` × 2
+- `.exists` × 1
+
+### Top call sites
+
+- `src/controllers/UserController.js` × 5
+- `src/controllers/upsc.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

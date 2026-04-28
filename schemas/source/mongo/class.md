@@ -128,6 +128,46 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `showTests` | `Boolean` |  |  |  |  |  |
 | `billingUnit` | `String` |  | <BILLING_UNITS> |  |  |  |
 
+## Usage (from backend-api)
+
+_224 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 101
+- `.find` × 64
+- `.updateOne` × 28
+- `.aggregate` × 16
+- `.updateMany` × 4
+- `.findOneAndUpdate` × 3
+- `.create` × 2
+- `.populate` × 2
+- `.deleteMany` × 1
+- `.exists` × 1
+- `.deleteOne` × 1
+- `.countDocuments` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `userId` × 12
+- `instituteId` × 11
+- `coTeachers` × 2
+- `joinedRequest` × 1
+- `zoomLink.sessionId` × 1
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 28
+- `src/controllers/TeacherController.js` × 19
+- `src/services/classroomService.js` × 16
+- `src/services/feeService.js` × 15
+- `src/services/instituteService.js` × 12
+- `src/controllers/FeeCollectionV2Controller.js` × 10
+- `src/services/meetingService.js` × 8
+- `src/workers/dataTransferWorker.js` × 8
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

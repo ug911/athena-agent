@@ -38,6 +38,24 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `signeeDetails.userId` | `ObjectId` | `user` |  | required |  |  |
 | `signeeDetails.wiseUUID` | `String` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_8 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.find` × 4
+- `.findOne` × 2
+- `.create` × 1
+- `.deleteMany` × 1
+
+### Top call sites
+
+- `src/services/contractService.js` × 4
+- `src/services/instituteAnalyticsService.js` × 2
+- `src/controllers/StudentController.js` × 1
+- `src/controllers/InstituteController.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

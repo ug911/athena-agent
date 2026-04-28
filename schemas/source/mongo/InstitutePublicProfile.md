@@ -44,6 +44,30 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `sections[].classIds` | `Array<ObjectId>` | `class` |  |  |  |  |
 | `publishedAt` | `Date` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_17 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 4
+- `.exists` × 3
+- `.updateOne` × 3
+- `.aggregate` × 2
+- `.create` × 2
+- `.findOneAndUpdate` × 1
+- `.deleteOne` × 1
+- `.updateMany` × 1
+
+### Top call sites
+
+- `src/services/instituteService.js` × 9
+- `src/controllers/InstituteController.js` × 4
+- `src/controllers/InternalController.js` × 1
+- `src/controllers/PublicController.js` × 1
+- `src/services/DemoAccountService.js` × 1
+- `src/workers/dataTransferWorker.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

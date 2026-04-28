@@ -42,6 +42,42 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `metadata.invoiceBillingInformation` | `String` |  |  |  |  |  |
 | `metadata.payoutSettings` | `String` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_91 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 27
+- `.find` × 22
+- `.updateOne` × 12
+- `.aggregate` × 12
+- `.exists` × 8
+- `.countDocuments` × 3
+- `.deleteMany` × 2
+- `.bulkWrite` × 2
+- `.updateMany` × 1
+- `.deleteOne` × 1
+- `.findOneAndUpdate` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `userId` × 17
+- `instituteId` × 3
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 31
+- `src/services/instituteService.js` × 9
+- `src/services/instituteAdmissionService.js` × 8
+- `src/services/feeService.js` × 5
+- `src/services/userAuthService.js` × 5
+- `src/workers/dataTransferWorker.js` × 4
+- `src/controllers/FeeCollectionV2Controller.js` × 3
+- `src/services/classroomService.js` × 3
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

@@ -28,6 +28,18 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `sequenceType` | `String` |  | INVOICE | required |  |  |
 | `value` | `Number` |  |  | required | 0 |  |
 
+## Usage (from backend-api)
+
+_1 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOneAndUpdate` × 1
+
+### Top call sites
+
+- `src/services/feeService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

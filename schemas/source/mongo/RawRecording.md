@@ -34,6 +34,22 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `recordings[].partIndex` | `Number` |  |  |  |  |  |
 | `expiresIn` | `Date` |  |  |  |  |  |
 
+## Usage (from backend-api)
+
+_6 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 3
+- `.updateOne` × 3
+
+### Top call sites
+
+- `src/workers/videoConversionWorker.js` × 3
+- `src/controllers/UserController.js` × 1
+- `src/controllers/TeacherController.js` × 1
+- `src/controllers/LensController.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

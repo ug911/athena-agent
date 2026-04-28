@@ -24,6 +24,20 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `idType` | `String` |  | PHONE, PHONE_NUMBER, FIREBASE_ID | required |  |  |
 | `metadata` | `Object` |  |  |  | {} |  |
 
+## Usage (from backend-api)
+
+_4 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 2
+- `.deleteOne` × 1
+- `.create` × 1
+
+### Top call sites
+
+- `src/services/loginService.js` × 4
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

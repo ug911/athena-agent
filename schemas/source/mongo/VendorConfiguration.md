@@ -44,6 +44,25 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `s3Configuration.pathPrefix` | `String` |  |  | required |  |  |
 | `s3Configuration.aclConfig` | `Object` |  |  |  | {} |  |
 
+## Usage (from backend-api)
+
+_15 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 7
+- `.updateOne` × 6
+- `.findOneAndUpdate` × 1
+- `.create` × 1
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 8
+- `src/controllers/UserController.js` × 4
+- `src/services/VendorWebhookService.js` × 1
+- `src/services/developerActions.js` × 1
+- `src/services/userAuthService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

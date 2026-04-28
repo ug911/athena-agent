@@ -37,6 +37,22 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `rules[].conditions[].operator` | `String` |  | <VALID_OPERATORS> | required |  |  |
 | `rules[].conditions[].value` | `Number` |  |  | required |  |  |
 
+## Usage (from backend-api)
+
+_7 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.exists` × 3
+- `.findOne` × 2
+- `.deleteOne` × 1
+- `.findOneAndUpdate` × 1
+
+### Top call sites
+
+- `src/controllers/InstituteController.js` × 5
+- `src/services/taxService.js` × 2
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

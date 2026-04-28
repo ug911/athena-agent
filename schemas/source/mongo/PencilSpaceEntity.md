@@ -27,6 +27,21 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `wiseId` | `ObjectId` |  |  | required |  |  |
 | `pencilId` | `String` |  |  | required |  |  |
 
+## Usage (from backend-api)
+
+_7 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.create` × 3
+- `.find` × 2
+- `.findOne` × 2
+
+### Top call sites
+
+- `src/services/PencilSpacesIntegrationService.js` × 6
+- `src/services/meetingAttendanceService.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

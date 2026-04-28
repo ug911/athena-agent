@@ -122,6 +122,22 @@ No Mongo connection is required and no values are sampled — only field names a
 
 The intended downstream uses are: (a) diffing against the inferred Athena schema to find extraction gaps, (b) confirming canonical join keys, and (c) sanity-checking field-name conventions when writing SQL.
 
+### Gap report — find extraction debt
+
+```bash
+.venv/bin/python scripts/compare_schemas.py
+```
+
+Diffs each Mongo collection against its Athena counterpart and writes one report per collection under `schemas/_gaps/<collection>.md`, plus an `INDEX.md` ranked by missing-field count. Each report lists fields declared in the Mongoose schema but absent from Athena (extraction debt — widen the lake or note the field as JSON-only inside an existing varchar) and fields in Athena that aren't in Mongo any more (renamed / deprecated). Field-path matching normalizes case and underscores so `studentAttendance` (Mongo) matches `student_attendance` (Athena).
+
+### Usage scan — which models are hot, which joins matter
+
+```bash
+.venv/bin/python scripts/scan_usage.py --backend-api ~/Documents/wise/backend-api
+```
+
+Statically scans `controllers/`, `services/`, `repositories/`, `workers/`, and `helpers/` for `<Model>.<query-method>` calls and `.populate(...)` chains. Patches each `schemas/source/mongo/<collection>.md` with a `## Usage` section showing query-method counts, populate fields (the strongest hint for "what JOINs matter in Athena"), and top call sites. Also writes `semantics/usage_patterns.md` with a global ranking and the most-populated fields across the codebase.
+
 ## Updating the knowledge base
 
 - **Schema regen**: `python scripts/sync_schemas.py` — idempotent. Anything below `<!-- HUMAN NOTES BELOW -->` in each table file is preserved across runs, so add hand-written notes there.

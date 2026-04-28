@@ -37,6 +37,28 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `questions` | `Array<ObjectId>` | `LiveClassPoll` |  |  |  |  |
 | `agendaId` | `ObjectId` | `LiveClassAgenda` |  |  |  |  |
 
+## Usage (from backend-api)
+
+_9 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 3
+- `.updateOne` × 2
+- `.find` × 2
+- `.findOneAndUpdate` × 1
+- `.create` × 1
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `questions` × 1
+
+### Top call sites
+
+- `src/services/lensAnalyticsService.js` × 9
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->

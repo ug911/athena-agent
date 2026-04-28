@@ -45,6 +45,33 @@ last_synced: "2026-04-28T10:58:23+00:00"
 | `communicationUsage[].creditsRemaining` | `Number` |  |  | required |  |  |
 | `totalCreditsUsed` | `Number` |  |  | required | 0 |  |
 
+## Usage (from backend-api)
+
+_18 call site(s) found across `controllers/`, `services/`, `repositories/`, `workers/`, `helpers/`._
+
+### Query methods
+
+- `.findOne` × 6
+- `.findOneAndUpdate` × 6
+- `.find` × 3
+- `.updateOne` × 3
+
+### Populated fields (join hints)
+
+Fields commonly hydrated via `.populate(...)` — in Athena, these are the joins worth pre-computing or caching.
+
+- `userId` × 1
+
+### Top call sites
+
+- `src/services/communications/commCreditService.js` × 4
+- `src/services/premiumReminderService.js` × 3
+- `src/services/premiumService.js` × 3
+- `src/services/premiumStreamingService.js` × 3
+- `src/services/premiumAnalyticsService.js` × 2
+- `src/services/storageService.js` × 2
+- `src/controllers/PremiumController.js` × 1
+
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas) below this line. -->
