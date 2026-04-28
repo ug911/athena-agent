@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# Secrets / local config
+.env
+.env.*
+scripts/config.yaml
+
+# Caches
+.cache/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Claude / editor
+.claude/settings.local.json
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local data dumps
+*.parquet
+*.csv
+*.tsv
+*.json.gz

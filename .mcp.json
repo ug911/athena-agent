@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "athena": {
+      "command": ".venv/bin/python",
+      "args": ["scripts/athena_mcp_server.py"],
+      "env": {
+        "ATHENA_TIMEOUT_S": "60",
+        "ATHENA_BYTES_WARN": "2147483648"
+      }
+    }
+  }
+}

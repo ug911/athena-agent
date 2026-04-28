@@ -1,0 +1,27 @@
+# Copy to scripts/config.yaml and fill in.
+aws:
+  region: us-east-1
+  workgroup: primary           # read-only workgroup recommended
+  output_location: s3://your-athena-results-bucket/sync/
+
+# Databases to document, grouped by layer. Layer => subfolder under schemas/.
+databases:
+  raw:
+    - mongo_raw
+  processed:
+    - mongo_processed
+  views:
+    - analytics_views
+
+# Sampling controls (used for JSON path inference on Mongo-origin tables).
+sampling:
+  enabled_layers: [processed]   # which layers to sample
+  rows_per_table: 200
+  max_bytes_scanned_per_query: 1073741824   # 1 GiB
+  # Per-table override of the column to ORDER BY DESC for "recent rows".
+  # If absent, the script tries common names (created_at, updated_at, event_time, _ts) then falls back to TABLESAMPLE.
+  recency_column_overrides: {}
+
+# Global per-run guardrail.
+budget:
+  max_total_bytes_scanned: 21474836480   # 20 GiB
