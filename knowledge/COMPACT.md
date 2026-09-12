@@ -471,9 +471,27 @@ json_extract_scalar(doc, '$["instituteId"]["$oid"]')  -- ✅ the only working fo
 ```
 A per-tenant query written the first way returns **zero rows** and reads as "this tenant has no
 data". The bracket form is mandatory because `$oid` begins with `$`.
-**This one is uniform across ops** — measured on `__class` NA: the bracket form resolves for
-seed (4,001/4,049), update (8,122/8,137) and insert (431/431); the plain form for **none**. Relaxed
-extended JSON still wraps ObjectIds, so unlike dates there is nothing to coalesce.
+
+**⚠ CORRECTION to earlier guidance in this file: the `$oid` rule is per-FIELD, not per-table.**
+It holds for **top-level, Mongoose-typed** ObjectId fields (measured on `__class` NA: bracket form
+resolves seed 4,001/4,049, update 8,122/8,137, insert 431/431; plain form **0**).
+It is **wrong** for ids nested inside `metadata`, which is a Mixed subdocument the app writes
+freely — those are usually **plain strings**, and sometimes *both*:
+
+| field | region | plain | `$oid`-wrapped |
+|---|---|---|---|
+| `__transaction.senderId` (top level) | na | 0 | 30,757 |
+| `__transaction.metadata.classId` | in | 2,760,425 | **131** |
+| `__transaction.metadata.classId` | na | 86,225 | **3** |
+| `__transaction.metadata.sessionId` | na | 33,264 | **2,181** (6.2%) |
+| `__transaction.metadata.installmentId` | na | 25,140 | **4,564 (15.4%)** |
+| `__transaction.metadata.installmentId` | in | 2,086,981 | 26,634 (1.3%) |
+| `__sessioncredit.metadata.invoiceId` | na | 3,543 | 0 |
+
+**Always `coalesce(plain, oid)` for anything under `metadata`.** Applying the `$oid` form alone
+returns zero rows; applying the plain form alone silently drops up to **15% of NA rows**. Note the
+rates differ ~12× between regions — a check run only on IN reads 1.3% as noise while NA loses 15%.
+Run the extraction census in `accuracy-proof.md` §B1 over every path you extract.
 **The top-level `_id` column (outside `doc`) is already a plain hex string — use it as the join key.**
 
 **(b) Date encoding differs *within the same table*, by `op`. This is the worst trap here.**
@@ -501,6 +519,19 @@ vs camelCase `$numberLong` in `lake_cdc`. Paths do not port between layers.)
 
 **(c) `doc` keys are camelCase; `processed` columns are lowercase.**
 `instituteId, userId, classId, createdAt, chargedAt` vs `instituteid, userid`. Same silent NULL.
+
+**(d) Money is a nested object in MINOR UNITS, and multi-currency.**
+```
+amount = {"value": <plain int | {"$numberInt":"…"} | {"$numberDouble":"…"}>, "currency": "USD"}
+```
+`json_extract_scalar(doc,'$.amount')` and all of `$numberInt`/`$numberLong`/`$numberDecimal`
+directly under `amount` return **NULL on all 2,949,539 transaction rows** — the value is one level
+deeper, under `value`. Encoding varies by `op`: seed rows `$numberInt` (8 IN rows
+`$numberDouble`), insert/update rows plain. Coalesce all three.
+
+**There are 35 distinct currencies in IN and 16 in NA.** Never sum `amount` without grouping by
+`currency`, and never store money as a float — integer minor units + currency code, end to end.
+A cross-currency total is a wrong number that looks completely plausible.
 
 ## 6.4 Bound future-dated windows
 Recurring schedules project years out — fleet `max(session_date)` **2052-10-21**. Always bound:
@@ -567,6 +598,16 @@ re-sync**) · `semantics/{glossary,joins,dependencies}.md` · `examples/` (vette
 
 ⚠ `schemas/` documents the **`processed` / `backend`** layers. It does **not** yet cover
 `lake_cdc` or the fact tables — this file is currently the only documentation of the fact layer.
+
+# 9b. Companion documents
+
+- **`knowledge/facts-design.md`** — design for the six missing facts: grain, partitioning, refresh
+  cadence, watermark, reconciliation, and build order. `parent_student_edge_dim` is **blocked** on
+  an upstream capture change.
+- **`knowledge/accuracy-proof.md`** — the two-leg verification protocol for the ghl_sync
+  optimisation. **Leg A** is a before/after regression diff; **Leg B** is absolute ground-truth
+  assertions. Both are required, because a pure diff cannot catch a bug present on both sides —
+  and we have three measured examples of exactly that.
 
 # 10. Open questions
 1. **Where is the parent→student edge persisted?** Blocks `parent_student_edge_dim`. Backend team.
