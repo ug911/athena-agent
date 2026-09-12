@@ -2,6 +2,8 @@
 
 Verified during query authoring. Prefer these over the auto-extracted hints below.
 
+> **IN / NA deployments:** join keys below use the IN database names (`processed.*`, `wise_app_backend__*` from `backend`). The same joins apply for NA — swap `processed` → `processed_na` and `backend` → `backend_na`. Don't join across deployments; each is an independent dataset.
+
 | Left | Right | Notes |
 | --- | --- | --- |
 | `wise_app_backend__zoom.classid` (`$oid`) | `class.class_id` | One class → many sessions. |
@@ -16,6 +18,10 @@ Verified during query authoring. Prefer these over the auto-extracted hints belo
 | `zoom_attendance.zoom_id` | `wise_app_backend__zoom._id` (`$oid`) | Already-extracted oid; one zoom_id → many rows (one per participant). |
 | `zoom_attendance.class_id` | `class.class_id` | |
 | `zoom_missed_attendance.class_id` | `class.class_id` | Missed sessions only. |
+| `wise_app_backend__rawzoomsummary.sessionid` (`$oid`) | `zoomers_v3.zoom_id` / `wise_app_backend__zoom._id` (`$oid`) | AI summary per session. Verified by query 2026-08-11. Row can exist with empty `summaries` — gate on `summaries <> '[]'`. |
+| `wise_app_backend__rawsessiontranscript.sessionid` (`$oid`) | `zoomers_v3.zoom_id` / `wise_app_backend__zoom._id` (`$oid`) | Transcript files per session. Verified 2026-08-11. Gate on `files <> '[]'`. |
+| `wise_app_backend__session_ai_data.sessionid` (`$oid`) | `zoomers_v3.zoom_id` / `wise_app_backend__zoom._id` (`$oid`) | AI revision notes + quiz ids per session. |
+| `zoomers_v3.userid` | `user.userid` | Session host (tutor). `zoomers_v3.zoom_id` is the already-extracted session `$oid`, so no JSON unwrap needed on the left side. |
 
 # Auto-extracted join clauses
 

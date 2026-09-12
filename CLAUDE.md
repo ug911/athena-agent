@@ -2,6 +2,23 @@
 
 This repo is a knowledge base for an AWS Athena warehouse fed by MongoDB. Your job, when invoked here, is to translate plain-English requirements into correct, efficient Athena (Presto) SQL.
 
+## Deployments (IN vs NA)
+
+The same logical pipeline is deployed twice:
+
+| Region | Raw DB | Processed DB |
+| --- | --- | --- |
+| IN (India) | `backend` | `processed` |
+| NA (North America) | `backend_na` | `processed_na` |
+
+Schema docs under `schemas/` are written **once per logical table**, using the IN database name as the canonical folder (`schemas/processed/processed/<table>.md`, `schemas/raw/backend/<table>.md`). Each file's `## Region availability` block lists the regions where the table exists and whether schemas are identical or have drifted.
+
+When writing SQL:
+- Default to the IN database names shown in the docs.
+- For NA queries, swap `processed` → `processed_na` and `backend` → `backend_na`.
+- Always check the Region availability block first — a table may be IN-only or NA-only, and inferred JSON / enum samples are taken from IN by default.
+- If the file has a "Region drift" section, the column you're using may differ across regions; verify against the deployment you're querying.
+
 ## Pipeline at a glance
 
 MongoDB → flattened json.gz → S3 → Athena `raw` external tables → CTAS → Athena `processed` (query-optimized) → Athena `views` (curated, pre-joined).

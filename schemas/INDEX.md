@@ -1,242 +1,250 @@
 # Athena Schema Index
 
-_Last synced: 2026-04-28T07:18:44+00:00_
+_Last synced: 2026-08-11T13:32:03+00:00_
 
 ## processed
 
-- [`processed.announcements`](schemas/processed/processed/announcements.md) — view
-- [`processed.assignments`](schemas/processed/processed/assignments.md) — view
-- [`processed.class`](schemas/processed/processed/class.md) — view
-- [`processed.class_participants`](schemas/processed/processed/class_participants.md) — view
-- [`processed.classroom_fees`](schemas/processed/processed/classroom_fees.md) — view
-- [`processed.cloudfront_file_logs`](schemas/processed/processed/cloudfront_file_logs.md) — table
-- [`processed.cloudfront_logs`](schemas/processed/processed/cloudfront_logs.md) — table
-- [`processed.dwh__features_user_teacher`](schemas/processed/processed/dwh__features_user_teacher.md) — table
-- [`processed.exam_service__submissions`](schemas/processed/processed/exam_service__submissions.md) — table
-- [`processed.exam_service__tests`](schemas/processed/processed/exam_service__tests.md) — table
-- [`processed.features_user_teacher`](schemas/processed/processed/features_user_teacher.md) — view
-- [`processed.ft_student_announcements`](schemas/processed/processed/ft_student_announcements.md) — view
-- [`processed.ft_student_assignments`](schemas/processed/processed/ft_student_assignments.md) — view
-- [`processed.ft_student_class`](schemas/processed/processed/ft_student_class.md) — view
-- [`processed.ft_student_tests`](schemas/processed/processed/ft_student_tests.md) — view
-- [`processed.ft_student_zooms`](schemas/processed/processed/ft_student_zooms.md) — view
-- [`processed.ft_teacher_announcements`](schemas/processed/processed/ft_teacher_announcements.md) — view
-- [`processed.ft_teacher_assignments`](schemas/processed/processed/ft_teacher_assignments.md) — view
-- [`processed.ft_teacher_class`](schemas/processed/processed/ft_teacher_class.md) — view
-- [`processed.ft_teacher_study_materials`](schemas/processed/processed/ft_teacher_study_materials.md) — view
-- [`processed.ft_teacher_tests`](schemas/processed/processed/ft_teacher_tests.md) — view
-- [`processed.ft_teacher_zooms`](schemas/processed/processed/ft_teacher_zooms.md) — view
-- [`processed.institute`](schemas/processed/processed/institute.md) — view
-- [`processed.institute_participants`](schemas/processed/processed/institute_participants.md) — view
-- [`processed.liveclassinsight`](schemas/processed/processed/liveclassinsight.md) — view
-- [`processed.liveclassinsight_details`](schemas/processed/processed/liveclassinsight_details.md) — view
-- [`processed.mat_zoomers`](schemas/processed/processed/mat_zoomers.md) — table
-- [`processed.mixpanel__events`](schemas/processed/processed/mixpanel__events.md) — table
-- [`processed.mixpanel_detailed_partitions`](schemas/processed/processed/mixpanel_detailed_partitions.md) — view
-- [`processed.mixpanel_detailed_partitions_by_month`](schemas/processed/processed/mixpanel_detailed_partitions_by_month.md) — view
-- [`processed.mixpanel_partitions`](schemas/processed/processed/mixpanel_partitions.md) — view
-- [`processed.registration_form`](schemas/processed/processed/registration_form.md) — view
-- [`processed.registration_form_submission`](schemas/processed/processed/registration_form_submission.md) — view
-- [`processed.rudder_lens`](schemas/processed/processed/rudder_lens.md) — table
-- [`processed.rudder_upsc_prod`](schemas/processed/processed/rudder_upsc_prod.md) — table
-- [`processed.rudder_wise_prod`](schemas/processed/processed/rudder_wise_prod.md) — table
-- [`processed.rudder_wise_web_prod`](schemas/processed/processed/rudder_wise_web_prod.md) — table
-- [`processed.saved_communications`](schemas/processed/processed/saved_communications.md) — view
-- [`processed.session_feedback_submission_student`](schemas/processed/processed/session_feedback_submission_student.md) — view
-- [`processed.session_feedback_submission_teacher`](schemas/processed/processed/session_feedback_submission_teacher.md) — view
-- [`processed.streaming_computation`](schemas/processed/processed/streaming_computation.md) — table
-- [`processed.student_registration_form`](schemas/processed/processed/student_registration_form.md) — view
-- [`processed.study_materials`](schemas/processed/processed/study_materials.md) — view
-- [`processed.study_materials_flat_v2`](schemas/processed/processed/study_materials_flat_v2.md) — view
-- [`processed.study_materials_flat_v3`](schemas/processed/processed/study_materials_flat_v3.md) — view
-- [`processed.tests`](schemas/processed/processed/tests.md) — view
-- [`processed.transaction`](schemas/processed/processed/transaction.md) — view
-- [`processed.upsc_live_classrooms`](schemas/processed/processed/upsc_live_classrooms.md) — view
-- [`processed.upsc_live_teacher_private_class_stats`](schemas/processed/processed/upsc_live_teacher_private_class_stats.md) — view
-- [`processed.upsc_live_teacher_public_class_stats`](schemas/processed/processed/upsc_live_teacher_public_class_stats.md) — view
-- [`processed.user`](schemas/processed/processed/user.md) — view
-- [`processed.user_features`](schemas/processed/processed/user_features.md) — view
-- [`processed.user_premium`](schemas/processed/processed/user_premium.md) — table
-- [`processed.user_streaming_usage`](schemas/processed/processed/user_streaming_usage.md) — table
-- [`processed.webapp__marketing_banners`](schemas/processed/processed/webapp__marketing_banners.md) — table
-- [`processed.webapp__marketing_templates`](schemas/processed/processed/webapp__marketing_templates.md) — table
-- [`processed.webapp__payment_orders`](schemas/processed/processed/webapp__payment_orders.md) — table
-- [`processed.webapp__payout_accounts`](schemas/processed/processed/webapp__payout_accounts.md) — table
-- [`processed.webapp__payout_users`](schemas/processed/processed/webapp__payout_users.md) — table
-- [`processed.webapp__payouts`](schemas/processed/processed/webapp__payouts.md) — table
-- [`processed.webapp__registered_interests`](schemas/processed/processed/webapp__registered_interests.md) — table
-- [`processed.wise_active_teachers`](schemas/processed/processed/wise_active_teachers.md) — table
-- [`processed.wise_app_backend__admin_configurations`](schemas/processed/processed/wise_app_backend__admin_configurations.md) — table
-- [`processed.wise_app_backend__announcements`](schemas/processed/processed/wise_app_backend__announcements.md) — table
-- [`processed.wise_app_backend__assignments`](schemas/processed/processed/wise_app_backend__assignments.md) — table
-- [`processed.wise_app_backend__certificate_template`](schemas/processed/processed/wise_app_backend__certificate_template.md) — table
-- [`processed.wise_app_backend__chat`](schemas/processed/processed/wise_app_backend__chat.md) — table
-- [`processed.wise_app_backend__chatmessage`](schemas/processed/processed/wise_app_backend__chatmessage.md) — table
-- [`processed.wise_app_backend__chess_game`](schemas/processed/processed/wise_app_backend__chess_game.md) — table
-- [`processed.wise_app_backend__class`](schemas/processed/processed/wise_app_backend__class.md) — table
-- [`processed.wise_app_backend__classparticipant`](schemas/processed/processed/wise_app_backend__classparticipant.md) — table
-- [`processed.wise_app_backend__classroom_certificate`](schemas/processed/processed/wise_app_backend__classroom_certificate.md) — table
-- [`processed.wise_app_backend__classroom_certificate_config`](schemas/processed/processed/wise_app_backend__classroom_certificate_config.md) — table
-- [`processed.wise_app_backend__classroom_fees`](schemas/processed/processed/wise_app_backend__classroom_fees.md) — table
-- [`processed.wise_app_backend__classroom_public_profile`](schemas/processed/processed/wise_app_backend__classroom_public_profile.md) — table
-- [`processed.wise_app_backend__classroom_section`](schemas/processed/processed/wise_app_backend__classroom_section.md) — table
-- [`processed.wise_app_backend__course`](schemas/processed/processed/wise_app_backend__course.md) — table
-- [`processed.wise_app_backend__deleted_file`](schemas/processed/processed/wise_app_backend__deleted_file.md) — table
-- [`processed.wise_app_backend__entity`](schemas/processed/processed/wise_app_backend__entity.md) — table
-- [`processed.wise_app_backend__entity_interaction`](schemas/processed/processed/wise_app_backend__entity_interaction.md) — table
-- [`processed.wise_app_backend__event`](schemas/processed/processed/wise_app_backend__event.md) — table
-- [`processed.wise_app_backend__feedback_form`](schemas/processed/processed/wise_app_backend__feedback_form.md) — table
-- [`processed.wise_app_backend__feestructure`](schemas/processed/processed/wise_app_backend__feestructure.md) — table
-- [`processed.wise_app_backend__googlecalendarevent`](schemas/processed/processed/wise_app_backend__googlecalendarevent.md) — table
-- [`processed.wise_app_backend__institute`](schemas/processed/processed/wise_app_backend__institute.md) — table
-- [`processed.wise_app_backend__institute_leaderboard_config`](schemas/processed/processed/wise_app_backend__institute_leaderboard_config.md) — table
-- [`processed.wise_app_backend__institute_participants`](schemas/processed/processed/wise_app_backend__institute_participants.md) — table
-- [`processed.wise_app_backend__institute_public_profile`](schemas/processed/processed/wise_app_backend__institute_public_profile.md) — table
-- [`processed.wise_app_backend__institutegroup`](schemas/processed/processed/wise_app_backend__institutegroup.md) — table
-- [`processed.wise_app_backend__institutegroupmember`](schemas/processed/processed/wise_app_backend__institutegroupmember.md) — table
-- [`processed.wise_app_backend__lead`](schemas/processed/processed/wise_app_backend__lead.md) — table
-- [`processed.wise_app_backend__leaderboard`](schemas/processed/processed/wise_app_backend__leaderboard.md) — table
-- [`processed.wise_app_backend__lens_event`](schemas/processed/processed/wise_app_backend__lens_event.md) — table
-- [`processed.wise_app_backend__lens_room_config`](schemas/processed/processed/wise_app_backend__lens_room_config.md) — table
-- [`processed.wise_app_backend__live_class_agendas`](schemas/processed/processed/wise_app_backend__live_class_agendas.md) — table
-- [`processed.wise_app_backend__live_class_agendas_25_oct`](schemas/processed/processed/wise_app_backend__live_class_agendas_25_oct.md) — table
-- [`processed.wise_app_backend__live_class_discussion`](schemas/processed/processed/wise_app_backend__live_class_discussion.md) — table
-- [`processed.wise_app_backend__live_class_leaderboard`](schemas/processed/processed/wise_app_backend__live_class_leaderboard.md) — table
-- [`processed.wise_app_backend__live_class_poll`](schemas/processed/processed/wise_app_backend__live_class_poll.md) — table
-- [`processed.wise_app_backend__liveclassinsight`](schemas/processed/processed/wise_app_backend__liveclassinsight.md) — table
-- [`processed.wise_app_backend__liveclasstest`](schemas/processed/processed/wise_app_backend__liveclasstest.md) — table
-- [`processed.wise_app_backend__manualattendance`](schemas/processed/processed/wise_app_backend__manualattendance.md) — table
-- [`processed.wise_app_backend__pollvote`](schemas/processed/processed/wise_app_backend__pollvote.md) — table
-- [`processed.wise_app_backend__premium_order`](schemas/processed/processed/wise_app_backend__premium_order.md) — table
-- [`processed.wise_app_backend__raw_chat`](schemas/processed/processed/wise_app_backend__raw_chat.md) — table
-- [`processed.wise_app_backend__raw_recording`](schemas/processed/processed/wise_app_backend__raw_recording.md) — table
-- [`processed.wise_app_backend__raw_zoom_attendance`](schemas/processed/processed/wise_app_backend__raw_zoom_attendance.md) — table
-- [`processed.wise_app_backend__rawsessiontranscript`](schemas/processed/processed/wise_app_backend__rawsessiontranscript.md) — table
-- [`processed.wise_app_backend__rawzoomsummary`](schemas/processed/processed/wise_app_backend__rawzoomsummary.md) — table
-- [`processed.wise_app_backend__registration_form`](schemas/processed/processed/wise_app_backend__registration_form.md) — table
-- [`processed.wise_app_backend__registration_form_submission`](schemas/processed/processed/wise_app_backend__registration_form_submission.md) — table
-- [`processed.wise_app_backend__saved_communication`](schemas/processed/processed/wise_app_backend__saved_communication.md) — table
-- [`processed.wise_app_backend__session_ai_data`](schemas/processed/processed/wise_app_backend__session_ai_data.md) — table
-- [`processed.wise_app_backend__session_credit`](schemas/processed/processed/wise_app_backend__session_credit.md) — table
-- [`processed.wise_app_backend__session_feedback_submission`](schemas/processed/processed/wise_app_backend__session_feedback_submission.md) — table
-- [`processed.wise_app_backend__study_materials`](schemas/processed/processed/wise_app_backend__study_materials.md) — table
-- [`processed.wise_app_backend__tags`](schemas/processed/processed/wise_app_backend__tags.md) — table
-- [`processed.wise_app_backend__teacher_leave`](schemas/processed/processed/wise_app_backend__teacher_leave.md) — table
-- [`processed.wise_app_backend__temp_user`](schemas/processed/processed/wise_app_backend__temp_user.md) — table
-- [`processed.wise_app_backend__transaction`](schemas/processed/processed/wise_app_backend__transaction.md) — table
-- [`processed.wise_app_backend__user`](schemas/processed/processed/wise_app_backend__user.md) — table
-- [`processed.wise_app_backend__user_streaming_info`](schemas/processed/processed/wise_app_backend__user_streaming_info.md) — table
-- [`processed.wise_app_backend__userpreference`](schemas/processed/processed/wise_app_backend__userpreference.md) — table
-- [`processed.wise_app_backend__vendor_configuration`](schemas/processed/processed/wise_app_backend__vendor_configuration.md) — table
-- [`processed.wise_app_backend__vendorintegration`](schemas/processed/processed/wise_app_backend__vendorintegration.md) — table
-- [`processed.wise_app_backend__verification`](schemas/processed/processed/wise_app_backend__verification.md) — table
-- [`processed.wise_app_backend__whitelabel`](schemas/processed/processed/wise_app_backend__whitelabel.md) — table
-- [`processed.wise_app_backend__working_hours_schedule`](schemas/processed/processed/wise_app_backend__working_hours_schedule.md) — table
-- [`processed.wise_app_backend__zoom`](schemas/processed/processed/wise_app_backend__zoom.md) — table
-- [`processed.wise_app_backend__zoom_admin_account`](schemas/processed/processed/wise_app_backend__zoom_admin_account.md) — table
-- [`processed.wise_app_backend__zoom_user_account`](schemas/processed/processed/wise_app_backend__zoom_user_account.md) — table
-- [`processed.wise_app_backend__zoomrecordings`](schemas/processed/processed/wise_app_backend__zoomrecordings.md) — table
-- [`processed.wise_new_signups`](schemas/processed/processed/wise_new_signups.md) — table
-- [`processed.wise_premium_order`](schemas/processed/processed/wise_premium_order.md) — view
-- [`processed.wise_user_stats`](schemas/processed/processed/wise_user_stats.md) — table
-- [`processed.zoom_attendance`](schemas/processed/processed/zoom_attendance.md) — table
-- [`processed.zoom_missed_attendance`](schemas/processed/processed/zoom_missed_attendance.md) — table
-- [`processed.zoom_summaries`](schemas/processed/processed/zoom_summaries.md) — view
-- [`processed.zoomers`](schemas/processed/processed/zoomers.md) — view
-- [`processed.zoomers_v2`](schemas/processed/processed/zoomers_v2.md) — view
-- [`processed.zoomers_v3`](schemas/processed/processed/zoomers_v3.md) — view
+| Table | Kind | Regions | Parity |
+| --- | --- | --- | --- |
+| [`processed.announcements`](schemas/processed/processed/announcements.md) | view | IN+NA | identical |
+| [`processed.assignments`](schemas/processed/processed/assignments.md) | view | IN+NA | identical |
+| [`processed.class`](schemas/processed/processed/class.md) | view | IN+NA | identical |
+| [`processed.class_participants`](schemas/processed/processed/class_participants.md) | view | IN+NA | identical |
+| [`processed.classroom_fees`](schemas/processed/processed/classroom_fees.md) | view | IN | — |
+| [`processed.cloudfront_file_logs`](schemas/processed/processed/cloudfront_file_logs.md) | table | IN | — |
+| [`processed.cloudfront_logs`](schemas/processed/processed/cloudfront_logs.md) | table | IN | — |
+| [`processed.dwh__features_user_teacher`](schemas/processed/processed/dwh__features_user_teacher.md) | table | IN+NA | identical |
+| [`processed.exam_service__submissions`](schemas/processed/processed/exam_service__submissions.md) | table | IN+NA | identical |
+| [`processed.exam_service__tests`](schemas/processed/processed/exam_service__tests.md) | table | IN+NA | identical |
+| [`processed.features_user_teacher`](schemas/processed/processed/features_user_teacher.md) | view | IN+NA | identical |
+| [`processed.ft_student_announcements`](schemas/processed/processed/ft_student_announcements.md) | view | IN+NA | identical |
+| [`processed.ft_student_assignments`](schemas/processed/processed/ft_student_assignments.md) | view | IN+NA | identical |
+| [`processed.ft_student_class`](schemas/processed/processed/ft_student_class.md) | view | IN+NA | identical |
+| [`processed.ft_student_tests`](schemas/processed/processed/ft_student_tests.md) | view | IN+NA | identical |
+| [`processed.ft_student_zooms`](schemas/processed/processed/ft_student_zooms.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_announcements`](schemas/processed/processed/ft_teacher_announcements.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_assignments`](schemas/processed/processed/ft_teacher_assignments.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_class`](schemas/processed/processed/ft_teacher_class.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_study_materials`](schemas/processed/processed/ft_teacher_study_materials.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_tests`](schemas/processed/processed/ft_teacher_tests.md) | view | IN+NA | identical |
+| [`processed.ft_teacher_zooms`](schemas/processed/processed/ft_teacher_zooms.md) | view | IN+NA | identical |
+| [`processed.institute`](schemas/processed/processed/institute.md) | view | IN+NA | identical |
+| [`processed.institute_participants`](schemas/processed/processed/institute_participants.md) | view | IN+NA | identical |
+| [`processed.liveclassinsight`](schemas/processed/processed/liveclassinsight.md) | view | IN+NA | identical |
+| [`processed.liveclassinsight_details`](schemas/processed/processed/liveclassinsight_details.md) | view | IN+NA | identical |
+| [`processed.mat_zoomers`](schemas/processed/processed/mat_zoomers.md) | table | IN | — |
+| [`processed.mixpanel__events`](schemas/processed/processed/mixpanel__events.md) | table | IN | — |
+| [`processed.mixpanel_detailed_partitions`](schemas/processed/processed/mixpanel_detailed_partitions.md) | view | IN | — |
+| [`processed.mixpanel_detailed_partitions_by_month`](schemas/processed/processed/mixpanel_detailed_partitions_by_month.md) | view | IN | — |
+| [`processed.mixpanel_partitions`](schemas/processed/processed/mixpanel_partitions.md) | view | IN | — |
+| [`processed.registration_form`](schemas/processed/processed/registration_form.md) | view | IN+NA | identical |
+| [`processed.registration_form_submission`](schemas/processed/processed/registration_form_submission.md) | view | IN | — |
+| [`processed.rudder_lens`](schemas/processed/processed/rudder_lens.md) | table | IN | — |
+| [`processed.rudder_upsc_prod`](schemas/processed/processed/rudder_upsc_prod.md) | table | IN | — |
+| [`processed.rudder_wise_prod`](schemas/processed/processed/rudder_wise_prod.md) | table | IN | — |
+| [`processed.rudder_wise_web_prod`](schemas/processed/processed/rudder_wise_web_prod.md) | table | IN | — |
+| [`processed.saved_communications`](schemas/processed/processed/saved_communications.md) | view | IN+NA | identical |
+| [`processed.session_feedback_submission_student`](schemas/processed/processed/session_feedback_submission_student.md) | view | IN+NA | identical |
+| [`processed.session_feedback_submission_teacher`](schemas/processed/processed/session_feedback_submission_teacher.md) | view | IN+NA | identical |
+| [`processed.streaming_computation`](schemas/processed/processed/streaming_computation.md) | table | IN | — |
+| [`processed.student_registration_form`](schemas/processed/processed/student_registration_form.md) | view | IN+NA | identical |
+| [`processed.study_materials`](schemas/processed/processed/study_materials.md) | view | IN+NA | identical |
+| [`processed.study_materials_flat_v2`](schemas/processed/processed/study_materials_flat_v2.md) | view | IN+NA | identical |
+| [`processed.study_materials_flat_v3`](schemas/processed/processed/study_materials_flat_v3.md) | view | IN+NA | identical |
+| [`processed.tests`](schemas/processed/processed/tests.md) | view | IN+NA | identical |
+| [`processed.transaction`](schemas/processed/processed/transaction.md) | view | IN | — |
+| [`processed.upsc_live_classrooms`](schemas/processed/processed/upsc_live_classrooms.md) | view | IN | — |
+| [`processed.upsc_live_teacher_private_class_stats`](schemas/processed/processed/upsc_live_teacher_private_class_stats.md) | view | IN | — |
+| [`processed.upsc_live_teacher_public_class_stats`](schemas/processed/processed/upsc_live_teacher_public_class_stats.md) | view | IN | — |
+| [`processed.user`](schemas/processed/processed/user.md) | view | IN+NA | identical |
+| [`processed.user_features`](schemas/processed/processed/user_features.md) | view | IN | — |
+| [`processed.user_premium`](schemas/processed/processed/user_premium.md) | table | IN | — |
+| [`processed.user_streaming_usage`](schemas/processed/processed/user_streaming_usage.md) | table | IN | — |
+| [`processed.webapp__marketing_banners`](schemas/processed/processed/webapp__marketing_banners.md) | table | IN+NA | identical |
+| [`processed.webapp__marketing_templates`](schemas/processed/processed/webapp__marketing_templates.md) | table | IN+NA | ⚠ drift |
+| [`processed.webapp__payment_orders`](schemas/processed/processed/webapp__payment_orders.md) | table | IN+NA | identical |
+| [`processed.webapp__payout_accounts`](schemas/processed/processed/webapp__payout_accounts.md) | table | IN+NA | identical |
+| [`processed.webapp__payout_users`](schemas/processed/processed/webapp__payout_users.md) | table | IN+NA | identical |
+| [`processed.webapp__payouts`](schemas/processed/processed/webapp__payouts.md) | table | IN+NA | identical |
+| [`processed.webapp__registered_interests`](schemas/processed/processed/webapp__registered_interests.md) | table | IN+NA | identical |
+| [`processed.wise_active_teachers`](schemas/processed/processed/wise_active_teachers.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__admin_configurations`](schemas/processed/processed/wise_app_backend__admin_configurations.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__announcements`](schemas/processed/processed/wise_app_backend__announcements.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__assignments`](schemas/processed/processed/wise_app_backend__assignments.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__certificate_template`](schemas/processed/processed/wise_app_backend__certificate_template.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__chat`](schemas/processed/processed/wise_app_backend__chat.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__chatmessage`](schemas/processed/processed/wise_app_backend__chatmessage.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__chess_game`](schemas/processed/processed/wise_app_backend__chess_game.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__class`](schemas/processed/processed/wise_app_backend__class.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classparticipant`](schemas/processed/processed/wise_app_backend__classparticipant.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classroom_certificate`](schemas/processed/processed/wise_app_backend__classroom_certificate.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classroom_certificate_config`](schemas/processed/processed/wise_app_backend__classroom_certificate_config.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classroom_fees`](schemas/processed/processed/wise_app_backend__classroom_fees.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classroom_public_profile`](schemas/processed/processed/wise_app_backend__classroom_public_profile.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__classroom_section`](schemas/processed/processed/wise_app_backend__classroom_section.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__course`](schemas/processed/processed/wise_app_backend__course.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__deleted_file`](schemas/processed/processed/wise_app_backend__deleted_file.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__entity`](schemas/processed/processed/wise_app_backend__entity.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__entity_interaction`](schemas/processed/processed/wise_app_backend__entity_interaction.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__event`](schemas/processed/processed/wise_app_backend__event.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__feedback_form`](schemas/processed/processed/wise_app_backend__feedback_form.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__feestructure`](schemas/processed/processed/wise_app_backend__feestructure.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__googlecalendarevent`](schemas/processed/processed/wise_app_backend__googlecalendarevent.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institute`](schemas/processed/processed/wise_app_backend__institute.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institute_leaderboard_config`](schemas/processed/processed/wise_app_backend__institute_leaderboard_config.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institute_participants`](schemas/processed/processed/wise_app_backend__institute_participants.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institute_public_profile`](schemas/processed/processed/wise_app_backend__institute_public_profile.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institutegroup`](schemas/processed/processed/wise_app_backend__institutegroup.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__institutegroupmember`](schemas/processed/processed/wise_app_backend__institutegroupmember.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__lead`](schemas/processed/processed/wise_app_backend__lead.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__leaderboard`](schemas/processed/processed/wise_app_backend__leaderboard.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__lens_event`](schemas/processed/processed/wise_app_backend__lens_event.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__lens_room_config`](schemas/processed/processed/wise_app_backend__lens_room_config.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__live_class_agendas`](schemas/processed/processed/wise_app_backend__live_class_agendas.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__live_class_agendas_25_oct`](schemas/processed/processed/wise_app_backend__live_class_agendas_25_oct.md) | table | IN | — |
+| [`processed.wise_app_backend__live_class_discussion`](schemas/processed/processed/wise_app_backend__live_class_discussion.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__live_class_leaderboard`](schemas/processed/processed/wise_app_backend__live_class_leaderboard.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__live_class_poll`](schemas/processed/processed/wise_app_backend__live_class_poll.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__liveclassinsight`](schemas/processed/processed/wise_app_backend__liveclassinsight.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__liveclasstest`](schemas/processed/processed/wise_app_backend__liveclasstest.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__manualattendance`](schemas/processed/processed/wise_app_backend__manualattendance.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__pollvote`](schemas/processed/processed/wise_app_backend__pollvote.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__premium_order`](schemas/processed/processed/wise_app_backend__premium_order.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__raw_chat`](schemas/processed/processed/wise_app_backend__raw_chat.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__raw_recording`](schemas/processed/processed/wise_app_backend__raw_recording.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__raw_zoom_attendance`](schemas/processed/processed/wise_app_backend__raw_zoom_attendance.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__rawsessiontranscript`](schemas/processed/processed/wise_app_backend__rawsessiontranscript.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__rawzoomsummary`](schemas/processed/processed/wise_app_backend__rawzoomsummary.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__registration_form`](schemas/processed/processed/wise_app_backend__registration_form.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__registration_form_submission`](schemas/processed/processed/wise_app_backend__registration_form_submission.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__saved_communication`](schemas/processed/processed/wise_app_backend__saved_communication.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__session_ai_data`](schemas/processed/processed/wise_app_backend__session_ai_data.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__session_credit`](schemas/processed/processed/wise_app_backend__session_credit.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__session_feedback_submission`](schemas/processed/processed/wise_app_backend__session_feedback_submission.md) | table | IN+NA | ⚠ drift |
+| [`processed.wise_app_backend__study_materials`](schemas/processed/processed/wise_app_backend__study_materials.md) | table | IN+NA | ⚠ drift |
+| [`processed.wise_app_backend__tags`](schemas/processed/processed/wise_app_backend__tags.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__teacher_leave`](schemas/processed/processed/wise_app_backend__teacher_leave.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__temp_user`](schemas/processed/processed/wise_app_backend__temp_user.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__transaction`](schemas/processed/processed/wise_app_backend__transaction.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__user`](schemas/processed/processed/wise_app_backend__user.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__user_2007`](schemas/processed/processed/wise_app_backend__user_2007.md) | table | NA | — |
+| [`processed.wise_app_backend__user_2207`](schemas/processed/processed/wise_app_backend__user_2207.md) | table | NA | — |
+| [`processed.wise_app_backend__user_streaming_info`](schemas/processed/processed/wise_app_backend__user_streaming_info.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__userpreference`](schemas/processed/processed/wise_app_backend__userpreference.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__vendor_configuration`](schemas/processed/processed/wise_app_backend__vendor_configuration.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__vendorintegration`](schemas/processed/processed/wise_app_backend__vendorintegration.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__verification`](schemas/processed/processed/wise_app_backend__verification.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__whitelabel`](schemas/processed/processed/wise_app_backend__whitelabel.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__working_hours_schedule`](schemas/processed/processed/wise_app_backend__working_hours_schedule.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__zoom`](schemas/processed/processed/wise_app_backend__zoom.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__zoom_admin_account`](schemas/processed/processed/wise_app_backend__zoom_admin_account.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__zoom_user_account`](schemas/processed/processed/wise_app_backend__zoom_user_account.md) | table | IN+NA | identical |
+| [`processed.wise_app_backend__zoomrecordings`](schemas/processed/processed/wise_app_backend__zoomrecordings.md) | table | IN+NA | identical |
+| [`processed.wise_new_signups`](schemas/processed/processed/wise_new_signups.md) | table | IN+NA | identical |
+| [`processed.wise_premium_order`](schemas/processed/processed/wise_premium_order.md) | view | IN+NA | identical |
+| [`processed.wise_user_stats`](schemas/processed/processed/wise_user_stats.md) | table | IN+NA | identical |
+| [`processed.zoom_attendance`](schemas/processed/processed/zoom_attendance.md) | table | IN+NA | identical |
+| [`processed.zoom_missed_attendance`](schemas/processed/processed/zoom_missed_attendance.md) | table | IN | — |
+| [`processed.zoom_summaries`](schemas/processed/processed/zoom_summaries.md) | view | IN+NA | identical |
+| [`processed.zoomers`](schemas/processed/processed/zoomers.md) | view | IN+NA | identical |
+| [`processed.zoomers_v2`](schemas/processed/processed/zoomers_v2.md) | view | IN+NA | identical |
+| [`processed.zoomers_v3`](schemas/processed/processed/zoomers_v3.md) | view | IN+NA | ⚠ drift |
 
 ## raw
 
-- [`backend.cloudfront__2025_03_20`](schemas/raw/backend/cloudfront__2025_03_20.md) — table
-- [`backend.exam_service__submissions`](schemas/raw/backend/exam_service__submissions.md) — table
-- [`backend.exam_service__tests`](schemas/raw/backend/exam_service__tests.md) — table
-- [`backend.mixpanel__raw_events`](schemas/raw/backend/mixpanel__raw_events.md) — table
-- [`backend.mixpanel__raw_events_v2`](schemas/raw/backend/mixpanel__raw_events_v2.md) — table
-- [`backend.rudder_backend_prod`](schemas/raw/backend/rudder_backend_prod.md) — table
-- [`backend.rudder_ios_prod`](schemas/raw/backend/rudder_ios_prod.md) — table
-- [`backend.rudder_lens`](schemas/raw/backend/rudder_lens.md) — table
-- [`backend.rudder_wise_prod`](schemas/raw/backend/rudder_wise_prod.md) — table
-- [`backend.rudder_wise_web_prod`](schemas/raw/backend/rudder_wise_web_prod.md) — table
-- [`backend.storage_computation`](schemas/raw/backend/storage_computation.md) — table
-- [`backend.webapp__marketing_banners`](schemas/raw/backend/webapp__marketing_banners.md) — table
-- [`backend.webapp__marketing_templates`](schemas/raw/backend/webapp__marketing_templates.md) — table
-- [`backend.webapp__payment_orders`](schemas/raw/backend/webapp__payment_orders.md) — table
-- [`backend.webapp__payment_orders_2`](schemas/raw/backend/webapp__payment_orders_2.md) — table
-- [`backend.webapp__payout_accounts`](schemas/raw/backend/webapp__payout_accounts.md) — table
-- [`backend.webapp__payout_users`](schemas/raw/backend/webapp__payout_users.md) — table
-- [`backend.webapp__payouts`](schemas/raw/backend/webapp__payouts.md) — table
-- [`backend.webapp__registered_interests`](schemas/raw/backend/webapp__registered_interests.md) — table
-- [`backend.wise_app_backend__admin_configurations`](schemas/raw/backend/wise_app_backend__admin_configurations.md) — table
-- [`backend.wise_app_backend__announcements`](schemas/raw/backend/wise_app_backend__announcements.md) — table
-- [`backend.wise_app_backend__announcements_v2`](schemas/raw/backend/wise_app_backend__announcements_v2.md) — table
-- [`backend.wise_app_backend__assignments`](schemas/raw/backend/wise_app_backend__assignments.md) — table
-- [`backend.wise_app_backend__certificate_template`](schemas/raw/backend/wise_app_backend__certificate_template.md) — table
-- [`backend.wise_app_backend__chat`](schemas/raw/backend/wise_app_backend__chat.md) — table
-- [`backend.wise_app_backend__chatmessage`](schemas/raw/backend/wise_app_backend__chatmessage.md) — table
-- [`backend.wise_app_backend__chess_game`](schemas/raw/backend/wise_app_backend__chess_game.md) — table
-- [`backend.wise_app_backend__class`](schemas/raw/backend/wise_app_backend__class.md) — table
-- [`backend.wise_app_backend__class_v2`](schemas/raw/backend/wise_app_backend__class_v2.md) — table
-- [`backend.wise_app_backend__classparticipant`](schemas/raw/backend/wise_app_backend__classparticipant.md) — table
-- [`backend.wise_app_backend__classroom_certificate`](schemas/raw/backend/wise_app_backend__classroom_certificate.md) — table
-- [`backend.wise_app_backend__classroom_certificate_config`](schemas/raw/backend/wise_app_backend__classroom_certificate_config.md) — table
-- [`backend.wise_app_backend__classroom_fees`](schemas/raw/backend/wise_app_backend__classroom_fees.md) — table
-- [`backend.wise_app_backend__classroom_public_profile`](schemas/raw/backend/wise_app_backend__classroom_public_profile.md) — table
-- [`backend.wise_app_backend__classroom_section`](schemas/raw/backend/wise_app_backend__classroom_section.md) — table
-- [`backend.wise_app_backend__course`](schemas/raw/backend/wise_app_backend__course.md) — table
-- [`backend.wise_app_backend__deleted_file`](schemas/raw/backend/wise_app_backend__deleted_file.md) — table
-- [`backend.wise_app_backend__entity`](schemas/raw/backend/wise_app_backend__entity.md) — table
-- [`backend.wise_app_backend__entity_interaction`](schemas/raw/backend/wise_app_backend__entity_interaction.md) — table
-- [`backend.wise_app_backend__event`](schemas/raw/backend/wise_app_backend__event.md) — table
-- [`backend.wise_app_backend__feedback_form`](schemas/raw/backend/wise_app_backend__feedback_form.md) — table
-- [`backend.wise_app_backend__feestructure`](schemas/raw/backend/wise_app_backend__feestructure.md) — table
-- [`backend.wise_app_backend__googlecalendarevent`](schemas/raw/backend/wise_app_backend__googlecalendarevent.md) — table
-- [`backend.wise_app_backend__institute`](schemas/raw/backend/wise_app_backend__institute.md) — table
-- [`backend.wise_app_backend__institute_leaderboard_config`](schemas/raw/backend/wise_app_backend__institute_leaderboard_config.md) — table
-- [`backend.wise_app_backend__institute_participants`](schemas/raw/backend/wise_app_backend__institute_participants.md) — table
-- [`backend.wise_app_backend__institute_participants_2`](schemas/raw/backend/wise_app_backend__institute_participants_2.md) — table
-- [`backend.wise_app_backend__institute_public_profile`](schemas/raw/backend/wise_app_backend__institute_public_profile.md) — table
-- [`backend.wise_app_backend__institutegroup`](schemas/raw/backend/wise_app_backend__institutegroup.md) — table
-- [`backend.wise_app_backend__institutegroupmember`](schemas/raw/backend/wise_app_backend__institutegroupmember.md) — table
-- [`backend.wise_app_backend__lead`](schemas/raw/backend/wise_app_backend__lead.md) — table
-- [`backend.wise_app_backend__leaderboard`](schemas/raw/backend/wise_app_backend__leaderboard.md) — table
-- [`backend.wise_app_backend__lens_event`](schemas/raw/backend/wise_app_backend__lens_event.md) — table
-- [`backend.wise_app_backend__lens_room_config`](schemas/raw/backend/wise_app_backend__lens_room_config.md) — table
-- [`backend.wise_app_backend__live_class_agendas`](schemas/raw/backend/wise_app_backend__live_class_agendas.md) — table
-- [`backend.wise_app_backend__live_class_discussion`](schemas/raw/backend/wise_app_backend__live_class_discussion.md) — table
-- [`backend.wise_app_backend__live_class_leaderboard`](schemas/raw/backend/wise_app_backend__live_class_leaderboard.md) — table
-- [`backend.wise_app_backend__live_class_poll`](schemas/raw/backend/wise_app_backend__live_class_poll.md) — table
-- [`backend.wise_app_backend__liveclassinsight`](schemas/raw/backend/wise_app_backend__liveclassinsight.md) — table
-- [`backend.wise_app_backend__liveclasstest`](schemas/raw/backend/wise_app_backend__liveclasstest.md) — table
-- [`backend.wise_app_backend__manualattendance`](schemas/raw/backend/wise_app_backend__manualattendance.md) — table
-- [`backend.wise_app_backend__pollvote`](schemas/raw/backend/wise_app_backend__pollvote.md) — table
-- [`backend.wise_app_backend__premium_order`](schemas/raw/backend/wise_app_backend__premium_order.md) — table
-- [`backend.wise_app_backend__raw_chat`](schemas/raw/backend/wise_app_backend__raw_chat.md) — table
-- [`backend.wise_app_backend__raw_recording`](schemas/raw/backend/wise_app_backend__raw_recording.md) — table
-- [`backend.wise_app_backend__raw_zoom_attendance`](schemas/raw/backend/wise_app_backend__raw_zoom_attendance.md) — table
-- [`backend.wise_app_backend__rawsessiontranscript`](schemas/raw/backend/wise_app_backend__rawsessiontranscript.md) — table
-- [`backend.wise_app_backend__rawzoomsummary`](schemas/raw/backend/wise_app_backend__rawzoomsummary.md) — table
-- [`backend.wise_app_backend__registration_form`](schemas/raw/backend/wise_app_backend__registration_form.md) — table
-- [`backend.wise_app_backend__registration_form_submission`](schemas/raw/backend/wise_app_backend__registration_form_submission.md) — table
-- [`backend.wise_app_backend__saved_communication`](schemas/raw/backend/wise_app_backend__saved_communication.md) — table
-- [`backend.wise_app_backend__session_ai_data`](schemas/raw/backend/wise_app_backend__session_ai_data.md) — table
-- [`backend.wise_app_backend__session_credit`](schemas/raw/backend/wise_app_backend__session_credit.md) — table
-- [`backend.wise_app_backend__session_feedback_submission`](schemas/raw/backend/wise_app_backend__session_feedback_submission.md) — table
-- [`backend.wise_app_backend__study_materials`](schemas/raw/backend/wise_app_backend__study_materials.md) — table
-- [`backend.wise_app_backend__tags`](schemas/raw/backend/wise_app_backend__tags.md) — table
-- [`backend.wise_app_backend__teacher_leave`](schemas/raw/backend/wise_app_backend__teacher_leave.md) — table
-- [`backend.wise_app_backend__temp_user`](schemas/raw/backend/wise_app_backend__temp_user.md) — table
-- [`backend.wise_app_backend__transaction`](schemas/raw/backend/wise_app_backend__transaction.md) — table
-- [`backend.wise_app_backend__user`](schemas/raw/backend/wise_app_backend__user.md) — table
-- [`backend.wise_app_backend__user_streaming_info`](schemas/raw/backend/wise_app_backend__user_streaming_info.md) — table
-- [`backend.wise_app_backend__user_v2`](schemas/raw/backend/wise_app_backend__user_v2.md) — table
-- [`backend.wise_app_backend__userpreference`](schemas/raw/backend/wise_app_backend__userpreference.md) — table
-- [`backend.wise_app_backend__vendor_configuration`](schemas/raw/backend/wise_app_backend__vendor_configuration.md) — table
-- [`backend.wise_app_backend__vendorintegration`](schemas/raw/backend/wise_app_backend__vendorintegration.md) — table
-- [`backend.wise_app_backend__verification`](schemas/raw/backend/wise_app_backend__verification.md) — table
-- [`backend.wise_app_backend__whitelabel`](schemas/raw/backend/wise_app_backend__whitelabel.md) — table
-- [`backend.wise_app_backend__working_hours_schedule`](schemas/raw/backend/wise_app_backend__working_hours_schedule.md) — table
-- [`backend.wise_app_backend__zoom`](schemas/raw/backend/wise_app_backend__zoom.md) — table
-- [`backend.wise_app_backend__zoom_admin_account`](schemas/raw/backend/wise_app_backend__zoom_admin_account.md) — table
-- [`backend.wise_app_backend__zoom_user_account`](schemas/raw/backend/wise_app_backend__zoom_user_account.md) — table
-- [`backend.wise_app_backend__zoomrecordings`](schemas/raw/backend/wise_app_backend__zoomrecordings.md) — table
+| Table | Kind | Regions | Parity |
+| --- | --- | --- | --- |
+| [`backend.cloudfront__2025_03_20`](schemas/raw/backend/cloudfront__2025_03_20.md) | table | IN | — |
+| [`backend.exam_service__submissions`](schemas/raw/backend/exam_service__submissions.md) | table | IN+NA | identical |
+| [`backend.exam_service__tests`](schemas/raw/backend/exam_service__tests.md) | table | IN+NA | identical |
+| [`backend.mixpanel__raw_events`](schemas/raw/backend/mixpanel__raw_events.md) | table | IN | — |
+| [`backend.mixpanel__raw_events_v2`](schemas/raw/backend/mixpanel__raw_events_v2.md) | table | IN | — |
+| [`backend.rudder_backend_prod`](schemas/raw/backend/rudder_backend_prod.md) | table | IN | — |
+| [`backend.rudder_ios_prod`](schemas/raw/backend/rudder_ios_prod.md) | table | IN | — |
+| [`backend.rudder_lens`](schemas/raw/backend/rudder_lens.md) | table | IN | — |
+| [`backend.rudder_wise_prod`](schemas/raw/backend/rudder_wise_prod.md) | table | IN | — |
+| [`backend.rudder_wise_web_prod`](schemas/raw/backend/rudder_wise_web_prod.md) | table | IN | — |
+| [`backend.storage_computation`](schemas/raw/backend/storage_computation.md) | table | IN | — |
+| [`backend.webapp__marketing_banners`](schemas/raw/backend/webapp__marketing_banners.md) | table | IN+NA | identical |
+| [`backend.webapp__marketing_templates`](schemas/raw/backend/webapp__marketing_templates.md) | table | IN+NA | ⚠ drift |
+| [`backend.webapp__payment_orders`](schemas/raw/backend/webapp__payment_orders.md) | table | IN+NA | identical |
+| [`backend.webapp__payment_orders_2`](schemas/raw/backend/webapp__payment_orders_2.md) | table | IN | — |
+| [`backend.webapp__payout_accounts`](schemas/raw/backend/webapp__payout_accounts.md) | table | IN+NA | identical |
+| [`backend.webapp__payout_users`](schemas/raw/backend/webapp__payout_users.md) | table | IN+NA | identical |
+| [`backend.webapp__payouts`](schemas/raw/backend/webapp__payouts.md) | table | IN+NA | identical |
+| [`backend.webapp__registered_interests`](schemas/raw/backend/webapp__registered_interests.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__admin_configurations`](schemas/raw/backend/wise_app_backend__admin_configurations.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__announcements`](schemas/raw/backend/wise_app_backend__announcements.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__announcements_v2`](schemas/raw/backend/wise_app_backend__announcements_v2.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__assignments`](schemas/raw/backend/wise_app_backend__assignments.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__certificate_template`](schemas/raw/backend/wise_app_backend__certificate_template.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__chat`](schemas/raw/backend/wise_app_backend__chat.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__chatmessage`](schemas/raw/backend/wise_app_backend__chatmessage.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__chess_game`](schemas/raw/backend/wise_app_backend__chess_game.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__class`](schemas/raw/backend/wise_app_backend__class.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__class_v2`](schemas/raw/backend/wise_app_backend__class_v2.md) | table | IN | — |
+| [`backend.wise_app_backend__classparticipant`](schemas/raw/backend/wise_app_backend__classparticipant.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__classroom_certificate`](schemas/raw/backend/wise_app_backend__classroom_certificate.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__classroom_certificate_config`](schemas/raw/backend/wise_app_backend__classroom_certificate_config.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__classroom_fees`](schemas/raw/backend/wise_app_backend__classroom_fees.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__classroom_public_profile`](schemas/raw/backend/wise_app_backend__classroom_public_profile.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__classroom_section`](schemas/raw/backend/wise_app_backend__classroom_section.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__course`](schemas/raw/backend/wise_app_backend__course.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__deleted_file`](schemas/raw/backend/wise_app_backend__deleted_file.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__entity`](schemas/raw/backend/wise_app_backend__entity.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__entity_interaction`](schemas/raw/backend/wise_app_backend__entity_interaction.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__event`](schemas/raw/backend/wise_app_backend__event.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__feedback_form`](schemas/raw/backend/wise_app_backend__feedback_form.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__feestructure`](schemas/raw/backend/wise_app_backend__feestructure.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__googlecalendarevent`](schemas/raw/backend/wise_app_backend__googlecalendarevent.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institute`](schemas/raw/backend/wise_app_backend__institute.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institute_leaderboard_config`](schemas/raw/backend/wise_app_backend__institute_leaderboard_config.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institute_participants`](schemas/raw/backend/wise_app_backend__institute_participants.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institute_participants_2`](schemas/raw/backend/wise_app_backend__institute_participants_2.md) | table | IN | — |
+| [`backend.wise_app_backend__institute_public_profile`](schemas/raw/backend/wise_app_backend__institute_public_profile.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institutegroup`](schemas/raw/backend/wise_app_backend__institutegroup.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__institutegroupmember`](schemas/raw/backend/wise_app_backend__institutegroupmember.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__lead`](schemas/raw/backend/wise_app_backend__lead.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__leaderboard`](schemas/raw/backend/wise_app_backend__leaderboard.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__lens_event`](schemas/raw/backend/wise_app_backend__lens_event.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__lens_room_config`](schemas/raw/backend/wise_app_backend__lens_room_config.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__live_class_agendas`](schemas/raw/backend/wise_app_backend__live_class_agendas.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__live_class_discussion`](schemas/raw/backend/wise_app_backend__live_class_discussion.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__live_class_leaderboard`](schemas/raw/backend/wise_app_backend__live_class_leaderboard.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__live_class_poll`](schemas/raw/backend/wise_app_backend__live_class_poll.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__liveclassinsight`](schemas/raw/backend/wise_app_backend__liveclassinsight.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__liveclasstest`](schemas/raw/backend/wise_app_backend__liveclasstest.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__manualattendance`](schemas/raw/backend/wise_app_backend__manualattendance.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__pollvote`](schemas/raw/backend/wise_app_backend__pollvote.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__premium_order`](schemas/raw/backend/wise_app_backend__premium_order.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__raw_chat`](schemas/raw/backend/wise_app_backend__raw_chat.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__raw_recording`](schemas/raw/backend/wise_app_backend__raw_recording.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__raw_zoom_attendance`](schemas/raw/backend/wise_app_backend__raw_zoom_attendance.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__rawsessiontranscript`](schemas/raw/backend/wise_app_backend__rawsessiontranscript.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__rawzoomsummary`](schemas/raw/backend/wise_app_backend__rawzoomsummary.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__registration_form`](schemas/raw/backend/wise_app_backend__registration_form.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__registration_form_submission`](schemas/raw/backend/wise_app_backend__registration_form_submission.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__saved_communication`](schemas/raw/backend/wise_app_backend__saved_communication.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__session_ai_data`](schemas/raw/backend/wise_app_backend__session_ai_data.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__session_credit`](schemas/raw/backend/wise_app_backend__session_credit.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__session_feedback_submission`](schemas/raw/backend/wise_app_backend__session_feedback_submission.md) | table | IN+NA | ⚠ drift |
+| [`backend.wise_app_backend__study_materials`](schemas/raw/backend/wise_app_backend__study_materials.md) | table | IN+NA | ⚠ drift |
+| [`backend.wise_app_backend__tags`](schemas/raw/backend/wise_app_backend__tags.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__teacher_leave`](schemas/raw/backend/wise_app_backend__teacher_leave.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__temp_user`](schemas/raw/backend/wise_app_backend__temp_user.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__transaction`](schemas/raw/backend/wise_app_backend__transaction.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__user`](schemas/raw/backend/wise_app_backend__user.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__user_streaming_info`](schemas/raw/backend/wise_app_backend__user_streaming_info.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__user_v2`](schemas/raw/backend/wise_app_backend__user_v2.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__user_v2_2007`](schemas/raw/backend/wise_app_backend__user_v2_2007.md) | table | NA | — |
+| [`backend.wise_app_backend__user_v2_2207`](schemas/raw/backend/wise_app_backend__user_v2_2207.md) | table | NA | — |
+| [`backend.wise_app_backend__userpreference`](schemas/raw/backend/wise_app_backend__userpreference.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__vendor_configuration`](schemas/raw/backend/wise_app_backend__vendor_configuration.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__vendorintegration`](schemas/raw/backend/wise_app_backend__vendorintegration.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__verification`](schemas/raw/backend/wise_app_backend__verification.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__whitelabel`](schemas/raw/backend/wise_app_backend__whitelabel.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__working_hours_schedule`](schemas/raw/backend/wise_app_backend__working_hours_schedule.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__zoom`](schemas/raw/backend/wise_app_backend__zoom.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__zoom_admin_account`](schemas/raw/backend/wise_app_backend__zoom_admin_account.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__zoom_user_account`](schemas/raw/backend/wise_app_backend__zoom_user_account.md) | table | IN+NA | identical |
+| [`backend.wise_app_backend__zoomrecordings`](schemas/raw/backend/wise_app_backend__zoomrecordings.md) | table | IN+NA | identical |

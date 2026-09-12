@@ -354,6 +354,21 @@ def render_gap(report: GapReport, mongo: MongoSchema, athena_path: Path) -> str:
     return "\n".join(out)
 
 
+INDEX_MAX_PATHS = 12
+
+
+def _missing_paths(fields: list[MongoField], limit: int = INDEX_MAX_PATHS) -> str:
+    """Comma-separated missing field paths for the index row, truncated.
+
+    Full list always lives in the per-collection gap file.
+    """
+    if not fields:
+        return ""
+    shown = ", ".join(f"`{f.path}`" for f in fields[:limit])
+    extra = len(fields) - limit
+    return f"{shown}, _+{extra} more_" if extra > 0 else shown
+
+
 def render_index(reports: list[GapReport], unmatched: list[str]) -> str:
     out = [
         "# Schema gaps — Mongo ↔ Athena",
@@ -362,14 +377,17 @@ def render_index(reports: list[GapReport], unmatched: list[str]) -> str:
         "",
         "Coverage = fraction of Mongoose fields that have a counterpart in the Athena table for that collection. Lower = more extraction debt.",
         "",
-        "| Collection | Athena table | Coverage | Missing in Athena | Extra in Athena |",
-        "| --- | --- | ---: | ---: | ---: |",
+        "| Collection | Athena table | Coverage | Missing in Athena | Extra in Athena | Missing field paths |",
+        "| --- | --- | ---: | ---: | ---: | --- |",
     ]
     sorted_reports = sorted(reports, key=lambda r: (r.mongo_total - r.matched, -r.mongo_total), reverse=True)
     for r in sorted_reports:
         cov = (r.matched / r.mongo_total * 100) if r.mongo_total else 100.0
         gap_md = (GAPS_DIR / f"{r.collection.replace(' ', '_')}.md").relative_to(GAPS_INDEX.parent).as_posix()
-        out.append(f"| [`{r.collection}`]({gap_md}) | `{r.athena_table}` | {cov:.0f}% ({r.matched}/{r.mongo_total}) | {len(r.mongo_only)} | {len(r.athena_only)} |")
+        out.append(
+            f"| [`{r.collection}`]({gap_md}) | `{r.athena_table}` | {cov:.0f}% ({r.matched}/{r.mongo_total}) "
+            f"| {len(r.mongo_only)} | {len(r.athena_only)} | {_missing_paths(r.mongo_only)} |"
+        )
     out.append("")
     if unmatched:
         out.append("## Mongo collections with no Athena counterpart")

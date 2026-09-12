@@ -423,37 +423,113 @@ def render_json_tree(acc: dict[str, dict]) -> str:
 @dataclass
 class TableDoc:
     layer: str
-    database: str
+    canonical: str   # canonical DB name; used for the on-disk folder
     name: str
     kind: str  # "table" | "view"
-    columns: list[tuple[str, str, str]] = field(default_factory=list)  # (name, type, comment)
-    partition_keys: list[str] = field(default_factory=list)
-    location: str | None = None
-    fmt: str | None = None
-    create_sql: str | None = None
+    # Per-region metadata. Only regions where the table actually exists are populated.
+    regions: dict[str, str] = field(default_factory=dict)  # region_code -> athena db name
+    region_columns: dict[str, list[tuple[str, str, str]]] = field(default_factory=dict)
+    region_partitions: dict[str, list[str]] = field(default_factory=dict)
+    region_ddl: dict[str, str | None] = field(default_factory=dict)
+    region_location: dict[str, str | None] = field(default_factory=dict)
+    region_format: dict[str, str | None] = field(default_factory=dict)
     sampled_rows: int = 0
+    sampled_region: str | None = None
     inferred_json: dict[str, dict[str, dict]] = field(default_factory=dict)  # column -> path tree
     enums: dict[str, list[str]] = field(default_factory=dict)  # column -> ["value (×n)", ...]
 
+    # Region ordering for display: IN first, then NA, then anything else alphabetically.
+    _REGION_ORDER = ("in", "na")
+
+    @property
+    def primary_region(self) -> str:
+        for r in self._REGION_ORDER:
+            if r in self.regions:
+                return r
+        return next(iter(self.regions))
+
+    def ordered_regions(self) -> list[str]:
+        known = [r for r in self._REGION_ORDER if r in self.regions]
+        extras = sorted(r for r in self.regions if r not in self._REGION_ORDER)
+        return known + extras
+
+    @property
+    def columns(self) -> list[tuple[str, str, str]]:
+        return self.region_columns.get(self.primary_region, [])
+
+    @property
+    def partition_keys(self) -> list[str]:
+        return self.region_partitions.get(self.primary_region, [])
+
+    @property
+    def location(self) -> str | None:
+        return self.region_location.get(self.primary_region)
+
+    @property
+    def fmt(self) -> str | None:
+        return self.region_format.get(self.primary_region)
+
+    @property
+    def create_sql(self) -> str | None:
+        return self.region_ddl.get(self.primary_region)
+
+    @property
+    def parity(self) -> bool:
+        """True if all regions agree on column set (name+type) and partition keys."""
+        if len(self.regions) <= 1:
+            return True
+        ref_cols = None
+        ref_parts = None
+        for r in self.regions:
+            cols = {(c[0], c[1]) for c in self.region_columns.get(r, [])}
+            parts = tuple(self.region_partitions.get(r, []))
+            if ref_cols is None:
+                ref_cols, ref_parts = cols, parts
+                continue
+            if cols != ref_cols or parts != ref_parts:
+                return False
+        return True
+
     def path(self) -> Path:
-        return SCHEMAS_DIR / self.layer / self.database / f"{self.name}.md"
+        return SCHEMAS_DIR / self.layer / self.canonical / f"{self.name}.md"
 
     def render(self) -> str:
+        ordered = self.ordered_regions()
+        primary = self.primary_region
         front = {
-            "database": self.database,
+            "canonical": self.canonical,
             "table": self.name,
             "type": self.kind,
             "layer": self.layer,
+            "regions": {r: self.regions[r] for r in ordered},
             "location": self.location,
             "format": self.fmt,
             "partition_keys": self.partition_keys,
+            "schema_parity": "identical" if self.parity else "drift",
             "last_synced": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "sampled_rows": self.sampled_rows,
+            "sampled_region": self.sampled_region,
         }
         out = ["---", yaml.safe_dump(front, sort_keys=False).strip(), "---", ""]
-        out.append(f"# `{self.database}.{self.name}`")
+        out.append(f"# `{self.canonical}.{self.name}`")
         out.append("")
-        out.append("## Columns")
+        # Region availability block.
+        out.append("## Region availability")
+        out.append("")
+        out.append("| Region | Athena database |")
+        out.append("| --- | --- |")
+        for r in ordered:
+            out.append(f"| `{r.upper()}` | `{self.regions[r]}` |")
+        out.append("")
+        if len(self.regions) == 1:
+            only = ordered[0].upper()
+            out.append(f"_Only present in **{only}**._")
+        elif self.parity:
+            out.append("_Schema parity: **identical** across regions._")
+        else:
+            out.append("_⚠ Schema parity: **drift** — see Region drift section below._")
+        out.append("")
+        out.append(f"## Columns ({primary.upper()})")
         out.append("")
         out.append("| Column | Type | Notes |")
         out.append("| --- | --- | --- |")
@@ -463,10 +539,39 @@ class TableDoc:
         if self.partition_keys:
             out.append(f"**Partition keys:** {', '.join(f'`{k}`' for k in self.partition_keys)}")
             out.append("")
+        if not self.parity:
+            out.append("## Region drift")
+            out.append("")
+            ref_cols = {c[0]: c[1] for c in self.region_columns.get(primary, [])}
+            ref_parts = self.region_partitions.get(primary, [])
+            for r in ordered:
+                if r == primary:
+                    continue
+                other_cols = {c[0]: c[1] for c in self.region_columns.get(r, [])}
+                other_parts = self.region_partitions.get(r, [])
+                only_primary = sorted(set(ref_cols) - set(other_cols))
+                only_other = sorted(set(other_cols) - set(ref_cols))
+                type_diff = sorted(
+                    n for n in (set(ref_cols) & set(other_cols))
+                    if ref_cols[n] != other_cols[n]
+                )
+                out.append(f"### `{primary.upper()}` ({self.regions[primary]}) vs `{r.upper()}` ({self.regions[r]})")
+                out.append("")
+                if only_primary:
+                    out.append(f"- Only in `{primary.upper()}`: {', '.join(f'`{c}`' for c in only_primary)}")
+                if only_other:
+                    out.append(f"- Only in `{r.upper()}`: {', '.join(f'`{c}`' for c in only_other)}")
+                if type_diff:
+                    for n in type_diff:
+                        out.append(f"- Type mismatch on `{n}`: `{primary.upper()}`=`{ref_cols[n]}`, `{r.upper()}`=`{other_cols[n]}`")
+                if ref_parts != other_parts:
+                    out.append(f"- Partition keys differ: `{primary.upper()}`={ref_parts}, `{r.upper()}`={other_parts}")
+                out.append("")
         if self.enums:
             out.append("## Enum-like columns")
             out.append("")
-            out.append(f"_String columns with ≤{ENUM_DISTINCT_THRESHOLD} distinct values in {self.sampled_rows} sampled rows. Distribution shown as `value (×count)`._")
+            sampled_from = f" from `{self.sampled_region.upper()}`" if self.sampled_region else ""
+            out.append(f"_String columns with ≤{ENUM_DISTINCT_THRESHOLD} distinct values in {self.sampled_rows} sampled rows{sampled_from}. Distribution shown as `value (×count)`._")
             out.append("")
             for col, vals in self.enums.items():
                 out.append(f"- `{col}`: {', '.join(f'`{v}`' for v in vals)}")
@@ -474,7 +579,8 @@ class TableDoc:
         if self.inferred_json:
             out.append("## Inferred JSON structure")
             out.append("")
-            out.append(f"_Inferred from {self.sampled_rows} sampled rows on "
+            sampled_from = f" from `{self.sampled_region.upper()}`" if self.sampled_region else ""
+            out.append(f"_Inferred from {self.sampled_rows} sampled rows{sampled_from} on "
                        f"{datetime.now(timezone.utc).date()}. Not authoritative — values may be missing or have additional keys._")
             out.append("")
             for col, tree in self.inferred_json.items():
@@ -485,10 +591,25 @@ class TableDoc:
         if self.create_sql:
             out.append("## DDL")
             out.append("")
-            out.append("```sql")
-            out.append(self.create_sql.strip())
-            out.append("```")
-            out.append("")
+            if self.parity or len(self.regions) <= 1:
+                out.append(f"_From `{primary.upper()}` ({self.regions[primary]})._" if len(self.regions) > 1 else "")
+                if len(self.regions) > 1:
+                    out.append("")
+                out.append("```sql")
+                out.append(self.create_sql.strip())
+                out.append("```")
+                out.append("")
+            else:
+                for r in ordered:
+                    ddl = self.region_ddl.get(r)
+                    if not ddl:
+                        continue
+                    out.append(f"### `{r.upper()}` ({self.regions[r]})")
+                    out.append("")
+                    out.append("```sql")
+                    out.append(ddl.strip())
+                    out.append("```")
+                    out.append("")
         out.append(HUMAN_MARKER)
         out.append("")
         out.append("<!-- Add human notes (descriptions, gotchas, example filters) below this line. -->")
@@ -821,10 +942,17 @@ def write_index(docs: list[TableDoc]) -> None:
     for layer in sorted(by_layer):
         out.append(f"## {layer}")
         out.append("")
-        for d in sorted(by_layer[layer], key=lambda x: (x.database, x.name)):
+        out.append("| Table | Kind | Regions | Parity |")
+        out.append("| --- | --- | --- | --- |")
+        for d in sorted(by_layer[layer], key=lambda x: (x.canonical, x.name)):
             rel = d.path().relative_to(ROOT).as_posix()
             kind = "view" if d.kind == "view" else "table"
-            out.append(f"- [`{d.database}.{d.name}`]({rel}) — {kind}")
+            regions = "+".join(r.upper() for r in d.ordered_regions())
+            if len(d.regions) <= 1:
+                parity = "—"
+            else:
+                parity = "identical" if d.parity else "⚠ drift"
+            out.append(f"| [`{d.canonical}.{d.name}`]({rel}) | {kind} | {regions} | {parity} |")
         out.append("")
     (SCHEMAS_DIR / "INDEX.md").write_text("\n".join(out))
 
@@ -832,6 +960,22 @@ def write_index(docs: list[TableDoc]) -> None:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
+def normalize_db_entry(entry: Any) -> tuple[str, dict[str, str]]:
+    """Accept either a bare string `foo` or a dict {canonical, regions}.
+
+    Returns (canonical_name, {region_code: athena_db_name}). For the bare-string
+    shorthand, the region map is `{in: <name>}`."""
+    if isinstance(entry, str):
+        return entry, {"in": entry}
+    if isinstance(entry, dict):
+        canonical = entry.get("canonical")
+        regions = entry.get("regions") or {}
+        if not canonical or not isinstance(regions, dict) or not regions:
+            raise ValueError(f"Invalid database entry: {entry!r}")
+        return canonical, {str(k): str(v) for k, v in regions.items()}
+    raise ValueError(f"Unrecognized database entry: {entry!r}")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -876,48 +1020,92 @@ def main() -> int:
 
     docs: list[TableDoc] = []
 
-    for layer, dbs in (cfg.get("databases") or {}).items():
+    for layer, entries in (cfg.get("databases") or {}).items():
         if args.layer and layer != args.layer:
             continue
-        for db in dbs or []:
-            if args.database and db != args.database:
+        for entry in entries or []:
+            canonical, regions = normalize_db_entry(entry)
+            if args.database and canonical != args.database:
                 continue
-            print(f"== {layer}/{db} ==")
-            tables = list_tables(client, db)
-            views = list_views(client, db)
-            for t in tables:
+            print(f"== {layer}/{canonical} (regions: {','.join(regions)}) ==")
+
+            # List tables/views for each region; union the table set so
+            # IN-only / NA-only tables are still documented.
+            per_region_tables: dict[str, list[str]] = {}
+            per_region_views: dict[str, set[str]] = {}
+            for r, db_name in regions.items():
+                try:
+                    per_region_tables[r] = list_tables(client, db_name)
+                    per_region_views[r] = list_views(client, db_name)
+                except Exception as e:
+                    print(f"  [warn] list failed for region {r} ({db_name}): {e}", file=sys.stderr)
+                    per_region_tables[r] = []
+                    per_region_views[r] = set()
+
+            all_tables: set[str] = set()
+            for tlist in per_region_tables.values():
+                all_tables.update(tlist)
+
+            for t in sorted(all_tables):
                 if args.table and t != args.table:
                     continue
-                kind = "view" if t in views else "table"
-                print(f"  - {t} ({kind})")
-                try:
-                    cols, parts = describe(client, db, t)
-                    ddl, loc, fmt = show_create(client, db, t, kind)
-                except Exception as e:
-                    print(f"    [skip] {e}", file=sys.stderr)
-                    continue
+                # Determine kind: view in any region wins, else table.
+                kind = "table"
+                for r in regions:
+                    if t in per_region_views.get(r, set()):
+                        kind = "view"
+                        break
+                present_regions = [r for r in regions if t in per_region_tables.get(r, [])]
+                print(f"  - {t} ({kind}) [{'+'.join(r.upper() for r in present_regions)}]")
 
                 doc = TableDoc(
-                    layer=layer, database=db, name=t, kind=kind,
-                    columns=cols, partition_keys=parts,
-                    location=loc, fmt=fmt, create_sql=ddl,
+                    layer=layer, canonical=canonical, name=t, kind=kind,
+                    regions={r: regions[r] for r in present_regions},
                 )
 
+                # Describe in each region where the table exists.
+                describe_failed = False
+                for r in present_regions:
+                    db_name = regions[r]
+                    try:
+                        cols, parts = describe(client, db_name, t)
+                        ddl, loc, fmt = show_create(client, db_name, t, kind)
+                    except Exception as e:
+                        print(f"    [skip {r}] {e}", file=sys.stderr)
+                        describe_failed = True
+                        continue
+                    doc.region_columns[r] = cols
+                    doc.region_partitions[r] = parts
+                    doc.region_ddl[r] = ddl
+                    doc.region_location[r] = loc
+                    doc.region_format[r] = fmt
+                if not doc.region_columns:
+                    # All regions failed; skip writing.
+                    continue
+
+                # Sampling: only the primary region (IN if available).
+                primary = doc.primary_region
+                primary_db = doc.regions[primary]
+                primary_cols = doc.region_columns[primary]
                 should_sample = (not args.no_sample) and kind == "table" and layer in sample_layers
                 if should_sample:
                     rows: list[dict] | None = None
                     if args.use_cache or args.cache_only:
-                        rows = load_cached_sample(db, t)
+                        rows = load_cached_sample(primary_db, t)
                     if rows is None and not args.cache_only:
-                        rcol = pick_recency_column(cols, recency_overrides.get(f"{db}.{t}"))
-                        rows = sample_rows(client, db, t, rows_per_table, rcol, per_query_cap)
+                        rcol = pick_recency_column(
+                            primary_cols,
+                            recency_overrides.get(f"{primary_db}.{t}") or recency_overrides.get(f"{canonical}.{t}"),
+                        )
+                        rows = sample_rows(client, primary_db, t, rows_per_table, rcol, per_query_cap)
                         if rows:
-                            save_cached_sample(db, t, rows)
+                            save_cached_sample(primary_db, t, rows)
                     rows = rows or []
                     doc.sampled_rows = len(rows)
+                    doc.sampled_region = primary if rows else None
                     if rows:
-                        doc.inferred_json = infer_json_for_table(rows, cols)
-                        doc.enums = extract_enums(rows, cols)
+                        doc.inferred_json = infer_json_for_table(rows, primary_cols)
+                        doc.enums = extract_enums(rows, primary_cols)
 
                 write_doc(doc)
                 docs.append(doc)

@@ -2,6 +2,8 @@
 
 Business term → canonical table / column. Add entries as you encounter ambiguity.
 
+> **IN / NA deployments:** table references below use IN database names. For NA queries, swap `processed` → `processed_na` and `backend` → `backend_na`. See `CLAUDE.md` for details.
+
 | Term | Means | Where to find it |
 | --- | --- | --- |
 | _example: active user_ | _user with at least one event in trailing 30d_ | _`views.active_users_30d`_ |
@@ -22,3 +24,9 @@ Business term → canonical table / column. Add entries as you encounter ambigui
 | class (vocabulary warning) | Ambiguous — can mean the **recurring class entity** (`processed.class`) OR a **single live session / occurrence** (`processed.wise_app_backend__zoom`). Always confirm which sense the user wants. Sessions = time/attendance/duration; class entity = enrollment/schedule/ownership. | both tables |
 | Wise-pool license vs BYO | Filter `metadata.zoomadminaccountid` against Wise's pool to scope to Wise-owned licenses (vs customers' own Zoom accounts). | `wise_app_backend__zoom.metadata.zoomadminaccountid` |
 | license-consuming session | Excludes `type = 'OFFLINE'` and `meetingstatus IN ('CANCELLED','MISSED')` — those don't hold a license. | `wise_app_backend__zoom.type` / `meetingstatus` |
+| AI summary (of a session) | LLM-generated meeting summary (title / overview / detail sections). Row may exist with an **empty** array — gate on `summaries <> '[]'`. | `processed.wise_app_backend__rawzoomsummary`; flattened in `processed.zoom_summaries` |
+| session transcript | VTT transcript file(s) for a session, one per part/segment. Row may exist with an **empty** array — gate on `files <> '[]'`. | `processed.wise_app_backend__rawsessiontranscript` |
+| AI revision notes / quizzes | Post-session AI study artifacts. Distinct from summary and transcript. | `processed.wise_app_backend__session_ai_data` |
+| session with AI artifacts | Session having a non-empty summary **or** transcript. The three AI tables are independent; a session can have any subset. Summary coverage consistently exceeds transcript coverage. | join the three tables on `sessionid` (`$oid`) = session id |
+| active teacher (of a tenant) | Distinct user who hosted >=1 `ENDED` session in the window. Used to size a setup, e.g. to exclude tenants under N teachers. | `zoomers_v3.userid` (row=1, meetingstatus='ENDED') -> `user.namespace` |
+| non-human tutor name (gotcha) | Several large tenants name teacher accounts after the org, a class slot, or a roster id rather than a person: `tutoroot` (`Tutoroot tech faculty`), `toprankers` (`Toprankers_5429232`), `k8school` (`TWO B TEACHER`, `Grade Eight Personalized`). `wise-demo` seeds many accounts sharing one human-looking name. Filter these out of per-teacher metrics. | `processed.user.name`; see `examples/tutors_with_ai_artifacts_wow.sql` |

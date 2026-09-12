@@ -32,3 +32,6 @@ Thumbs.db
 *.csv
 *.tsv
 *.json.gz
+
+# local Claude Code config
+.claude/
