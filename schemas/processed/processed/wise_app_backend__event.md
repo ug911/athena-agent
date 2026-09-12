@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__event
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/event/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:54+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:23:20+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__event`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,130 +39,158 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69de570505cc98aef6c688b1`, `69de570641168717a1aebbb1`, `69de570692648a764ca7c52d`
+- `$oid` — `string`  e.g. `6a4e3c5c2393beb3d1820396`, `6a4e3c5cc9f70b16c72e6f58`, `6a4e3c5c10bb889b1b9f41bf`
 
 ### `payload`
 
 - `assessment` — `object`
-  - `feedback` — `string`  e.g. `The audio quality, video presentation, and overall professio`, `Good job!`
+  - `feedback` — `string`  e.g. `bagus`, `BAGUS`, `BAGUS`
   - `getmark` — `object`
-    - `$numberint` — `string`  e.g. `10`, `26`
-  - `id` — `string`  e.g. `69ca08ee7a00432425901ac3`, `6909d290bfb2407b962c2768`, `698b1082ccf7f7fc13e90ca4`
+    - `$numberint` — `string`  e.g. `22`
+  - `id` — `string`  e.g. `6a450e7bef13a14f02233eba`, `6a450e7bef13a14f02233eba`, `6a4e3c7f241940a7d2fac245`
   - `maxmark` — `object`
-    - `$numberint` — `string`  e.g. `10`, `30`
+    - `$numberint` — `string`  e.g. `40`
+  - `name` — `string`  e.g. `8 July 2026 HW `
 - `class` — `object`
-  - `id` — `string`  e.g. `69d6463d265fa49908bead6e`, `699298ab2f5bc25203c2deb4`, `6943ff7b585d27d5cd4ed989`
-  - `meetingid` — `object|string`  e.g. `94080722186`, `93864478522`, `96535361987`
-    - `$numberdouble` — `string`  e.g. `9.1276407556E+10`, `9.1039138117E+10`, `9.4454534778E+10`
-  - `name` — `string`  e.g. `MM1944 Prisha`, `Physics (Mechanics) - Hamad`, `MM1908 Ehsan khan`
-  - `namespace` — `string`  e.g. `mentormatch`, `supatutor`, `learn2read`
-  - `subject` — `string`  e.g. `11 | MATHS | British Curriculum | CSM009`, `AP - C`, `9 | MATHS | IGCSE | CSM010`
-- `data` — `object`
-  - `quizzes` — `object`
-    - `$numberint` — `string`  e.g. `5`, `5`
-  - `revisionnotes` — `object`
-    - `$numberint` — `string`  e.g. `10`, `8`
+  - `classnumber` — `object`
+    - `$numberint` — `string`  e.g. `288728138`, `315755252`, `628305328`
+  - `id` — `string`  e.g. `6a044a46f2c6cf97b631bde1`, `6a4e0bc12393beb3d1771290`, `69e8ac33e9a370102a7a75d2`
+  - `meetingid` — `object|string`  e.g. `96200042150`, `99146990903`, `94508894282`
+    - `$numberdouble` — `string`  e.g. `9.9102189055E+10`, `9.2084429109E+10`, `9.8457023686E+10`
+  - `name` — `string`  e.g. `DANISH-Junior - Advanced Level`, `CLAT | English Language | By Shazli Ul Hussaini Maam`, `Grammar Level 2_Group_25`
+  - `namespace` — `string`  e.g. `furtadosschoolofmusic`, `musicpandit`, `iwish-academy`
+  - `subject` — `string`  e.g. `Junior - Advanced Level`, `Toprankers`, `Grammar Level 2`
 - `discussion` — `object`
   - `comment` — `object`
     - `attachments` — `array<object>`
       - `discussion.comment.attachments[]` — `object`
-        - `filename` — `string`  e.g. `276.mp4`
-        - `path` — `string`  e.g. `https://files.wiseapp.live/upload_files/69c6068e59c459d1a1bd`
-        - `s3filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`
-        - `s3key` — `string`  e.g. `upload_files/69c6068e59c459d1a1bda189/upload_ffb70a2c-b336-4`
+        - `_id` — `string`  e.g. `6a4e3c97241940a7d2faca79`
+        - `filename` — `string`  e.g. `recording-1783512211199.mp3`, `recording-1783512211199.mp3`
+        - `path` — `string`  e.g. `https://files.wiseapp.live/upload_files/67cbf035ed8b9119b873`, `https://files.wiseapp.live/upload_files/67cbf035ed8b9119b873`
+        - `s3filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`
+        - `s3key` — `string`  e.g. `upload_files/67cbf035ed8b9119b8738cc9/upload_2b449276-8be8-4`, `upload_files/67cbf035ed8b9119b8738cc9/upload_2b449276-8be8-4`
         - `size` — `object`
-          - `$numberint` — `string`  e.g. `6010121`
-        - `type` — `string`  e.g. `video`
-    - `comment` — `string`  e.g. `Thank you sir `, `📰Read ✨👍👍`
-    - `createdat` — `string`  e.g. `2026-04-14T15:02:48.100Z`, `2026-04-14T15:05:05.118Z`, `2026-04-14T15:03:59.836Z`
-    - `editedat` — `string`  e.g. `2026-04-14T15:02:48.100Z`, `2026-04-14T15:05:05.118Z`, `2026-04-14T15:03:59.836Z`
-    - `userid` — `string`  e.g. `660fa2d000520d32d10e20c9`, `69b4150724bc164822d19374`, `69c6068e59c459d1a1bda189`
-  - `id` — `string`  e.g. `69de080fec4072f774839a93`, `69db570cfa8079e9441f6b6c`, `69dd9445a66dda7b2bd2623c`
+          - `$numberint` — `string`  e.g. `41834`, `41834`
+        - `type` — `string`  e.g. `audio`, `audio`
+    - `comment` — `string`  e.g. `  Y`, `O`, `M`
+    - `createdat` — `string`  e.g. `2026-07-08T12:02:40.441Z`, `2026-07-08T12:02:51.184Z`, `2026-07-08T12:03:00.547Z`
+    - `deleted` — `bool`  e.g. `false`
+    - `editedat` — `string`  e.g. `2026-07-08T12:02:40.441Z`, `2026-07-08T12:02:51.184Z`, `2026-07-08T12:03:00.547Z`
+    - `id` — `string`  e.g. `6a4e3c97241940a7d2faca78`
+    - `userid` — `string`  e.g. `67cbf035ed8b9119b8738cc9`, `67cbf035ed8b9119b8738cc9`, `67cbf035ed8b9119b8738cc9`
+  - `id` — `string`  e.g. `6a4e267e241940a7d2f52d2a`, `6a4e267e241940a7d2f52d2a`, `6a4e267e241940a7d2f52d2a`
+  - `poll` — `bool`  e.g. `false`, `false`
+  - `title` — `string`  e.g. `hw`, `Homework -8th july 2026 `
 - `institute` — `object`
-  - `id` — `string`  e.g. `655b3d6ac327ce0025351d4b`, `65cc63108cd15a6d8841c166`, `64dcc496132b0b00199c19e3`
-  - `namespace` — `string`  e.g. `britishacademiadeingles`
+  - `id` — `string`  e.g. `64fecc62a287120018c81ef4`, `6917288e1fa497299740969e`, `692067aa94ccfa630318fef5`
+  - `namespace` — `string`  e.g. `thoughtflows`, `topmate`, `topmate`
+- `newvalue` — `object`
+  - `settings` — `object`
+    - `autoaccept` — `bool`  e.g. `false`, `true`, `false`
+- `oldvalue` — `object`
+  - `settings` — `object`
+    - `autoaccept` — `bool`  e.g. `true`, `false`, `true`
 - `participant` — `object`
-  - `id` — `string`  e.g. `69de560898ee51775fe34169`, `69de560998ee51775fe34249`, `69de560998ee51775fe34249`
-  - `profile` — `string`  e.g. `student`
+  - `id` — `string`  e.g. `6a4e3c5f8962898b87650f35`, `6630c4c82d914479b375efe0`, `6630c4c82d914479b375efe0`
+  - `profile` — `string`  e.g. `student`, `teacher`, `teacher`
+- `payment_order` — `object`
+  - `amount` — `object`
+    - `$numberint` — `string`  e.g. `500000`
+  - `currency` — `string`  e.g. `INR`
+  - `gateway_order_id` — `string`  e.g. `order_TB09C7pwnpzHvo`
+  - `id` — `string`  e.g. `6a4e3c6de2183300010cabc3`
+  - `payee_user_id` — `string`  e.g. `65d868629981243ddd1f5626`
+  - `payer_user_id` — `string`  e.g. `69b834b624bc1648222f5b7c`
+  - `payment_gateway` — `string`  e.g. `RAZORPAY`
+  - `payment_transaction_id` — `string`  e.g. `6a4e3c6da85399d51250e1cc`
+  - `payment_type` — `string`  e.g. `CREATED`
+  - `status` — `string`  e.g. `CREATED`
 - `resource` — `object`
-  - `id` — `string`  e.g. `69de5774bc1b5bc4aa68e093`, `69de578994bdedbf18a8e447`, `69de5797b3edf0435d286fac`
-  - `name` — `string`  e.g. `Maths Homework 14-4-26.pdf`, `rotational dynamic.pdf`, `Corrected HW of 9-4-26.pdf`
-  - `type` — `string`  e.g. `file`, `file`, `file`
-- `sectionid` — `string`  e.g. `699d8f386a4854235e46fe0e`, `6994820b56b20aaa5e7fe726`, `699d8f386a4854235e46fe0e`
+  - `id` — `string`  e.g. `6a4e3c6cca57d9452040c9df`
+  - `name` — `string`  e.g. `IMG_20260708_173220_835.webp`
+  - `type` — `string`  e.g. `file`
+- `sectionid` — `string`  e.g. `6a4506db48ee93335a7d9209`, `698c68a658253d55006b7abb`
 - `session` — `object`
   - `autosubmitted` — `bool`  e.g. `true`, `true`, `true`
-  - `classid` — `string`  e.g. `6812123f091671657f7d1f1e`, `69ae9d5c8c9260f262bb9078`, `698e73212ed315b64775c488`
-  - `createdat` — `string`  e.g. `2026-04-14T15:02:56.610Z`, `2026-01-25T08:59:48.049Z`, `2026-01-27T13:21:24.497Z`
-  - `id` — `string`  e.g. `69d6476a56c894f81b9d87df`, `699298d8d7d3bab567d9f160`, `69bab2d290b5e072f1811901`
-  - `meetingid` — `object|string`  e.g. `94080722186`, `93864478522`, `96535361987`
-    - `$numberdouble` — `string`  e.g. `9.1276407556E+10`, `9.1039138117E+10`, `9.4454534778E+10`
+  - `classid` — `string`  e.g. `6a3fb7f2a04bf99f53da96b1`, `69c817bbca20919f2cf1dc34`, `69d4e5e49ee511e7269f4069`
+  - `createdat` — `string`  e.g. `2026-07-08T12:02:36.641Z`, `2026-07-08T08:35:13.644Z`, `2026-07-08T12:02:37.845Z`
+  - `id` — `string`  e.g. `6a4e3c5c2393beb3d182038c`, `6a4e0bc1c9f70b16c723b4b7`, `6a4e3a962393beb3d1816937`
+  - `meetingid` — `object|string`  e.g. `96200042150`, `99146990903`, `94508894282`
+    - `$numberdouble` — `string`  e.g. `9.9102189055E+10`, `9.2084429109E+10`, `9.8457023686E+10`
   - `meetingstatus` — `string`  e.g. `IN_PROGRESS`, `IN_PROGRESS`, `IN_PROGRESS`
-  - `meetinguuid` — `string`  e.g. `C8HDOj2nRnOESCoHOm/vAg==`, `fVym2go+TRu6nfv/XpjNNw==`, `70+yN7b9S7W+UHYdCWeRVg==`
-  - `scheduled` — `bool`  e.g. `false`, `true`, `true`
-  - `scheduledendtime` — `string`  e.g. `2026-04-14T16:07:34.000Z`, `2026-04-18T08:00:00.000Z`
-  - `scheduledstarttime` — `string`  e.g. `2026-04-14T15:07:34.000Z`, `2026-04-18T07:00:00.000Z`
-  - `starttime` — `string`  e.g. `2026-04-14T15:02:56.609Z`, `2026-04-14T15:02:56.782Z`, `2026-04-14T15:02:57.616Z`
-  - `type` — `string`  e.g. `AD_HOC`, `SCHEDULED`, `SCHEDULED`
+  - `meetinguuid` — `string`  e.g. `9sio2v7DQiGyZvZH4lMvog==`, `WFhx1MLiSoW89cX4leE0mg==`, `ZJkIqy17RVOyUD60ZYGy8g==`
+  - `scheduled` — `bool`  e.g. `false`, `true`, `false`
+  - `scheduledendtime` — `string`  e.g. `2026-07-08T13:35:00.000Z`, `2026-07-08T13:15:00.000Z`, `2026-07-08T13:10:00.000Z`
+  - `scheduledstarttime` — `string`  e.g. `2026-07-08T12:50:00.000Z`, `2026-07-08T13:00:00.000Z`, `2026-07-08T12:50:00.000Z`
+  - `starttime` — `string`  e.g. `2026-07-08T12:02:36.640Z`, `2026-07-08T12:02:36.615Z`, `2026-07-08T12:02:37.844Z`
+  - `type` — `string`  e.g. `AD_HOC`, `SCHEDULED`, `AD_HOC`
+  - `updates` — `object`
+    - `scheduledendtime` — `string`  e.g. `2026-07-09T16:00:00.000Z`
+    - `scheduledstarttime` — `string`  e.g. `2026-07-09T15:00:00.000Z`
+    - `start_time` — `string`  e.g. `2026-07-09T15:00:00.000Z`
+  - `updatetype` — `string`  e.g. `SINGLE`
 - `student` — `object`
-  - `id` — `string`  e.g. `69d3879798ee51775fd64fd1`, `691597d2d1e46605c63ea465`
+  - `id` — `string`  e.g. `674d31543b7c522b9abe9c8f`, `683bcaacb213e9ac4996daa8`, `69b834b624bc1648222f5b7c`
+  - `namespace` — `string`  e.g. `leadiasacademy`
 - `submission` — `object`
-  - `endtime` — `string`  e.g. `2026-04-14T14:02:51+00:00`, `2026-04-14T15:03:12+00:00`, `2026-04-14T13:12:33+00:00`
-  - `id` — `string`  e.g. `69de48ebee0b010001711f7b`, `69de562a2759af00018f9fcb`, `69de3af04c58980001aa10de`
+  - `endtime` — `string`  e.g. `2026-07-08T11:48:30+00:00`, `2026-07-08T12:04:11+00:00`, `2026-07-08T12:04:11+00:00`
+  - `id` — `string`  e.g. `6a4e37d17c2dde0001bc9084`, `6a4e380b1c5071000175671b`, `6a4e380b1c5071000175671b`
   - `marksobtained` — `object`
-    - `$numberint` — `string`  e.g. `5`, `0`, `328`
+    - `$numberint` — `string`  e.g. `12`, `0`, `10`
   - `passed` — `bool`  e.g. `true`, `false`, `true`
-  - `starttime` — `string`  e.g. `2026-04-14T14:02:19+00:00`, `2026-04-14T14:58:50+00:00`, `2026-04-14T13:02:40+00:00`
+  - `starttime` — `string`  e.g. `2026-07-08T11:43:13+00:00`, `2026-07-08T11:44:11+00:00`, `2026-07-08T11:44:11+00:00`
   - `status` — `string`  e.g. `GRADED`, `SUBMITTED`, `GRADED`
 - `test` — `object`
-  - `id` — `string`  e.g. `69de3f2aee0b010001711f1a`, `69b448c4aaacca0001f0f0f5`, `69de18674c58980001aa0d91`
+  - `id` — `string`  e.g. `6a44c128a33cbd00014593f9`, `6a44c128a33cbd00014593f9`, `6a44c128a33cbd00014593f9`
 - `transaction` — `object`
   - `amount` — `object`
-    - `currency` — `string`  e.g. `INR`, `INR`, `THB`
+    - `currency` — `string`  e.g. `INR`, `INR`, `INR`
     - `value` — `object`
-      - `$numberint` — `string`  e.g. `25000`, `57700`, `50000`
-  - `createdat` — `string`  e.g. `2026-04-14T15:02:51.663Z`, `2026-04-14T15:03:08.038Z`, `2026-04-14T15:04:22.846Z`
-  - `id` — `string`  e.g. `69de571b98ee51775fe5c077`, `69de572c98ee51775fe5e3d7`, `69de577698ee51775fe65abc`
+      - `$numberint` — `string`  e.g. `500000`, `12500`, `45000`
+  - `createdat` — `string`  e.g. `2026-07-08T12:02:53.150Z`, `2026-07-08T12:03:26.865Z`, `2026-07-08T12:03:54.103Z`
+  - `id` — `string`  e.g. `6a4e3c6da85399d51250e1cc`, `6a4e3c8e8962898b87656006`, `6a4e3caa8962898b87657f72`
   - `metadata` — `object`
-    - `classid` — `string`  e.g. `6812123f091671657f7d1f1e`, `69ae9d5c8c9260f262bb9078`, `698e73212ed315b64775c488`
+    - `classid` — `string`  e.g. `690f25e2c328a7b5e0be81f4`, `6a3fb7f2a04bf99f53da96b1`, `69c817bbca20919f2cf1dc34`
     - `invoicetype` — `string`  e.g. `TUTOR_PAYOUT`, `TUTOR_PAYOUT`, `TUTOR_PAYOUT`
     - `paid` — `bool`  e.g. `false`, `false`, `false`
     - `sessioncredits` — `object`
       - `$numberint` — `string`  e.g. `1`, `1`, `1`
-    - `sessionid` — `string`  e.g. `69de4aefb3edf0435d2569df`, `69ae9da4b6c72a9a0d81a787`, `69c351762280b9a3811cbd3a`
-    - `sessionstarttime` — `string`  e.g. `2026-04-14T14:11:02.957Z`, `2026-04-14T13:57:59.754Z`, `2026-04-12T05:58:32.041Z`
-  - `note` — `string`  e.g. `Session conducted on 14th Apr`, `Session conducted on 14th Apr`, `Session conducted on 12th Apr`
-  - `receiverid` — `string`  e.g. `671c98c4ed43711b17868449`, `67f8f068cdd211ec1592dbf9`, `69366668c05630afe5d8a2a4`
-  - `senderid` — `string`  e.g. `67ca9f10ed8b9119b8dc81f9`, `68063a6ecdd211ec157d7fe6`, `696e2c4343579bbada233f6b`
+    - `sessionid` — `string`  e.g. `6a3fb8cca04bf99f53dab562`, `6a4e1916a85399d512486a99`, `6a2fc32a456e14e28ce3a6f8`
+    - `sessionstarttime` — `string`  e.g. `2026-07-08T11:29:23.475Z`, `2026-07-08T11:00:16.894Z`, `2026-07-08T11:02:17.424Z`
+  - `note` — `string`  e.g. `Session conducted on 8th Jul`, `Session conducted on 8th Jul`, `Session conducted on 8th Jul`
+  - `receiverid` — `string`  e.g. `65d868629981243ddd1f5626`, `6a310d85904c8925d4f1319f`, `69aa5ea213cc1073afb7bb24`
+  - `senderid` — `string`  e.g. `69b834b624bc1648222f5b7c`, `6a3390f7edb08f0348239186`, `69ac543013cc1073af39f8cd`
   - `status` — `string`  e.g. `CREATED`, `CREATED`, `CREATED`
-  - `transactiontype` — `string`  e.g. `TUTOR_PAYOUT`, `TUTOR_PAYOUT`, `TUTOR_PAYOUT`
-  - `type` — `string`  e.g. `INVOICE`, `INVOICE`, `INVOICE`
-  - `updatedat` — `string`  e.g. `2026-04-14T15:02:51.663Z`, `2026-04-14T15:03:08.038Z`, `2026-04-14T15:04:22.846Z`
+  - `transactiontype` — `string`  e.g. `FEE_COLLECTION`, `TUTOR_PAYOUT`, `TUTOR_PAYOUT`
+  - `type` — `string`  e.g. `PAYMENT`, `INVOICE`, `INVOICE`
+  - `updatedat` — `string`  e.g. `2026-07-08T12:02:53.150Z`, `2026-07-08T12:03:26.865Z`, `2026-07-08T12:03:54.103Z`
 - `user` — `object`
   - `email` — `string`  e.g. `[REDACTED]`
-  - `id` — `string`  e.g. `67386548fbd3304585d4be09`, `663f68c6cd91265d34f1f097`, `64dcc3f2cacfaa35815f90c8`
+  - `id` — `string`  e.g. `673d7b9653322ccd5b5e0fe6`, `648dade5d20ce0f14728e242`, `64fecbcec47b39bb3f976657`
   - `name` — `string`  e.g. `[REDACTED]`
-  - `namespace` — `string`  e.g. `toprankers`, `mentormatch`, `uhprep`
+  - `namespace` — `string`  e.g. `teaminterval`, `toprankers`, `learn2read`
   - `phonenumber` — `string`  e.g. `[REDACTED]`
 - `verification` — `object`
-  - `code` — `string`  e.g. `1149`, `3906`, `9943`
+  - `code` — `string`  e.g. `9316`, `9807`, `6975`
   - `data` — `object`
     - `attempts` — `object`
       - `$numberint` — `string`  e.g. `0`, `0`, `0`
-    - `code` — `string`  e.g. `1149`, `3906`, `9943`
-    - `createdat` — `string`  e.g. `2026-04-14T15:02:53.702Z`, `2026-04-14T15:04:05.127Z`, `2026-04-14T15:04:17.977Z`
-    - `expirytime` — `string`  e.g. `2026-04-14T15:05:53.701Z`, `2026-04-14T15:07:05.127Z`, `2026-04-14T15:07:17.977Z`
-    - `id` — `string`  e.g. `69de571d41168717a1aec1ae`, `69de5765e3aba9e596353b97`, `69de577192648a764ca7de76`
+    - `code` — `string`  e.g. `9316`, `9807`, `6975`
+    - `createdat` — `string`  e.g. `2026-07-08T12:02:31.147Z`, `2026-07-08T12:02:40.879Z`, `2026-07-08T12:02:46.528Z`
+    - `expirytime` — `string`  e.g. `2026-07-08T12:05:31.147Z`, `2026-07-08T12:05:40.878Z`, `2026-07-08T12:05:46.528Z`
+    - `id` — `string`  e.g. `6a4e3c57241940a7d2fab29c`, `6a4e3c60ab0052bf61ea2316`, `6a4e3c66321882d97ab3323e`
     - `identifier` — `string`  e.g. `[REDACTED-PHONE]`, `[REDACTED-EMAIL]`, `[REDACTED-PHONE]`
     - `idtype` — `string`  e.g. `PHONE_NUMBER`, `EMAIL`, `PHONE_NUMBER`
-    - `ip` — `string`  e.g. `106.216.200.155`, `86.41.73.55`, `223.233.83.0`
+    - `ip` — `string`  e.g. `152.57.129.201`, `194.213.108.1`, `104.28.164.49`
+    - `namespace` — `string`  e.g. `corizo`, `iteskul`, `corizo`
     - `resendcount` — `object`
       - `$numberint` — `string`  e.g. `0`, `0`, `0`
-    - `resendwindow` — `string`  e.g. `2026-04-14T15:04:53.701Z`, `2026-04-14T15:06:05.127Z`, `2026-04-14T15:06:17.977Z`
-    - `updatedat` — `string`  e.g. `2026-04-14T15:02:53.702Z`, `2026-04-14T15:04:05.127Z`, `2026-04-14T15:04:17.977Z`
+    - `resendwindow` — `string`  e.g. `2026-07-08T12:04:31.147Z`, `2026-07-08T12:04:40.878Z`, `2026-07-08T12:04:46.528Z`
+    - `updatedat` — `string`  e.g. `2026-07-08T12:02:31.147Z`, `2026-07-08T12:02:40.879Z`, `2026-07-08T12:02:46.528Z`
     - `verified` — `bool`  e.g. `false`, `false`, `false`
 - `version` — `object`
   - `$numberint` — `string`  e.g. `2`, `2`, `2`
@@ -156,13 +198,15 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `eventtimestamp`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1776178949531`, `1776178950145`, `1776178950384`
+  - `$numberlong` — `string`  e.g. `1783512156658`, `1783512156633`, `1783512156928`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__event`(
@@ -187,8 +231,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_004725_00088_g6yam', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_005216_00043_rgfsw', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

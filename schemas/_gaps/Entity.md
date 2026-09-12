@@ -2,10 +2,10 @@
 collection: "Entity"
 athena_table: "wise_app_backend__entity"
 mongo_field_count: 9
-athena_field_count: 18
+athena_field_count: 19
 matched: 8
 coverage_pct: 88.9
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `Entity` ↔ `processed.wise_app_backend__entity`
@@ -36,3 +36,4 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `createdat.$date.$numberlong` | `string` | JSON path |
 | `sortkey.$date` | `object` | JSON path |
 | `sortkey.$date.$numberlong` | `string` | JSON path |
+| `metadata.subtype` | `string` | JSON path |

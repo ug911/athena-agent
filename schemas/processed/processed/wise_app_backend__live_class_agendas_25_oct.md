@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__live_class_agendas_25_oct
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/backup/2024_10_25_00_01/wise-app-backend/live_class_agendas
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:58+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:25:29+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__live_class_agendas_25_oct`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,7 +39,7 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -125,6 +137,7 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__live_class_agendas_25_oct`(

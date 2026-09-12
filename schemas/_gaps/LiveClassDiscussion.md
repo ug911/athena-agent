@@ -5,7 +5,7 @@ mongo_field_count: 14
 athena_field_count: 34
 matched: 14
 coverage_pct: 100.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `LiveClassDiscussion` ↔ `processed.wise_app_backend__live_class_discussion`

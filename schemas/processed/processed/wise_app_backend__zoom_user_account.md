@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__zoom_user_account
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/zoom_user_account/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:15+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:30:45+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__zoom_user_account`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -31,14 +45,14 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `zoomaccountid`: `me_BV0wwTd-ffgw-jFFfiw (×175)`, `pxCuuYC1QGKAdEvnLhBZBA (×9)`, `isSTEmLeT066ykLC2WW6Xw (×3)`, `_rWzNQqzQQqZMuxRmLyFxg (×2)`, `ku_zvMvGRfmyZC8ipuYzmQ (×2)`, `ijN2YSscR72FKgnPGcpNMQ (×1)`, `msZgspLoRMuAu0d0Ua_AQQ (×1)`, `C5CxfRtlROuIFBpdo6_SUg (×1)`, `P-IkZAJcSP6ATjMqUsIt-w (×1)`, `K7zxK7gZRxCbl2O2llwvXw (×1)`, `FYmj_AC_TESmY93U0kePFw (×1)`, `_0ef4TefTRObPAMMl3xfcw (×1)`, `KecjAZ8qS7eK6q5BUvWoKg (×1)`, `-UGbzn60SnmfHS_7HJx9wA (×1)`
+- `zoomaccountid`: `me_BV0wwTd-ffgw-jFFfiw (×175)`, `pxCuuYC1QGKAdEvnLhBZBA (×9)`, `isSTEmLeT066ykLC2WW6Xw (×3)`, `_rWzNQqzQQqZMuxRmLyFxg (×2)`, `ku_zvMvGRfmyZC8ipuYzmQ (×2)`, `msZgspLoRMuAu0d0Ua_AQQ (×1)`, `C5CxfRtlROuIFBpdo6_SUg (×1)`, `P-IkZAJcSP6ATjMqUsIt-w (×1)`, `K7zxK7gZRxCbl2O2llwvXw (×1)`, `FYmj_AC_TESmY93U0kePFw (×1)`, `_0ef4TefTRObPAMMl3xfcw (×1)`, `KecjAZ8qS7eK6q5BUvWoKg (×1)`, `-UGbzn60SnmfHS_7HJx9wA (×1)`, `ijN2YSscR72FKgnPGcpNMQ (×1)`
 - `licensed`: `false (×167)`, `true (×33)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -83,6 +97,8 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ## DDL
 
+_From `IN` (processed)._
+
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__zoom_user_account`(
   `_id` string, 
@@ -112,8 +128,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_013246_00007_kqtq8', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_014640_00097_4ngey', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: user_premium
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/production/control_map/user_premium
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:12:59+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:19:18+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.user_premium`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -21,6 +33,7 @@ sampled_rows: 200
 | `valid_premium` | `boolean` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.user_premium`(

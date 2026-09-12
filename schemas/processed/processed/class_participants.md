@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: class_participants
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:10:19+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:14:40+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.class_participants`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,6 +41,8 @@ sampled_rows: 0
 | `status` | `string` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.class_participants AS

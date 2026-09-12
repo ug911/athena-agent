@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__institutegroupmember
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/InstituteGroupMember/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:34+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:24:37+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__institutegroupmember`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,37 +39,39 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `type`: `STUDENT (×145)`, `CLASSROOM (×55)`
+- `type`: `CLASSROOM (×193)`, `STUDENT (×7)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `676b935e4e221e2f26dcc4e5`, `676b935f4f01146216369e46`, `676b93608a131be2f1337948`
+- `$oid` — `string`  e.g. `661d0f35ad2b60ded8f0bd34`, `661d0f36ad2b605df1f0bd5a`, `661d1302eafbf578ac696ba2`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1735103326965`, `1735103327865`, `1735103328703`
+  - `$numberlong` — `string`  e.g. `1713180469145`, `1713180470033`, `1713181442490`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1735103326965`, `1735103327865`, `1735103328703`
+  - `$numberlong` — `string`  e.g. `1713180469145`, `1713180470033`, `1713181442490`
 
 ### `groupid`
 
-- `$oid` — `string`  e.g. `676b92558a131b71d43371c3`, `676b92558a131b71d43371c3`, `676b92558a131b71d43371c3`
+- `$oid` — `string`  e.g. `661d0f29eafbf513a668dc79`, `661d0f29eafbf513a668dc79`, `661d12f733faf3a94b528d04`
 
 ### `memberid`
 
-- `$oid` — `string`  e.g. `675d4909ce9d3f277b43042c`, `675d48eaaeb366d0d252e9b4`, `6762b8432c0fad669ebca884`
+- `$oid` — `string`  e.g. `619dee2b05daebcb4d3fcc76`, `6200f1e9df223de403f26533`, `639b112c6a879edef86f07fc`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__institutegroupmember`(
@@ -80,8 +96,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003553_00070_2rp8x', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003743_00025_8gyay', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

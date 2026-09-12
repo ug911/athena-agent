@@ -1,19 +1,31 @@
 ---
-database: backend
+canonical: backend
 table: rudder_wise_prod
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/production/primary/rudder-logs/1yXqLJL9l6M8Go5nALG8YPM6SIL
 format: INPUTFORMAT
 partition_keys:
 - dt
-last_synced: '2026-04-28T07:04:45+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:03:41+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.rudder_wise_prod`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -36,6 +48,7 @@ sampled_rows: 0
 **Partition keys:** `dt`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.rudder_wise_prod`(

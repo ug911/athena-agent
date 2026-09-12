@@ -2,10 +2,10 @@
 collection: "transaction"
 athena_table: "wise_app_backend__transaction"
 mongo_field_count: 17
-athena_field_count: 62
+athena_field_count: 57
 matched: 13
 coverage_pct: 76.5
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `transaction` ↔ `processed.wise_app_backend__transaction`
@@ -45,9 +45,8 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `metadata.chargeon.$date` | `object` | JSON path |
 | `metadata.chargeon.$date.$numberlong` | `string` | JSON path |
 | `metadata.classid` | `string` | JSON path |
-| `metadata.classname` | `string` | JSON path |
 | `metadata.display` | `string` | JSON path |
-| `metadata.dueon` | `object|string` | JSON path |
+| `metadata.dueon` | `object` | JSON path |
 | `metadata.dueon.$date` | `object` | JSON path |
 | `metadata.dueon.$date.$numberlong` | `string` | JSON path |
 | `metadata.inactive` | `bool` | JSON path |
@@ -67,10 +66,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `metadata.payout_metadata` | `object` | JSON path |
 | `metadata.payout_metadata.account_type` | `string` | JSON path |
 | `metadata.payout_metadata.masked_account` | `string` | JSON path |
-| `metadata.plantype` | `string` | JSON path |
-| `metadata.reason_code` | `string` | JSON path |
-| `metadata.reversed` | `bool` | JSON path |
-| `metadata.subject` | `string` | JSON path |
 | `senderid.$oid` | `string` | JSON path |
 | `receiverid.$oid` | `string` | JSON path |
 | `amount.currency` | `string` | JSON path |

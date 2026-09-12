@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__classparticipant
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/classparticipant/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:13+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:21:58+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__classparticipant`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,36 +42,36 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `relation`: `STUDENT (×196)`, `ADMIN (×4)`
-- `status`: `ACCEPTED (×185)`, `REMOVED (×15)`
+- `relation`: `STUDENT (×180)`, `ADMIN (×20)`
+- `status`: `ACCEPTED (×170)`, `REMOVED (×30)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `61c0977736c602000b761b51`, `61c0977736c602000b761b56`, `61c0978d2734790007063d55`
+- `$oid` — `string`  e.g. `61c09c2049685400070cf53d`, `61c09c2049685400070cf53c`, `61c09c2049685400070cf53f`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `5f5ef13f2757f75ccca9c85a`, `5f5c481d2ccd101589b6f0a0`, `5f24052520955e1aff464606`
+- `$oid` — `string`  e.g. `5f6f076ead4a1522dec687ae`, `5f75c7fe35bd837d9849dae3`, `6034f91bb365446805ed0993`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `5fb610bc6def216d702d32fa`, `5fb610bc6def216d702d32fa`, `5fb8ab8cc91e3444349dc781`
+- `$oid` — `string`  e.g. `60375804c2f97a9938fd9dad`, `60375804c2f97a9938fd9dad`, `60375804c2f97a9938fd9dad`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1640011639115`, `1640011639115`, `1640011661163`
+  - `$numberlong` — `string`  e.g. `1640012832962`, `1640012832962`, `1640012832962`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1640011639115`, `1640011639115`, `1702968854907`
+  - `$numberlong` — `string`  e.g. `1640012832962`, `1657956856887`, `1640012832962`
 
 ### `__v`
 
@@ -66,9 +80,11 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `joinedon`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1605767356946`, `1605767356946`, `1605938060744`
+  - `$numberlong` — `string`  e.g. `1614239748866`, `1657956856886`, `1614239748866`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__classparticipant`(
@@ -96,8 +112,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_002952_00016_ygewu', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003250_00007_55w9t', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

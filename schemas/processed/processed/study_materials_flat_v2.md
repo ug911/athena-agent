@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: study_materials_flat_v2
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:12:31+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:18:41+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.study_materials_flat_v2`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,6 +41,8 @@ sampled_rows: 0
 | `file_type` | `varchar(18)` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.study_materials_flat_v2 AS

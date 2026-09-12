@@ -2,10 +2,10 @@
 collection: "VendorIntegration"
 athena_table: "wise_app_backend__vendorintegration"
 mongo_field_count: 5
-athena_field_count: 49
+athena_field_count: 54
 matched: 4
 coverage_pct: 80.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `VendorIntegration` ↔ `processed.wise_app_backend__vendorintegration`
@@ -34,17 +34,23 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `updatedat.$date` | `object` | JSON path |
 | `updatedat.$date.$numberlong` | `string` | JSON path |
 | `userid.$oid` | `string` | JSON path |
+| `settings.accesstoken` | `string` | JSON path |
 | `settings.apikey` | `string` | JSON path |
 | `settings.apiurl` | `string` | JSON path |
+| `settings.displayicon` | `string` | JSON path |
 | `settings.displayname` | `string` | JSON path |
 | `settings.email` | `string` | JSON path |
+| `settings.iframe` | `bool` | JSON path |
 | `settings.logintype` | `string` | JSON path |
 | `settings.method` | `string` | JSON path |
 | `settings.portalfallbackurl` | `string` | JSON path |
 | `settings.portalloginurl` | `string` | JSON path |
 | `settings.refreshtoken` | `string` | JSON path |
 | `settings.responsekey` | `string` | JSON path |
+| `settings.subdomain` | `string` | JSON path |
 | `settings.targetrole` | `string` | JSON path |
+| `settings.targetroles` | `array<string>` | JSON path |
+| `settings.targetroles.targetroles[]` | `string` | JSON path |
 | `settings.templatemapping` | `object` | JSON path |
 | `settings.templatemapping.certificatecreation` | `string` | JSON path |
 | `settings.templatemapping.dailysessionreminder` | `string` | JSON path |
@@ -59,7 +65,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `settings.templatemapping.phoneotp` | `string` | JSON path |
 | `settings.templatemapping.sessioncreditupdates` | `string` | JSON path |
 | `settings.templatemapping.sessionfeedback` | `string` | JSON path |
-| `settings.templatemapping.sessionfeedbackwithquiz` | `string` | JSON path |
 | `settings.templatemapping.sessionnotstartedadminreminder` | `string` | JSON path |
 | `settings.templatemapping.sessionnotstartedteacherreminder` | `string` | JSON path |
 | `settings.templatemapping.sessionreminder_10` | `string` | JSON path |

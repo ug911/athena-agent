@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__working_hours_schedule
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/working_hours_schedule/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:03+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:30:15+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__working_hours_schedule`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,25 +41,25 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `timezone`: `Asia/Kolkata (×187)`, `America/Toronto (×4)`, `Asia/Dubai (×2)`, `America/Los_Angeles (×1)`, `America/Chicago (×1)`, `Asia/Singapore (×1)`, `America/Managua (×1)`, `America/New_York (×1)`, `Indian/Mahe (×1)`, `Asia/Colombo (×1)`
+- `timezone`: `Asia/Kolkata (×187)`, `America/Toronto (×4)`, `Asia/Dubai (×2)`, `America/Los_Angeles (×1)`, `Indian/Mahe (×1)`, `Asia/Colombo (×1)`, `America/Chicago (×1)`, `Asia/Singapore (×1)`, `America/Managua (×1)`, `America/New_York (×1)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `65cb51f46ea2901f591675f8`, `65cb69296ea2901f591e57b7`, `65cb69e56ea2901f591e8928`
+- `$oid` — `string`  e.g. `65cb51f46ea2901f591675f8`, `65cb5f7c6ea2901f591ab1bd`, `65cb60386ea2901f591aef45`
 
 ### `instituteid`
 
-- `$oid` — `string`  e.g. `64cb564b2ce363bc62187ede`, `64dcc496132b0b00199c19e3`, `639b0a09b5984d6d06fa7dc0`
+- `$oid` — `string`  e.g. `64cb564b2ce363bc62187ede`, `62824b360f4c8e0007795099`, `64dcc496132b0b00199c19e3`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `651d7dcd8ef8e6992078cad4`, `65afacec45b8bc2521cc19fa`, `5f12d7d088cd370409e738ec`
+- `$oid` — `string`  e.g. `651d7dcd8ef8e6992078cad4`, `622885116725d175be434e6a`, `64dcc3f2cacfaa35815f90c8`
 
 ### `__v`
 
@@ -54,7 +68,7 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1707823604729`, `1707829545959`, `1707829733383`
+  - `$numberlong` — `string`  e.g. `1707823604729`, `1707827068383`, `1707827256988`
 
 ### `slots`
 
@@ -66,9 +80,11 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1707823888574`, `1707829659473`, `1707829733383`
+  - `$numberlong` — `string`  e.g. `1707823888574`, `1716812725487`, `1758728172551`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__working_hours_schedule`(
@@ -95,8 +111,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_012212_00061_6i3qz', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_013254_00007_cseqh', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__announcements
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/announcements/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:13:45+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:20:54+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__announcements`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -35,63 +49,79 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `disablecommenting`: `false (×176)`, `true (×1)`
-- `pinneddiscussion`: `false (×179)`
+- `disablecommenting`: `false (×196)`, `true (×4)`
+- `pinneddiscussion`: `false (×199)`, `true (×1)`
 - `poll`: `false (×200)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `5f251e1aaa382f6247e4a1c9`, `5f2661a5aa382f6247e4a40a`, `5f266c7eaa382f6247e4a429`
+- `$oid` — `string`  e.g. `5fae283af25e31eb5e36a578`, `5fae29ab3840210163eee0ee`, `5fae2cc8d8a79b03dc25ba95`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `5f12d7d088cd370409e738ec`, `5f24052520955e1aff464606`, `5f12d7d088cd370409e738ec`
+- `$oid` — `string`  e.g. `5f7c2c473351934e8f88c86a`, `5f7c2c473351934e8f88c86a`, `5f7c2c473351934e8f88c86a`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `5f1c100abeaf861a4dfb009c`, `5f24056820955e1aff464608`, `5f1c100abeaf861a4dfb009c`
+- `$oid` — `string`  e.g. `5f7c6c4620366b77282186c4`, `5f7c6c4620366b77282186c4`, `5f7c6c4620366b77282186c4`
 
 ### `attachments`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `5f251e1aaa382f6247e4a1cb`, `5f34e91477cbda743088e021`, `5fe5bc10431bea8eb80e7078`
-    - `filename` — `string`  e.g. `IMG-20200801-WA0006.jpg`, `image-9a539bfc-5841-4e63-840f-cb7f3f3e3cc9.jpg`, `JPEG_20201225_154631_7890301319085513433.jpg`
-    - `path` — `string`  e.g. `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/uploa`, `https://files.wiseapp.live/upload_files/5f24052520955e1aff46`
-    - `s3filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/uploa`
-    - `s3key` — `string`  e.g. `upload_files/5f24052520955e1aff464606/upload_7bd7b5b6-bf76-4`, `upload_files/5f5b0247277e936f5b27f797/upload_72671bae-d157-4`, `upload_files/5f5b0247277e936f5b27f797/upload_ad8677a6-d20a-4`
+      - `$oid` — `string`  e.g. `5fb1050f701049e40554d027`, `5fb1050f7010492be254d028`, `5fb1050f70104959e154d029`
+    - `filename` — `string`  e.g. `IMG_20201115_141644.jpg`, `IMG_20201115_141634.jpg`, `IMG_20201115_141622.jpg`
+    - `path` — `string`  e.g. `https://files.wiseapp.live/upload_files/5f5c481d2ccd101589b6`, `https://files.wiseapp.live/upload_files/5f5c481d2ccd101589b6`, `https://files.wiseapp.live/upload_files/5f5c481d2ccd101589b6`
+    - `s3filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/uploa`, `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/uploa`
+    - `s3key` — `string`  e.g. `upload_files/5f5c481d2ccd101589b6f0a0/upload_3bcc6bf7-c89d-4`, `upload_files/5f5c481d2ccd101589b6f0a0/upload_c2466fdd-9b94-4`, `upload_files/5f5c481d2ccd101589b6f0a0/upload_d8ccc885-f8fa-4`
     - `size` — `object`
-      - `$numberint` — `string`  e.g. `24654`, `743403`, `3648474`
+      - `$numberint` — `string`  e.g. `3025478`, `2702152`, `3466267`
     - `type` — `string`  e.g. `image`, `image`, `image`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1596268058082`, `1596350885199`, `1596353662444`
+  - `$numberlong` — `string`  e.g. `1605249082668`, `1605249451915`, `1605250248077`
 
 ### `comments`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `5f251ecaaa382f6247e4a1cf`, `5f251f0aaa382f6247e4a1d2`, `5f252562aa382f6247e4a208`
-    - `comment` — `string`  e.g. `Khair Mubarak Sir`, `Khair mubarak sir `, `Ap ko bhi Eid Mubarak sir`
+      - `$oid` — `string`  e.g. `5fae28e3f25e317d6a36a5b7`, `5fae296b384021e7ebeee0bc`, `5fae296b3840212b64eee0bf`
+    - `comment` — `string`  e.g. `Sender's address
+Date
+Adresis address
+Subject
+Content
+Experi`, `Sender's address
+Date
+Name
+Title
+Institution
+Personal inform`, `Cover letter
+
+From
+Address
+Date
+To address​
+Greetings
+Subjec`
     - `createdat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1596268234109`, `1596268298802`, `1596269922887`
-    - `deleted` — `bool`  e.g. `true`, `false`, `false`
-    - `deletedby` — `string`  e.g. `teacher`, `self`, `teacher`
-    - `edited` — `bool`  e.g. `false`, `false`, `false`
+        - `$numberlong` — `string`  e.g. `1605249251434`, `1605249387367`, `1605249387904`
+    - `deleted` — `bool`  e.g. `false`, `false`, `false`
+    - `deletedby` — `string`  e.g. `self`, `self`, `self`
     - `editedat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1596268234109`, `1596268298802`, `1596269922887`
+        - `$numberlong` — `string`  e.g. `1605249694124`, `1605249387367`, `1605249387904`
     - `userid` — `object`
-      - `$oid` — `string`  e.g. `5f1eb423c291405be401d188`, `5f1c227fbeaf861a4dfb00aa`, `5f1cfa01beaf861a4dfb01a1`
+      - `$oid` — `string`  e.g. `5f5c440924e451d37639e7de`, `5f5c39a72ccd106822b6ef44`, `5f5e30ee60999708669ba14d`
 
 ### `__v`
 
@@ -100,9 +130,11 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `lastcommentedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1604331655749`, `1598449815856`, `1598800333155`
+  - `$numberlong` — `string`  e.g. `1605249859401`, `1605251278094`, `1605251410911`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__announcements`(
@@ -137,8 +169,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003109_00205_4ccuf', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003312_00025_r7eaa', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -1,19 +1,31 @@
 ---
-database: processed
+canonical: processed
 table: rudder_lens
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/processed/rudder_lens
 format: INPUTFORMAT
 partition_keys:
 - dt
-last_synced: '2026-04-28T07:12:00+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:17:47+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.rudder_lens`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -50,18 +62,19 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `type`: `page (×145)`, `track (×55)`
-- `event`: `start-meeting (×23)`, `Link Clicked (×7)`, `session-row-clicked (×5)`, `room-clicked (×4)`, `copy-room-link (×3)`, `poll-voted (×2)`, `see-all-meetings (×2)`, `Create room
- (×2)`, `create-poll (×1)`, `create-room (×1)`, `refresh (×1)`, `open-settings-page (×1)`, `logout (×1)`, `update-user-profile (×1)`, `polls-tool-clicked (×1)`
+- `type`: `page (×132)`, `track (×65)`, `identify (×3)`
+- `event`: `room-clicked (×14)`, `start-meeting (×12)`, `session-row-clicked (×6)`, `poll-voted (×6)`, `Link Clicked (×4)`, `see-all-meetings (×4)`, `delete-room (×3)`, `open-settings-page (×2)`, `create-room (×2)`, `unmute-participant (×2)`, `Create room
+ (×2)`, `Video played (×1)`, `mute-participant (×1)`, `copy-meeting-link (×1)`, `copy-room-link (×1)`, `logout (×1)`, `update-user-profile (×1)`
 - `channel`: `web (×200)`
-- `context_app_version`: `2.44.0 (×199)`, `2.32.0 (×1)`
-- `context_timezone`: `GMT+0530 (×69)`, `GMT+0700 (×54)`, `GMT+0000 (×37)`, `GMT-0800 (×21)`, `GMT+0500 (×8)`, `GMT+0100 (×6)`, `GMT-0300 (×1)`, `GMT+0300 (×1)`, `GMT-0600 (×1)`, `GMT+0545 (×1)`
-- `context_locale`: `en-US (×113)`, `en-IN (×35)`, `pt-PT (×28)`, `en-PK (×6)`, `en-SG (×5)`, `vi-VN (×5)`, `en-GB (×4)`, `en (×2)`, `pt-BR (×2)`
-- `dt`: `2023-11-10 (×126)`, `2023-11-11 (×72)`, `2023-11-12 (×2)`
+- `context_app_version`: `2.44.0 (×200)`
+- `context_timezone`: `GMT+0530 (×93)`, `GMT+0000 (×60)`, `GMT+0700 (×22)`, `GMT-0800 (×17)`, `GMT-0500 (×3)`, `GMT+0100 (×2)`, `GMT+0500 (×1)`, `GMT-0300 (×1)`, `GMT+0545 (×1)`
+- `context_locale`: `en-US (×87)`, `en-IN (×52)`, `pt-PT (×41)`, `en-SG (×12)`, `en (×3)`, `en-GB (×2)`, `vi-VN (×1)`, `es-US (×1)`, `es-MX (×1)`
+- `dt`: `2023-11-10 (×173)`, `2023-11-12 (×27)`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.rudder_lens`(

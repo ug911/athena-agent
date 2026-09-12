@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__manualattendance
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/ManualAttendance/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:20+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:26:23+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__manualattendance`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -24,45 +38,47 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69ed876b90f02a5152a21218`, `69ed877d57b91a77cb965951`, `69ed877ec448cf37584e89fe`
+- `$oid` — `string`  e.g. `6a77c9037822a1b6a6e71523`, `6a77c91b7fe8cfed4caeace3`, `6a77c91f7822a1b6a6e71538`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777174379415`, `1777174397888`, `1777174398404`
+  - `$numberlong` — `string`  e.g. `1786235139723`, `1786235163087`, `1786235167865`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777174379415`, `1777177858585`, `1777181274477`
+  - `$numberlong` — `string`  e.g. `1786238914580`, `1786239093360`, `1786239131987`
 
 ### `sessionid`
 
-- `$oid` — `string`  e.g. `69ed876ba54268e1c07686a0`, `69e48af621b681516ad16f4a`, `69cb3186c59c3f0b423207c6`
+- `$oid` — `string`  e.g. `6a75f010c8c1bf8780bad982`, `6a77c91bdf1d164deb625353`, `6a7697c6dcd50f08d655bdf3`
 
 ### `participants`
 
   - `[]` — `object`
     - `firstentrytime` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1777174478497`, `1777174437853`, `1777174527530`
+        - `$numberlong` — `string`  e.g. `1786235484855`, `1786235391824`, `1786235396828`
     - `lastexittime` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1777177858585`, `1777181274477`, `1777178724629`
+        - `$numberlong` — `string`  e.g. `1786238914580`, `1786239093360`, `1786239131987`
     - `left` — `bool`  e.g. `true`, `true`, `true`
-    - `live` — `bool`  e.g. `false`, `false`, `false`
+    - `live` — `bool`  e.g. `false`, `true`, `false`
     - `manual` — `bool`  e.g. `true`, `true`
-    - `present` — `bool`  e.g. `false`, `false`, `false`
+    - `present` — `bool`  e.g. `false`, `true`, `false`
     - `userid` — `object`
-      - `$oid` — `string`  e.g. `69e08be298ee51775fcfbc6d`, `69e08e1398ee51775fd1164a`, `69e090ff98ee51775fd3b781`
+      - `$oid` — `string`  e.g. `66f1e51192c7561e6a69c21e`, `69edb4c100512973d7ab55e8`, `69dd80fe98ee51775f06e77f`
     - `username` — `string`  e.g. `[REDACTED]`
-    - `userprofilepicture` — `string`  e.g. `https://cdn.wiseapp.live/images/institute_thumbnail/12.png`, `https://files.wiseapp.live/upload_files/68cbf9f8ea9d48d39012`, `https://files.wiseapp.live/upload_files/64fecbcec47b39bb3f97`
+    - `userprofilepicture` — `string`  e.g. `https://files.wiseapp.live/upload_files/68cbf9f8ea9d48d39012`, `https://files.wiseapp.live/upload_files/6a3a7cb4edb08f03486a`, `https://files.wiseapp.live/upload_files/6a23bffa7b439147de7e`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__manualattendance`(
@@ -86,8 +102,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_005854_00106_68n3s', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_010155_00187_ggfbe', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

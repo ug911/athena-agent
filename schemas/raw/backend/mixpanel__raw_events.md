@@ -1,21 +1,33 @@
 ---
-database: backend
+canonical: backend
 table: mixpanel__raw_events
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/mixpanel/raw_extract
 format: INPUTFORMAT
 partition_keys:
 - year
 - month
 - day
-last_synced: '2026-04-28T07:04:29+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:03:21+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.mixpanel__raw_events`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,6 +40,7 @@ sampled_rows: 0
 **Partition keys:** `year`, `month`, `day`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.mixpanel__raw_events`(

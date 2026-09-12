@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: dwh__features_user_teacher
 type: table
 layer: processed
-location: s3://[REDACTED-BUCKET]/processed/features_user_teacher/process_date=2026-004-27/
+regions:
+  in: processed
+  na: processed_na
+location: s3://[REDACTED-BUCKET]/processed/features_user_teacher/process_date=2026-008-10/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:10:36+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:15:07+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.dwh__features_user_teacher`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -273,12 +287,14 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `profile`: `student (×170)`, `teacher (×30)`
-- `namespace`: `wise (×200)`
+- `profile`: `student (×200)`
+- `namespace`: `excelr (×159)`, `452894796-88-4646 (×11)`, `452894796-88-9104 (×11)`, `452894796-58 (×6)`, `corizo (×5)`, `iskewlearning (×3)`, `toprankers (×2)`, `963613968-4439 (×2)`, `492848506-68-7272 (×1)`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.dwh__features_user_teacher`(
@@ -543,7 +559,7 @@ STORED AS INPUTFORMAT
 OUTPUTFORMAT 
   'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
 LOCATION
-  's3://[REDACTED-BUCKET]/processed/features_user_teacher/process_date=2026-004-27/'
+  's3://[REDACTED-BUCKET]/processed/features_user_teacher/process_date=2026-008-10/'
 TBLPROPERTIES (
   'auto.purge'='false', 
   'has_encrypted_data'='false', 
@@ -551,8 +567,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_015326_00322_f326i', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_020853_00034_nvgmm', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: zoom_summaries
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:18:36+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:31:46+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.zoom_summaries`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,6 +42,8 @@ sampled_rows: 0
 | `meetinguuid` | `string` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.zoom_summaries AS

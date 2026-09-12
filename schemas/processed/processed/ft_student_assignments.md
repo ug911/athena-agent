@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: ft_student_assignments
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:10:55+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:16:04+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.ft_student_assignments`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,6 +42,8 @@ sampled_rows: 0
 | `submitted_assignments_29` | `bigint` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.ft_student_assignments AS

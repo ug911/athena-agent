@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__raw_chat
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/raw_chat/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:35+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:26:53+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__raw_chat`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,7 +39,7 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -60,6 +74,8 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ## DDL
 
+_From `IN` (processed)._
+
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__raw_chat`(
   `_id` string, 
@@ -83,8 +99,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_011720_00016_bvnah', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_012534_00106_ux56f', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

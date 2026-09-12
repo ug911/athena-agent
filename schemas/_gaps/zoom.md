@@ -2,17 +2,17 @@
 collection: "zoom"
 athena_table: "wise_app_backend__zoom"
 mongo_field_count: 86
-athena_field_count: 127
-matched: 71
-coverage_pct: 82.6
-last_diffed: "2026-04-28T11:07:30+00:00"
+athena_field_count: 129
+matched: 73
+coverage_pct: 84.9
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `zoom` ↔ `processed.wise_app_backend__zoom`
 
 - **Mongo source**: [`src/models/Session.js`](../source/mongo/zoom.md)
 - **Athena counterpart**: [`schemas/processed/processed/wise_app_backend__zoom.md`](../processed/processed/wise_app_backend__zoom.md)
-- **Coverage**: 71/86 Mongo fields are present in Athena (**82.6%**).
+- **Coverage**: 73/86 Mongo fields are present in Athena (**84.9%**).
 
 ## In Mongo, missing from Athena
 
@@ -21,14 +21,12 @@ These fields are declared in the Mongoose schema but the Athena lake pipeline do
 | Path | Type | Ref | Required |
 | --- | --- | --- | --- |
 | `provider` | `String` |  |  |
-| `participants[].offline` | `Boolean` |  |  |
 | `attendees` | `Array<ObjectId>` | `user` |  |
 | `lastCommentedAt` | `Date` |  |  |
 | `public` | `Boolean` |  |  |
 | `recordingsCaptured` | `Boolean` |  |  |
 | `recordingUnsharedAt` | `Date` |  |  |
 | `thumbnail` | `String` |  |  |
-| `offline` | `Boolean` |  |  |
 | `description` | `String` |  |  |
 | `privateNote` | `String` |  |  |
 | `streamingData` | `<streamingDataSchema>` |  |  |
@@ -50,6 +48,11 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `start_time.$date.$numberlong` | `string` | JSON path |
 | `participants.[]` | `object` | JSON path |
 | `participants.[].absolutepercentattendance.$numberint` | `string` | JSON path |
+| `participants.[].attendancepercentage` | `object` | JSON path |
+| `participants.[].attendancepercentage.$numberint` | `string` | JSON path |
+| `participants.[].credits` | `object` | JSON path |
+| `participants.[].credits.$numberdouble` | `string` | JSON path |
+| `participants.[].credits.$numberint` | `string` | JSON path |
 | `participants.[].duration.$numberint` | `string` | JSON path |
 | `participants.[].firstentrytime.$date` | `object` | JSON path |
 | `participants.[].firstentrytime.$date.$numberlong` | `string` | JSON path |
@@ -57,6 +60,8 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `participants.[].lastexittime.$date` | `object` | JSON path |
 | `participants.[].lastexittime.$date.$numberlong` | `string` | JSON path |
 | `participants.[].relativepercentattendance.$numberint` | `string` | JSON path |
+| `participants.[].userduration` | `object` | JSON path |
+| `participants.[].userduration.$numberint` | `string` | JSON path |
 | `participants.[].wiseuserid.$oid` | `string` | JSON path |
 | `createdat.$date` | `object` | JSON path |
 | `createdat.$date.$numberlong` | `string` | JSON path |
@@ -73,17 +78,11 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `participant.$numberint` | `string` | JSON path |
 | `maxparticipantduration.$numberint` | `string` | JSON path |
 | `metadata.autorecord` | `bool` | JSON path |
-| `metadata.cancellationmetadata` | `object` | JSON path |
-| `metadata.cancellationmetadata.approved` | `bool` | JSON path |
-| `metadata.cancellationmetadata.requestedby` | `string` | JSON path |
-| `metadata.cancellationmetadata.requestedon` | `object` | JSON path |
-| `metadata.cancellationmetadata.requestedon.$date` | `object` | JSON path |
-| `metadata.cancellationmetadata.requestedon.$date.$numberlong` | `string` | JSON path |
-| `metadata.cancellationmetadata.requestnote` | `string` | JSON path |
 | `metadata.endedby` | `string` | JSON path |
 | `metadata.endreason` | `string` | JSON path |
 | `metadata.isownerzoom` | `bool` | JSON path |
 | `metadata.lensenabled` | `bool` | JSON path |
+| `metadata.linkwashing` | `bool` | JSON path |
 | `metadata.ownerid` | `object` | JSON path |
 | `metadata.ownerid.$oid` | `string` | JSON path |
 | `metadata.paiduser` | `bool` | JSON path |

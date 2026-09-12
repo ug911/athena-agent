@@ -2,10 +2,10 @@
 collection: "user"
 athena_table: "wise_app_backend__user"
 mongo_field_count: 60
-athena_field_count: 95
+athena_field_count: 89
 matched: 41
 coverage_pct: 68.3
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `user` ↔ `processed.wise_app_backend__user`
@@ -88,10 +88,4 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `sessions.[].createdat` | `object` | JSON path |
 | `sessions.[].createdat.$date` | `object` | JSON path |
 | `sessions.[].createdat.$date.$numberlong` | `string` | JSON path |
-| `settings.sessionsettings` | `object` | JSON path |
-| `settings.sessionsettings.advanceslotbookingbuffer` | `object` | JSON path |
-| `settings.sessionsettings.advanceslotbookingbuffer.$numberint` | `string` | JSON path |
-| `settings.sessionsettings.allowonlyconsecutiveslotbooking` | `bool` | JSON path |
-| `settings.sessionsettings.blockedadjacentslotbuffer` | `object` | JSON path |
-| `settings.sessionsettings.blockedadjacentslotbuffer.$numberint` | `string` | JSON path |
 | `settings.timezone` | `string` | JSON path |

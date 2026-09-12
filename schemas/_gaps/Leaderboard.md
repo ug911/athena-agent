@@ -2,10 +2,10 @@
 collection: "Leaderboard"
 athena_table: "wise_app_backend__leaderboard"
 mongo_field_count: 18
-athena_field_count: 100
+athena_field_count: 99
 matched: 18
 coverage_pct: 100.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `Leaderboard` ↔ `processed.wise_app_backend__leaderboard`
@@ -71,7 +71,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `monthlypointstable.[].pointsdistribution.sessionparticipation` | `object` | JSON path |
 | `monthlypointstable.[].pointsdistribution.sessionparticipation.$numberint` | `string` | JSON path |
 | `monthlypointstable.[].pointsdistribution.testmarks` | `object` | JSON path |
-| `monthlypointstable.[].pointsdistribution.testmarks.$numberdouble` | `string` | JSON path |
 | `monthlypointstable.[].pointsdistribution.testmarks.$numberint` | `string` | JSON path |
 | `monthlypointstable.[].pointsdistribution.testsubmission` | `object` | JSON path |
 | `monthlypointstable.[].pointsdistribution.testsubmission.$numberint` | `string` | JSON path |

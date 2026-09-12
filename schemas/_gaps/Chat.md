@@ -2,10 +2,10 @@
 collection: "Chat"
 athena_table: "wise_app_backend__chat"
 mongo_field_count: 7
-athena_field_count: 24
+athena_field_count: 22
 matched: 7
 coverage_pct: 100.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `Chat` ↔ `processed.wise_app_backend__chat`
@@ -30,8 +30,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `updatedat.$date` | `object` | JSON path |
 | `updatedat.$date.$numberlong` | `string` | JSON path |
 | `instituteid.$oid` | `string` | JSON path |
-| `classid.$oid` | `string` | JSON path |
-| `chatwithid.$oid` | `string` | JSON path |
 | `participants.[]` | `object` | JSON path |
 | `participants.[].$oid` | `string` | JSON path |
 | `unreadcounts.<oid>` | `object` | JSON path |

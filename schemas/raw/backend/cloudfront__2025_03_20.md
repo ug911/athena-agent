@@ -1,18 +1,30 @@
 ---
-database: backend
+canonical: backend
 table: cloudfront__2025_03_20
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/cloudfront-logs/dt=2025-03-20
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:04:15+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:03:00+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.cloudfront__2025_03_20`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -51,6 +63,7 @@ sampled_rows: 0
 | `sc_range_end` | `bigint` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.cloudfront__2025_03_20`(

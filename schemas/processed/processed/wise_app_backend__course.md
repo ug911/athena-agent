@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__course
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/course/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:38+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:22:43+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__course`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -30,48 +44,48 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `coursetype`: `LIVE (×184)`, `RECORDED (×16)`
+- `coursetype`: `LIVE (×183)`, `RECORDED (×17)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `633bd8f7886a2c7cb7a542e1`, `633bf7a2e97c0b69288c6e10`, `633bf7e500570a822a78bcff`
+- `$oid` — `string`  e.g. `6374f8b3ae0cf40a22f52790`, `6374ff7fef0e3c82a31e7e92`, `637506b07a6fe5500c48ad5c`
 
 ### `classroomids`
 
   - `[]` — `object`
-    - `$oid` — `string`  e.g. `633bd8f7886a2c4b02a542e0`, `633bf9ba00b94225c214e74a`, `633bf9d9163e4221f2d023f0`
+    - `$oid` — `string`  e.g. `6374f8b3ae0cf40edcf5278f`, `6374ff7fef0e3c26a01e7e91`, `6375000300eac6f3815a11c8`
 
 ### `instituteid`
 
-- `$oid` — `string`  e.g. `633bd8f7886a2c68d7a542df`, `633bd8f7886a2c68d7a542df`, `633bd8f7886a2c68d7a542df`
+- `$oid` — `string`  e.g. `6374f8b3ae0cf43d91f5278e`, `6374ff7fef0e3cb1391e7e90`, `637506b07a6fe53e8a48ad5a`
 
 ### `coursecovers`
 
-  - `[]` — `object`
-    - `link` — `string`  e.g. `https://files.wiseapp.live/upload_files/633bd6286cdbb6357812`, `https://files.wiseapp.live/upload_files/6093c17ef339108cdb84`, `https://files.wiseapp.live/upload_files/6093c17ef339108cdb84`
-    - `type` — `string`  e.g. `image`, `image`, `image`
+
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1664866551129`, `1664874402713`, `1664874469157`
+  - `$numberlong` — `string`  e.g. `1668610227966`, `1668611967797`, `1668613808449`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1664885448052`, `1664876901134`, `1664886453445`
+  - `$numberlong` — `string`  e.g. `1668610227966`, `1668612100027`, `1668613808449`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__course`(
@@ -101,8 +115,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003109_00007_ekbd4', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003428_00016_xsq88', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

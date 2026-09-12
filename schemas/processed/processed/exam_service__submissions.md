@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: exam_service__submissions
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/exam-service/submissions/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:10:42+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:15:26+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.exam_service__submissions`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -31,59 +45,62 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `status`: `GRADED (×157)`, `ABSENT (×40)`, `PENDING (×3)`
+- `status`: `ABSENT (×152)`, `GRADED (×45)`, `VOID_RETAKEN (×2)`, `PENDING (×1)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69eff5d60a10cc000178211b`, `69eff0d2c57c5d0001121161`, `69efecd4fb9af90001d3ded6`
+- `$oid` — `string`  e.g. `6a7a655c17b47e0001d686c7`, `6a7a6104cf2fac0001bf742b`, `6a7a5b0bcf2fac0001bf742a`
 
 ### `marks_obtained`
 
-- `$numberdouble` — `string`  e.g. `0.0`, `0.0`, `6.0`
+- `$numberdouble` — `string`  e.g. `0.0`, `194.35`, `0.0`
+- `$numberint` — `string`  e.g. `0`, `0`, `10`
 
 ### `test_id`
 
-- `$oid` — `string`  e.g. `669dca2174f0a400010cd1bc`, `670622faab8746000182b773`, `670f625edc4f3e0001734632`
+- `$oid` — `string`  e.g. `66a063d85ac83600013f2184`, `66a063d85ac83600013f2184`, `68da618dcb8d9e0001a00d3e`
 
 ### `user_id`
 
-- `$oid` — `string`  e.g. `68aaf160dc426fe2bdb4a2c2`, `68c53a44ea9d48d390fc3655`, `68c53a44ea9d48d390fc3655`
+- `$oid` — `string`  e.g. `683dac7bb213e9ac496b0b0f`, `683dac7bb213e9ac496b0b0f`, `65e6d6b33eebbeedb40957aa`
 
 ### `answers`
 
-- `<oid>` — `string`  e.g. `c`, `b`, `a`
+- `<oid>` — `string`  e.g. `a`, `d`, `c`
 
 ### `start_time`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777333718859`, `1777332434437`, `1777331412788`
+  - `$numberlong` — `string`  e.g. `1786406236255`, `1786405124077`, `1786403595111`
 
 ### `updated_at`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777333718863`, `1777333966359`, `1777332268824`
+  - `$numberlong` — `string`  e.g. `1786406236258`, `1786406232997`, `1786404238936`
 
 ### `created_at`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777333718863`, `1777332434440`, `1777331412791`
+  - `$numberlong` — `string`  e.g. `1786406236258`, `1786405124080`, `1786403595113`
 
 ### `end_time`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1777333934437`, `1777332268803`, `1777330916691`
+  - `$numberlong` — `string`  e.g. `1786405862754`, `1786404195111`, `1786400961257`
 
 ### `rank`
 
-- `$numberint` — `string`  e.g. `1`, `1`
+- `$numberint` — `string`  e.g. `1`, `1`, `1`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.exam_service__submissions`(
@@ -114,8 +131,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_001423_00036_zec9i', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_001419_00070_drwmr', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__lens_event
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/lens_event/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:47+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:25:09+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__lens_event`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,47 +41,48 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
 - `eventname`: `POINTS_GIVEN (×200)`
-- `userid`: `637f57f1c266ea8050b35606 (×41)`, `63809a4bfab7fa014d91fba2 (×32)`, `63b6c2416b3447561b408c00 (×25)`, `637db5c7c08a217fd972d12b (×21)`, `637b2efbb83202bbf7505385 (×19)`, `63a55b9e5a426eb62ff5d7bc (×13)`, `637f58f2d3e3e79a5a76a46c (×10)`, `637db5ae5d97ca7a012a3881 (×8)`, `63a349dcffa60222308f886a (×8)`, `6384cb5d679f553a2dd30200 (×7)`, `637f2d37abf8c70bf7fd93f1 (×6)`, `U3VtaXQgd2Vi (×6)`, `Ymg= (×3)`, `RmFsZ3VuaQ== (×1)`
+- `userid`: `637b62a31aeff37812fca17e (×31)`, `6384cb5d679f553a2dd30200 (×28)`, `63b6c2416b3447561b408c00 (×25)`, `637db5ae5d97ca7a012a3881 (×22)`, `637f58a5d95c8032c9d29a1b (×18)`, `632aac01f185a4b296b8f6cf (×18)`, `637f56d4d3e3e7a22f76a37f (×17)`, `6374d83e271de900dd26a83f (×15)`, `637b2efbb83202bbf7505385 (×11)`, `637b906ea203ae0c580b293d (×6)`, `637f57f1c266ea8050b35606 (×5)`, `637b6347c96d3fa2f3cc5c15 (×3)`, `63809a4bfab7fa014d91fba2 (×1)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `6433e0a11b02798c5e680e55`, `6433e0a10c8757aa851b6bf2`, `6433e0a51b02793009680efa`
+- `$oid` — `string`  e.g. `643544cb4c9ea7329ebfa096`, `643544cb4c9ea7cfd8bfa097`, `643544cb4c9ea70797bfa098`
 
 ### `insightid`
 
-- `$oid` — `string`  e.g. `6433e01843e715be7e31198d`, `6433e01843e715be7e31198d`, `6433e01843e715be7e31198d`
+- `$oid` — `string`  e.g. `643541f443e715be7e832670`, `643541f443e715be7e832670`, `643541f443e715be7e832670`
 
 ### `eventpayload`
 
-- `category` — `string`  e.g. `poll`, `poll`, `poll`
+- `category` — `string`  e.g. `attention`, `attention`, `attention`
 - `criteria` — `string`  e.g. `streak`, `streak`, `streak`
 - `points` — `object`
-  - `$numberint` — `string`  e.g. `1`, `1`, `1`
-- `pollid` — `string`  e.g. `6433e09e1df91e2d4d13a32d`, `6433e09e1df91e2d4d13a32d`, `6433e09e1df91e2d4d13a32d`
-- `userid` — `string`  e.g. `637b2efbb83202bbf7505385`, `63b6c2416b3447561b408c00`, `63809a4bfab7fa014d91fba2`
+  - `$numberint` — `string`  e.g. `5`, `5`, `5`
+- `userid` — `string`  e.g. `6374d83e271de900dd26a83f`, `637b906ea203ae0c580b293d`, `637f58a5d95c8032c9d29a1b`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1681121441064`, `1681121441224`, `1681121445174`
+  - `$numberlong` — `string`  e.g. `1681212619592`, `1681212619599`, `1681212619599`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1681121441064`, `1681121441224`, `1681121445174`
+  - `$numberlong` — `string`  e.g. `1681212619592`, `1681212619599`, `1681212619599`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__lens_event`(
@@ -94,8 +109,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_005849_00142_ae9vb', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_010315_00016_465my', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

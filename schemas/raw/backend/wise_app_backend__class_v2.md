@@ -1,18 +1,30 @@
 ---
-database: backend
+canonical: backend
 table: wise_app_backend__class_v2
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/production/wise-app-backend/class
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:06:03+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:06:04+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.wise_app_backend__class_v2`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -44,6 +56,7 @@ sampled_rows: 0
 | `__v` | `string` | from deserializer |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.wise_app_backend__class_v2`(

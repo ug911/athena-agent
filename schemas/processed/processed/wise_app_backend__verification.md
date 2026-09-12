@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__verification
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/verification/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:17:58+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:29:52+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__verification`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -29,21 +43,21 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `verified`: `true (×173)`, `false (×27)`
+- `verified`: `true (×165)`, `false (×35)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69e6c397fb018e2ab21b8e64`, `69e6c3a0c9acb8469549692c`, `69e6c3c0c9acb84695496b85`
+- `$oid` — `string`  e.g. `6a713160e94a1b7d0e503133`, `6a7131921e1945fdebe8210e`, `6a7132132244b4f38bc29bdc`
 
 ### `attempts`
 
-- `$numberint` — `string`  e.g. `1`, `1`, `1`
+- `$numberint` — `string`  e.g. `0`, `1`, `1`
 
 ### `resendcount`
 
@@ -52,23 +66,25 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `resendwindow`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1776731151727`, `1776731160888`, `1776731192572`
+  - `$numberlong` — `string`  e.g. `1785803224802`, `1785803274212`, `1785803403203`
 
 ### `expirytime`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1776731211727`, `1776731220888`, `1776731252572`
+  - `$numberlong` — `string`  e.g. `1785803284802`, `1785803334212`, `1785803463203`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1776731031728`, `1776731040889`, `1776731072572`
+  - `$numberlong` — `string`  e.g. `1785803104802`, `1785803154213`, `1785803283203`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__verification`(
@@ -97,8 +113,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_012212_00106_vbrfg', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_013231_00007_asrqz', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

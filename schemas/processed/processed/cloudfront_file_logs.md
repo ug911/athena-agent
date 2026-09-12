@@ -1,19 +1,31 @@
 ---
-database: processed
+canonical: processed
 table: cloudfront_file_logs
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/production/cloudfront-file-logs
 format: INPUTFORMAT
 partition_keys:
 - dt
-last_synced: '2026-04-28T07:10:27+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:14:50+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.cloudfront_file_logs`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -56,28 +68,29 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `location`: `DEL51-P2 (×72)`, `CCU50-P3 (×48)`, `BOM78-P5 (×22)`, `SIN52-P1 (×14)`, `MAA51-C1 (×12)`, `BLR50-P3 (×9)`, `HYD57-P1 (×7)`, `PNQ50-P3 (×7)`, `MRS52-C1 (×4)`, `BAH53-C1 (×3)`, `NRT20-P2 (×2)`
+- `location`: `DEL51-P2 (×84)`, `BOM78-P5 (×30)`, `CCU50-P3 (×29)`, `MAA51-C1 (×26)`, `PNQ50-P3 (×10)`, `HYD57-P1 (×8)`, `MCI50-P2 (×6)`, `BLR50-P3 (×3)`, `PHL51-P1 (×2)`, `DFW55-C3 (×1)`, `DXB53-P2 (×1)`
 - `method`: `GET (×200)`
 - `host`: `d3odzk9kxo0zti.cloudfront.net (×200)`
-- `referrer`: `- (×142)`, `https://web.wise.live/ (×10)`, `https://imageclasses.onlineclass.site/ (×8)`, `https://krashicoaching.onlineclass.site/ (×6)`, `https://maariftutorial.onlineclass.site/ (×5)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/655c50f300350183ba55ca06/upload_1681de94-0513-426a-b020-89b3cf502473.pdf (×4)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/6177a669e74b7880dd28b8cd/upload_5b8701d8-e564-489d-bb75-19b2dc6dec72.pdf (×4)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.css (×4)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/617d1805661a6b8185083ec6/upload_89e138ca-91e3-48eb-9e1a-4a1aac04280c.pdf (×3)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_e2f4cdaf-f9d1-4cde-9ff8-fcfa5fc3d892.pdf (×3)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c6089b61-cd05-495b-a9ec-fb8769c9bb24.pdf (×2)`, `https://prayastutorialabhyas.onlineclass.site/ (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/6177a669e74b7880dd28b8cd/upload_9714f689-8612-4291-adcb-1234a031ea5a.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/6314187d2cdfac7fd631247d/upload_2f67eeff-22b4-4d17-8743-cce103c7e721.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_7e196efc-fa26-43c4-b2e1-0cdec2de4406.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_4dc60205-7b5b-468a-a13e-0038f0c0084b.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/655c50f300350183ba55ca06/upload_c4b58b59-e768-4658-8599-288aec28e2d1.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_ebc67549-595a-496c-b358-8b122f835c48.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_a851e5fe-c84a-4571-be17-454e0e5c1d3c.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_64c9318f-79f1-434f-9f76-7906a7f6e0eb.pdf (×1)`
-- `query_string`: `- (×180)`, `thumbnail=true (×10)`, `file=https://files.wiseapp.live/upload_files/617d1805661a6b8185083ec6/upload_89e138ca-91e3-48eb-9e1a-4a1aac04280c.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/6177a669e74b7880dd28b8cd/upload_9714f689-8612-4291-adcb-1234a031ea5a.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/6177a669e74b7880dd28b8cd/upload_5b8701d8-e564-489d-bb75-19b2dc6dec72.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/655c50f300350183ba55ca06/upload_1681de94-0513-426a-b020-89b3cf502473.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_7e196efc-fa26-43c4-b2e1-0cdec2de4406.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_ebc67549-595a-496c-b358-8b122f835c48.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_a851e5fe-c84a-4571-be17-454e0e5c1d3c.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_64c9318f-79f1-434f-9f76-7906a7f6e0eb.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_e2f4cdaf-f9d1-4cde-9ff8-fcfa5fc3d892.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c6089b61-cd05-495b-a9ec-fb8769c9bb24.pdf (×1)`
+- `referrer`: `- (×144)`, `https://web.wise.live/ (×11)`, `https://imageclasses.onlineclass.site/ (×9)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_a278201f-0f7e-4b94-bcd0-9a171aec3f9f.pdf (×7)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_1ff23115-887a-42e6-99a5-12f8c640e579.pdf (×7)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_60937be9-ea3c-485f-b541-729be3a14f70.pdf (×4)`, `https://maariftutorial.onlineclass.site/ (×3)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c8750671-3650-4510-b7da-2884a8405170.pdf (×3)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_378d1064-b745-48b0-a85a-abb994457802.pdf (×2)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64ba7fdd4a55061556db9d38/upload_354435a7-83d4-459e-a55d-81bb6e94331f.pdf (×2)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_2800facb-ecd8-449d-a149-476df8390e8b.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/650d6d70e8efbea4d50610e3/upload_76563d27-f4ee-4931-9209-f00f6d6a1c7e.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64ec4db7fdaaf87e20c60239/upload_46f8bdae-1e18-43c2-bac2-f8755754fd2e.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_f0d9314a-293b-42ba-8ad9-87a89cd5a25b.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c93b7fa0-3223-4c52-8c19-11a1bedfc063.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/60d022f3b5c4302429b72265/upload_aad047da-4d3b-46bc-8af7-f362141990c7.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/642a46ccd12e9c7bad1a76ce/upload_e80b020b-2c7d-4d7e-a8fc-e91ad20c26f6.pdf (×1)`, `https://files.wiseapp.live/external_assets/pdf.js/generic-legacy/web/viewer.html?file=https://files.wiseapp.live/upload_files/617d1805661a6b8185083ec6/upload_a79c7f2d-3c8f-44f2-99c7-432a3b2943ba.pdf (×1)`
+- `query_string`: `- (×180)`, `thumbnail=true (×8)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_1ff23115-887a-42e6-99a5-12f8c640e579.pdf (×2)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_378d1064-b745-48b0-a85a-abb994457802.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_2800facb-ecd8-449d-a149-476df8390e8b.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/652f9db628b196f11b35814a/upload_d35705ad-b3ef-4806-a9e0-ece533658948.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/650d6d70e8efbea4d50610e3/upload_76563d27-f4ee-4931-9209-f00f6d6a1c7e.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_f0d9314a-293b-42ba-8ad9-87a89cd5a25b.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c93b7fa0-3223-4c52-8c19-11a1bedfc063.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_c8750671-3650-4510-b7da-2884a8405170.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64ba7fdd4a55061556db9d38/upload_354435a7-83d4-459e-a55d-81bb6e94331f.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/64a9262fcc13ad0d2f0f5bd3/upload_a278201f-0f7e-4b94-bcd0-9a171aec3f9f.pdf (×1)`, `file=https://files.wiseapp.live/upload_files/617d1805661a6b8185083ec6/upload_a79c7f2d-3c8f-44f2-99c7-432a3b2943ba.pdf (×1)`
 - `cookie`: `- (×200)`
-- `result_type`: `Hit (×165)`, `Miss (×22)`, `RefreshHit (×10)`, `Error (×3)`
+- `result_type`: `Hit (×154)`, `Miss (×33)`, `RefreshHit (×12)`, `Error (×1)`
 - `host_header`: `files.wiseapp.live (×200)`
 - `request_protocol`: `https (×200)`
 - `xforwarded_for`: `- (×200)`
-- `ssl_protocol`: `TLSv1.3 (×192)`, `TLSv1.2 (×8)`
-- `ssl_cipher`: `TLS_AES_128_GCM_SHA256 (×192)`, `ECDHE-RSA-AES128-GCM-SHA256 (×8)`
-- `response_result_type`: `Hit (×166)`, `Miss (×22)`, `RefreshHit (×10)`, `Error (×2)`
-- `http_version`: `HTTP/2.0 (×199)`, `HTTP/1.1 (×1)`
+- `ssl_protocol`: `TLSv1.3 (×194)`, `TLSv1.2 (×6)`
+- `ssl_cipher`: `TLS_AES_128_GCM_SHA256 (×194)`, `ECDHE-RSA-AES128-GCM-SHA256 (×6)`
+- `response_result_type`: `Hit (×155)`, `Miss (×33)`, `RefreshHit (×12)`
+- `http_version`: `HTTP/2.0 (×190)`, `HTTP/1.1 (×10)`
 - `fle_status`: `- (×200)`
-- `x_edge_detailed_result_type`: `Hit (×165)`, `Miss (×22)`, `RefreshHit (×10)`, `ClientHungUpRequest (×2)`, `ClientCommError (×1)`
-- `sc_content_type`: `image/jpeg (×55)`, `application/pdf (×54)`, `image/png (×30)`, `- (×25)`, `text/html (×10)`, `image (×9)`, `image/avif (×5)`, `image/svg+xml (×4)`, `application/javascript (×3)`, `text/css (×2)`, `binary/octet-stream (×2)`, `application/vnd.openxmlformats-officedocument.presentationml.presentation (×1)`
-- `dt`: `2023-11-22 (×185)`, `2023-11-23 (×15)`
+- `x_edge_detailed_result_type`: `Hit (×154)`, `Miss (×33)`, `RefreshHit (×12)`, `ClientCommError (×1)`
+- `sc_content_type`: `image/jpeg (×46)`, `image/png (×44)`, `- (×41)`, `application/pdf (×40)`, `text/html (×12)`, `image (×8)`, `image/svg+xml (×3)`, `application/vnd.openxmlformats-officedocument.wordprocessingml.document (×2)`, `image/avif (×1)`, `unknown (×1)`, `application/javascript (×1)`, `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (×1)`
+- `dt`: `2023-11-22 (×153)`, `2023-10-27 (×47)`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.cloudfront_file_logs`(

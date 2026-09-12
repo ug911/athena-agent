@@ -1,18 +1,32 @@
 ---
-database: backend
+canonical: backend
 table: wise_app_backend__event
 type: table
 layer: raw
+regions:
+  in: backend
+  na: backend_na
 location: s3://[REDACTED-BUCKET]/production/wise-app-backend/event
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:06:41+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:07:26+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.wise_app_backend__event`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+| `NA` | `backend_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -24,6 +38,8 @@ sampled_rows: 0
 | `__v` | `string` | from deserializer |
 
 ## DDL
+
+_From `IN` (backend)._
 
 ```sql
 CREATE EXTERNAL TABLE `backend.wise_app_backend__event`(

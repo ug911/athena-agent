@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: mat_zoomers
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/processed/materialized/zoomers/process_date=2021-08-11_v2/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:11:38+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:17:19+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.mat_zoomers`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -34,6 +46,7 @@ sampled_rows: 0
 | `participants` | `bigint` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.mat_zoomers`(

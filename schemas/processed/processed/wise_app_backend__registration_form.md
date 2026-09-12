@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__registration_form
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/registration_form/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:55+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:27:32+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__registration_form`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,21 +41,21 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `enabled`: `true (×189)`, `false (×11)`
+- `enabled`: `true (×153)`, `false (×47)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `689054b30862ffb62a349bc1`, `689055200862ffb62a34d48d`, `689073d10862ffb62a46541f`
+- `$oid` — `string`  e.g. `65b8e17eab16cf246ea8b8d9`, `65b8ec5dab16cf246eac4b0b`, `65b92f93ab16cf246ec4d496`
 
 ### `instituteid`
 
-- `$oid` — `string`  e.g. `684c18285e6aca98ad2c2b09`, `684c18285e6aca98ad2c2b09`, `689047b6c114a704a08ab273`
+- `$oid` — `string`  e.g. `63a4008dc8d767a361f9bc95`, `646357316c7cce316b175c03`, `6594f8f7771359ce61357154`
 
 ### `__v`
 
@@ -50,17 +64,24 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1754289331896`, `1754289440777`, `1754297297919`
+  - `$numberlong` — `string`  e.g. `1706615166736`, `1706617949193`, `1706635155004`
 
 ### `fields`
 
   - `[]` — `object`
     - `options` — `object`
-      - `a` — `string`  e.g. `Male`, `8`, `11+`
-      - `b` — `string`  e.g. `Female`, `9`, `GCSE`
-      - `c` — `string`  e.g. `Other`, `10`, `A-Levels`
-      - `d` — `string`  e.g. `6`, `Degree Level`, `UG Courses(CLAT/IPMAT/CUET)`
-      - `e` — `string`  e.g. `Other`, `Others`, `UG (CUET/IPMAT)`
+      - `1` — `string`  e.g. `Aug 2026`
+      - `2` — `string`  e.g. `Nov 2026`
+      - `3` — `string`  e.g. `Feb 2027`
+      - `4` — `string`  e.g. `May 2027`
+      - `5` — `string`  e.g. `Aug 2027`
+      - `6` — `string`  e.g. `Nov 2027`
+      - `7` — `string`  e.g. `Not Decided`
+      - `a` — `string`  e.g. `Male`, `Level I`, `4-6 Years`
+      - `b` — `string`  e.g. `Female`, `Level II`, `7-9 Years`
+      - `c` — `string`  e.g. `not prefer to say`, `Level III`, `10-14 Years`
+      - `d` — `string`  e.g. `14-18 Years`, `7th`, `Fourth`
+      - `e` — `string`  e.g. `18 and Above`, `VOCALS`, `Class 12`
     - `questionid` — `string`  e.g. `user_name`, `user_phone_number`, `user_email`
     - `questiontext` — `string`  e.g. `Name`, `Phone Number`, `Email`
     - `required` — `bool`  e.g. `true`, `true`, `true`
@@ -68,15 +89,18 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `settings`
 
-- `disableupdatingsubmission` — `bool`  e.g. `false`, `false`, `false`
+- `disableupdatingsubmission` — `bool`  e.g. `false`, `true`, `false`
+- `required` — `bool`  e.g. `true`, `true`, `true`
 - `requiredforstudents` — `bool`  e.g. `false`, `true`, `true`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1754289342241`, `1754289440777`, `1754297297919`
+  - `$numberlong` — `string`  e.g. `1721371512112`, `1711089979617`, `1738335882700`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__registration_form`(
@@ -103,8 +127,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_011732_00160_vxg48', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_012558_00025_xvt23', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

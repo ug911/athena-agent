@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__live_class_agendas
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/live_class_agendas/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:55+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:25:24+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__live_class_agendas`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,7 +41,7 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -73,19 +87,19 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
           - `options` — `object`
             - `a` — `object`
               - `image` — `string`  e.g. `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`
-              - `text` — `string`  e.g. `<p>2</p>`, `<p>1</p>`, `1`
+              - `text` — `string`  e.g. `<p>1</p>`, `<p>2</p>`, `1`
             - `b` — `object`
               - `image` — `string`  e.g. `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`
-              - `text` — `string`  e.g. `<p>3</p>`, `<p>2</p>`, `2`
+              - `text` — `string`  e.g. `<p>2</p>`, `<p>3</p>`, `2`
             - `c` — `object`
               - `image` — `string`  e.g. `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`
-              - `text` — `string`  e.g. `<p>4</p>`, `<p>3</p>`, `3`
+              - `text` — `string`  e.g. `<p>3</p>`, `<p>4</p>`, `3`
             - `d` — `object`
               - `image` — `string`  e.g. `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`, `https://files.wiseapp.live/proxy/18867d45576d8283d6fabb82406`
-              - `text` — `string`  e.g. `<p><span class="ql-formula" data-value="x = \frac{-b \pm \sq`, `<p>4</p>`, `4`
+              - `text` — `string`  e.g. `<p>4</p>`, `<p><span class="ql-formula" data-value="x = \frac{-b \pm \sq`, `4`
             - `e` — `object`
               - `text` — `string`  e.g. `<p>asdf</p>`
-          - `question` — `string`  e.g. `<p><span class="ql-formula" data-value="x = \frac{-b \pm \sq`, `<p>1</p>`, `What is the square root of 4?`
+          - `question` — `string`  e.g. `<p>1</p>`, `<p><span class="ql-formula" data-value="x = \frac{-b \pm \sq`, `What is the square root of 4?`
           - `questiontype` — `string`  e.g. `SINGLE_CORRECT_ANSWER`, `SINGLE_CORRECT_ANSWER`, `SINGLE_CORRECT_ANSWER`
           - `tags` — `array<string>|array<unknown>`
             - `[].data.questions[].tags[]` — `string`  e.g. `tag1`, `tag2`, `question_tag1`
@@ -126,6 +140,8 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ## DDL
 
+_From `IN` (processed)._
+
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__live_class_agendas`(
   `_id` string, 
@@ -151,8 +167,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_005824_00151_eutw6', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_010156_00007_ksphr', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

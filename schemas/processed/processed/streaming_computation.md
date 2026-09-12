@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: streaming_computation
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/production/streaming_computation/dt=2022-03-13/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:12:23+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:18:24+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.streaming_computation`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -23,6 +35,7 @@ sampled_rows: 0
 | `top_uris` | `array<array<string>>` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.streaming_computation`(

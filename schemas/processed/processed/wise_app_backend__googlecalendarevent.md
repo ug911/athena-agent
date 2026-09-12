@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__googlecalendarevent
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/GoogleCalendarEvent/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:08+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:23:46+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__googlecalendarevent`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -29,13 +43,13 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
 - `title`: `Gio | Physics Lessons (×195)`, `Live Session - 2nd Jun (×1)`, `Live Session - 30th Oct (Fractions) (×1)`, `Live Session - 25th Oct(Fractions) (×1)`, `Live Session - 19th Oct (Numbers) (×1)`, `Percentages (×1)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -62,14 +76,16 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `starttime`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1774918800000`, `1776128400000`, `1775523600000`
+  - `$numberlong` — `string`  e.g. `1785200400000`, `1787014800000`, `1785805200000`
 
 ### `endtime`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1774922400000`, `1776132000000`, `1775527200000`
+  - `$numberlong` — `string`  e.g. `1785204000000`, `1787018400000`, `1785808800000`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__googlecalendarevent`(
@@ -98,8 +114,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003457_00016_by5i2', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003722_00052_pxh62', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

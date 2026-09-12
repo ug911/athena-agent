@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__raw_zoom_attendance
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/RawZoomAttendance/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:43+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:27:08+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__raw_zoom_attendance`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -29,60 +43,62 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69c8b66f59c459d1a1c7aab6`, `69c8b6ae59c459d1a1c7f27e`, `69c8b6ca59c459d1a1c8119e`
+- `$oid` — `string`  e.g. `6a530b0dc43c79e7be5760c8`, `6a530b91c43c79e7be57abcf`, `6a530b93c43c79e7be57acb1`
 
 ### `participants`
 
   - `[]` — `object`
-    - `_id` — `string`  e.g. `6532b01fbd119009e0f09d72`, `67c2ec94f6b7db0bcc7328c9`, `67c2ec94f6b7db0bcc7328c9`
+    - `_id` — `string`  e.g. `6a1576f5ef3a8423b0bc2443`, `67d81e4a1212d98ff5967d1c`, `68344bcdb213e9ac49975e85`
     - `attentiveness_score` — `string`
-    - `customer_key` — `string`  e.g. `NA|Z_69b635d524bc16482270b0f0`, `NA|Z_69b635d524bc16482270b0f0`, `NA|Z_69b635d524bc16482270b0f0`
+    - `customer_key` — `string`  e.g. `NA|U_68344bcdb213e9ac49975e85`, `NA|Z_69902aad24f94ab33fb636fd`, `NA|U_65d868629981243ddd1f5626`
     - `duration` — `object`
-      - `$numberint` — `string`  e.g. `2656`, `19`, `2302`
+      - `$numberint` — `string`  e.g. `2020`, `2158`, `1546`
     - `failover` — `bool`  e.g. `false`, `false`, `false`
     - `groupid` — `string`  e.g. `voZoXlrPR56iDoyS5LfH9A`, `voZoXlrPR56iDoyS5LfH9A`, `voZoXlrPR56iDoyS5LfH9A`
-    - `id` — `string`  e.g. `0HzAt-voTTierJIXbn9DbA`, `NbqQkb-CRIu_i5Jyo1IaKw`, `1ldrAH7hQqiDdwPPJ-59OA`
+    - `id` — `string`  e.g. `RPzbceAyTUahTKzfpt0duQ`, `qGHpGberQqexbg6iMPlkNQ`, `oMDOc0j2RjWC_bkLWjyZgw`
     - `inmeetingduration` — `object`
-      - `$numberint` — `string`  e.g. `2656`, `0`, `2302`
-    - `join_time` — `string`  e.g. `2026-03-29T04:30:23Z`, `2026-03-29T04:35:57Z`, `2026-03-29T04:36:16Z`
-    - `leave_time` — `string`  e.g. `2026-03-29T05:14:39Z`, `2026-03-29T04:36:16Z`, `2026-03-29T05:14:38Z`
+      - `$numberint` — `string`  e.g. `2020`, `2158`, `1546`
+    - `join_time` — `string`  e.g. `2026-07-12T02:33:16Z`, `2026-07-12T02:52:29Z`, `2026-07-12T03:02:41Z`
+    - `leave_time` — `string`  e.g. `2026-07-12T03:06:56Z`, `2026-07-12T03:28:27Z`, `2026-07-12T03:28:27Z`
     - `name` — `string`  e.g. `[REDACTED]`
-    - `participant_user_id` — `string`  e.g. `0HzAt-voTTierJIXbn9DbA`, `NbqQkb-CRIu_i5Jyo1IaKw`, `1ldrAH7hQqiDdwPPJ-59OA`
-    - `status` — `string`  e.g. `in_meeting`, `in_waiting_room`, `in_meeting`
+    - `participant_user_id` — `string`  e.g. `RPzbceAyTUahTKzfpt0duQ`, `qGHpGberQqexbg6iMPlkNQ`, `oMDOc0j2RjWC_bkLWjyZgw`
+    - `status` — `string`  e.g. `in_meeting`, `in_meeting`, `in_meeting`
     - `user_email` — `string`  e.g. `[REDACTED]`
-    - `user_id` — `string`  e.g. `16778240`, `16794624`, `16795648`
+    - `user_id` — `string`  e.g. `16778240`, `16795648`, `16796672`
 
 ### `sessionid`
 
-- `$oid` — `string`  e.g. `69c8aadb311095a2a4073a49`, `69c8a8914480a9e27245016b`, `69c035ac7dcca283bdbca6fb`
+- `$oid` — `string`  e.g. `6a52fce18992102b2abe9c2f`, `6a52edb89931b85c92b374c4`, `6a5298588992102b2ab72b39`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `68f44db787df59118428b39e`, `687c6aae85ec6c4d6cca123f`, `69589b3d890dacdc0e34787b`
+- `$oid` — `string`  e.g. `6a392f44bcf77fe1a3da6170`, `69f46f18eb43931953cd07ba`, `69902b2b444ac4ea90c8f9a8`
 
 ### `totalrecords`
 
-- `$numberint` — `string`  e.g. `3`, `5`, `9`
+- `$numberint` — `string`  e.g. `4`, `14`, `2`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1774761583439`, `1774761646864`, `1774761674775`
+  - `$numberlong` — `string`  e.g. `1783827213512`, `1783827345428`, `1783827347371`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1774761583439`, `1774761646864`, `1774761674775`
+  - `$numberlong` — `string`  e.g. `1783827213512`, `1783827345428`, `1783827347371`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__raw_zoom_attendance`(
@@ -111,8 +127,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_011646_00196_np4ns', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_012830_00178_7sy8r', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

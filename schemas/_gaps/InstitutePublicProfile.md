@@ -5,7 +5,7 @@ mongo_field_count: 17
 athena_field_count: 50
 matched: 17
 coverage_pct: 100.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `InstitutePublicProfile` ↔ `processed.wise_app_backend__institute_public_profile`

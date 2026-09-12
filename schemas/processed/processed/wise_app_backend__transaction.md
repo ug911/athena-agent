@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__transaction
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/transaction/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:17:35+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:28:56+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__transaction`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -31,80 +45,75 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `type`: `INVOICE (×110)`, `PAYMENT (×71)`, `DISCOUNT (×8)`, `OFFLINE_PAYMENT (×7)`, `DISBURSAL (×4)`
-- `status`: `CHARGED (×80)`, `CREATED (×56)`, `CANCELLED (×56)`, `REJECTED (×8)`
-- `transactiontype`: `FEE_COLLECTION (×165)`, `WISE_PREMIUM (×35)`
+- `type`: `INVOICE (×111)`, `PAYMENT (×55)`, `DISBURSAL (×15)`, `OFFLINE_PAYMENT (×12)`, `DISCOUNT (×7)`
+- `status`: `CHARGED (×142)`, `CANCELLED (×23)`, `CREATED (×22)`, `REJECTED (×13)`
+- `transactiontype`: `FEE_COLLECTION (×200)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `604dafb1704a3100a3247f5d`, `604e05a3704a310e09248eee`, `604e05b7d16731a07f5deee5`
+- `$oid` — `string`  e.g. `602e452c669f02000768b485`, `602e452cd074c0000731b229`, `602e452ca84eb00007531bba`
 
 ### `metadata`
 
 - `amount_metadata` — `object`
   - `original_amount` — `object`
-    - `$numberint` — `string`  e.g. `1500`, `20500`, `400`
+    - `$numberint` — `string`  e.g. `4000`, `2500`, `1000`
   - `payout_amount` — `object`
-    - `$numberint` — `string`  e.g. `1500`, `20500`, `400`
+    - `$numberint` — `string`  e.g. `4000`, `2500`, `1000`
   - `transaction_fee` — `object`
     - `$numberint` — `string`  e.g. `0`, `0`, `0`
   - `transaction_fee_percent` — `object`
     - `$numberint` — `string`  e.g. `0`, `0`, `0`
 - `chargeon` — `object`
   - `$date` — `object`
-    - `$numberlong` — `string`  e.g. `1614470400000`, `1614470400000`, `1614470400000`
-- `classid` — `string`  e.g. `603e60c87cdf726c52828af4`, `604efa7377491e96907f6ee3`, `603e2e714d49b807d7ee926c`
-- `classname` — `string`  e.g. `🙏 तैयारी जीत की Academy`, `🙏 तैयारी जीत की Academy`, `🙏 तैयारी जीत की Academy`
-- `display` — `string`  e.g. `Paid using card`, `Paid using upi`, `Paid using upi`
-- `dueon` — `object|string`  e.g. `2021-03-28T12:33:26.274Z`, `2021-03-28T12:33:29.352Z`, `2021-03-28T12:36:17.880Z`
+    - `$numberlong` — `string`  e.g. `1612396800000`, `1612396800000`, `1612396800000`
+- `classid` — `string`  e.g. `5f24056820955e1aff464608`, `5f24056820955e1aff464608`, `5f24056820955e1aff464608`
+- `display` — `string`  e.g. `Paid using upi`, `Paid using upi`, `Paid using upi`
+- `dueon` — `object`
   - `$date` — `object`
-    - `$numberlong` — `string`  e.g. `1615736201578`, `1615792455239`, `1615796608489`
+    - `$numberlong` — `string`  e.g. `1613645100471`, `1613645100474`, `1613645100480`
 - `inactive` — `bool`  e.g. `true`, `true`, `true`
 - `index` — `object` (nullable)
-  - `$numberint` — `string`  e.g. `1`, `0`, `0`
-- `installmentid` — `string`  e.g. `62d1229c2fb90595a5b1e02a`, `62d1229c20c71721e1654962`, `62d1229c4d5a73254088d716`
-- `invoicenumber` — `string`  e.g. `INV-0001`, `INV-0010`, `INV-0012`
+  - `$numberint` — `string`  e.g. `1`, `1`, `1`
+- `installmentid` — `string`  e.g. `62d1229b2fb90574d5b1df3c`, `62d1229b2fb90574d5b1df3c`, `62d1229b2fb90574d5b1df3c`
+- `invoicenumber` — `string`  e.g. `INV-0001`, `INV-0002`, `INV-0001`
 - `invoicetype` — `string`  e.g. `FEE_COLLECTION`, `FEE_COLLECTION`, `FEE_COLLECTION`
 - `migrate` — `bool`  e.g. `true`, `true`, `true`
 - `migrated` — `bool`  e.g. `true`, `true`, `true`
-- `paid` — `bool`  e.g. `true`, `false`, `false`
+- `paid` — `bool`  e.g. `false`, `true`, `false`
 - `payment_ids` — `array<string>`
-  - `payment_ids[]` — `string`  e.g. `6052df4c2a36640082122077`, `605370722ac5af10670dda93`, `605371bb9a02ef57249ddbed`
-- `payment_order_id` — `string`  e.g. `604dafb1155ed90001cee8aa`, `6050516ae839d2000179d34a`, `60532e8e4731490001cad8c3`
-- `paymentoptionid` — `string`  e.g. `62d1229c2fb9050f26b1e029`, `62d1229c20c71778e8654961`, `62d1229c4d5a73202488d715`
-- `payout_id` — `string`  e.g. `60538134a2ee98000748830a`, `6054d2b4df51c900061595a8`, `6050de34df51c900061595a4`
+  - `payment_ids[]` — `string`  e.g. `602e52c7279efe76d9ac8c47`, `602f31aabb70506b51ba9aa3`, `602f3447bb70505ef5baa009`
+- `payment_order_id` — `string`  e.g. `602f34482dc9aa0001ea4f90`, `602f346b2dc9aa0001ea4f92`, `602f3a972d031b000161fb9a`
+- `paymentoptionid` — `string`  e.g. `62d1229b2fb9057a1cb1df3b`, `62d1229b2fb9057a1cb1df3b`, `62d1229b2fb9057a1cb1df3b`
+- `payout_id` — `string`  e.g. `602f4cd8552d6b00064dceee`, `602f4cd8552d6b00064dceed`, `602f593c552d6b00064dcef1`
 - `payout_metadata` — `object`
-  - `account_type` — `string`  e.g. `bank_account`, `bank_account`, `bank_account`
-  - `masked_account` — `string`  e.g. `XXXX3832`, `XXXX3832`, `XXXX1125`
-- `plantype` — `string`  e.g. `MONTHLY`, `MONTHLY`, `MONTHLY`
-- `reason_code` — `string`  e.g. `WISE_PREMIUM`, `WISE_PREMIUM`, `WISE_PREMIUM`
-- `reversed` — `bool`  e.g. `true`, `true`, `true`
-- `subject` — `string`  e.g. `Geography,polity and history`, `Geography,polity and history`, `Geography,polity and history`
+  - `account_type` — `string`  e.g. `bank_account`, `vpa`, `bank_account`
+  - `masked_account` — `string`  e.g. `XXXX8932`, `mube****@okhdfcbank`, `XXXX3933`
 
 ### `senderid`
 
-- `$oid` — `string`  e.g. `5f98222f5eb515bc46f56412`, `5f61a8e8d5bb2b3bcf1128b0`, `5f61a8e8d5bb2b3bcf1128b0`
+- `$oid` — `string`  e.g. `5f24052520955e1aff464606`, `5f24052520955e1aff464606`, `5f24052520955e1aff464606`
 
 ### `receiverid`
 
-- `$oid` — `string`  e.g. `601cccadac6b3b85b94c4412`, `5f60d29a1c52d12c3eb0a464`, `5f60d29a1c52d12c3eb0a464`
+- `$oid` — `string`  e.g. `5f27aeb3aa382f6247e4a568`, `5f15aca19aa2c74eba09a31f`, `5f114ad25a61c636f00bc1d8`
 
 ### `amount`
 
 - `currency` — `string`  e.g. `INR`, `INR`, `INR`
 - `value` — `object`
-  - `$numberint` — `string`  e.g. `90000`, `20000`, `200000`
+  - `$numberint` — `string`  e.g. `100000`, `100000`, `100000`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1615703985102`, `1615725987876`, `1615726007881`
+  - `$numberlong` — `string`  e.g. `1613645100471`, `1613645100474`, `1613645100480`
 
 ### `__v`
 
@@ -113,9 +122,11 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `chargedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1615736201578`, `1614470400000`, `1614470400000`
+  - `$numberlong` — `string`  e.g. `1613645100471`, `1613645100474`, `1613645100480`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__transaction`(
@@ -146,8 +157,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_011832_00043_nvfw5', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_012641_00097_9qgt8', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

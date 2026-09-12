@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: session_feedback_submission_student
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:12:16+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:18:14+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.session_feedback_submission_student`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,6 +41,8 @@ sampled_rows: 0
 | `updatedat` | `timestamp` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.session_feedback_submission_student AS

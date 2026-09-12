@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: upsc_live_classrooms
 type: view
 layer: processed
+regions:
+  in: processed
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:12:42+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:18:58+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.upsc_live_classrooms`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,6 +40,7 @@ sampled_rows: 0
 | `students` | `bigint` |  |
 
 ## DDL
+
 
 ```sql
 CREATE VIEW processed.upsc_live_classrooms AS

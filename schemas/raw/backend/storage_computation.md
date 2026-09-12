@@ -1,18 +1,30 @@
 ---
-database: backend
+canonical: backend
 table: storage_computation
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/storage_computation/date=2022-03-10
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:04:54+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:03:50+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.storage_computation`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -23,6 +35,7 @@ sampled_rows: 0
 | `user_id` | `string` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.storage_computation`(

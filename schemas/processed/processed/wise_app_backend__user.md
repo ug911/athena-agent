@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__user
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/user/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:17:39+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:29:03+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__user`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -55,18 +69,18 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
 - `block`: `false (×200)`
-- `profile`: `student (×155)`, `teacher (×31)`, `parent (×14)`
+- `profile`: `student (×179)`, `teacher (×16)`, `parent (×5)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `698edfd4b0e4b23fd555566c`, `6982ac3f1b7926abce7d869f`, `6982ae81b57123bd1ba85059`
+- `$oid` — `string`  e.g. `697a096eaf7fbc5ac858d657`, `697a0984af7fbc5ac858e8da`, `697a0999af7fbc5ac858ff8b`
 
 ### `publicprofile`
 
@@ -85,18 +99,18 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1770971092139`, `1770171455067`, `1770172033087`
+  - `$numberlong` — `string`  e.g. `1769605486749`, `1769605508416`, `1769605529816`
 
 ### `notificationtokens`
 
   - `[]` — `object`
     - `createdat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1770971400838`, `1770470756616`, `1777124465158`
-    - `platform` — `string`  e.g. `android`, `android`, `android`
-    - `projectid` — `string`  e.g. `wise-ios-wl`, `wise-ios-wl`, `wise-ios-wl`
+        - `$numberlong` — `string`  e.g. `1770558742313`, `1769606014084`, `1769606160692`
+    - `platform` — `string`  e.g. `android`, `ios`, `android`
+    - `projectid` — `string`  e.g. `wise-ios-wl`, `whitelabel2-c27d7`, `wise-ios-wl`
     - `sessionid` — `object`
-      - `$oid` — `string`  e.g. `698ee1069cf02d744142ed3f`, `69873d60df66cd7ec510883c`, `69ecc33d94bc942cd1f48074`
+      - `$oid` — `string`  e.g. `698895146d88f1c24e54e590`, `697a0b7cdb625933f0f5a1ca`, `697a0c0ba142aaf08e11d0a7`
     - `token` — `string`  e.g. `[REDACTED]`
     - `type` — `string`  e.g. `push`, `push`, `push`
 
@@ -107,59 +121,55 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `lastloggedinon`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1775406084301`, `1770190188863`, `1770172033105`
+  - `$numberlong` — `string`  e.g. `1786248315306`, `1769606904468`, `1777474928363`
 
 ### `acquiredby`
 
-- `$oid` — `string`  e.g. `65c9cb4799d4bfaa0c260207`, `63b2d8a693b4da8455eff514`, `63b2d8a693b4da8455eff514`
+- `$oid` — `string`  e.g. `64dcc3f2cacfaa35815f90c8`, `617ad86e5bed0c468fae3c09`, `64dcc3f2cacfaa35815f90c8`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1775406084301`, `1770193087489`, `1770172033105`
+  - `$numberlong` — `string`  e.g. `1786248315306`, `1769606904468`, `1769605529832`
 
 ### `identities`
 
   - `[]` — `object`
-    - `identifier` — `string`  e.g. `gExGEbW83rdAQTCTObv3NFtbTxg2`, `[REDACTED-PHONE]`, `1770193087488_50c56077d8becac589a4efdad333a587`
-    - `provider` — `string`  e.g. `FIREBASE_ID`, `PHONE_NUMBER`, `FIREBASE_ID`
+    - `identifier` — `string`  e.g. `6461432`, `6342461`, `bmbUm2yIjIMUWLkeFYhox3GAYVh1`
+    - `provider` — `string`  e.g. `VENDOR_USER_ID`, `VENDOR_USER_ID`, `FIREBASE_ID`
     - `providermetadata` — `object`
       - `displayname` — `string`  e.g. `[REDACTED]`
       - `email` — `string`  e.g. `[REDACTED]`
-      - `photourl` — `string`  e.g. `https://lh3.googleusercontent.com/a/ACg8ocJpfbdyuWudVffXEbEA`, `https://lh3.googleusercontent.com/a/ACg8ocKrAD7eBPro7Bn5cmF9`, `https://lh3.googleusercontent.com/a/ACg8ocIyrhqAGrqSQwwJvR-n`
+      - `photourl` — `string`  e.g. `https://lh3.googleusercontent.com/a/ACg8ocLynxUQzM9_YhjjL3Oi`, `https://lh3.googleusercontent.com/a/ACg8ocLoO1VCFDo7bsjuCwuS`, `https://lh3.googleusercontent.com/a/ACg8ocKKWSUCwrDslJ_mEc3U`
       - `providerid` — `string`  e.g. `google.com`, `google.com`, `google.com`
-      - `uid` — `string`  e.g. `117815359944378628780`, `103923077803116488031`, `117807382925236385181`
+      - `uid` — `string`  e.g. `105923805156712991713`, `113716172055171011514`, `101345585819800858393`
 
 ### `referrer`
 
-- `$oid` — `string`  e.g. `65d868629981243ddd1f5626`, `68b97e5969bf3cf7e1f7aada`, `6801059fcdd211ec15a16a2d`
+- `$oid` — `string`  e.g. `692067aac05630afe58d1388`, `692067aac05630afe58d1388`, `65c9cb4799d4bfaa0c260207`
 
 ### `sessions`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `698edfd4d148845c8a3e0aa1`, `698ee1069cf02d744142ed3f`, `699070d2569e897dbc528699`
+      - `$oid` — `string`  e.g. `6a75eb2a0339d6687e359252`, `6a75eb6c6cb961dd579663fd`, `6a75eb93e79f3e8291c90ac1`
     - `createdat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1770971092154`, `1770971398487`, `1771073746317`
-    - `deviceid` — `string`  e.g. `fccd84d8-0bd4-4128-ada3-855836c4f915`, `c81a558e-6da0-4172-b5c7-f109821e90d6`, `fccd84d8-0bd4-4128-ada3-855836c4f915`
-    - `devicename` — `string`  e.g. `Chrome Android`, `Unknown`, `Chrome Android`
-    - `identity` — `string`  e.g. `FIREBASE_ID`, `FIREBASE_ID`, `DIRECT_LOGIN_LINK`
-    - `ip` — `string`  e.g. `122.170.195.214`, `122.170.195.214`, `117.99.249.107`
-    - `platform` — `string`  e.g. `web`, `android`, `web`
+        - `$numberlong` — `string`  e.g. `1786112810658`, `1786112876325`, `1786112915601`
+    - `deviceid` — `string`  e.g. `5e1f3353-8c90-4139-94a7-209719605dd5`, `c518a608-b876-45ec-9fda-0ddf2c7eaeea`, `c518a608-b876-45ec-9fda-0ddf2c7eaeea`
+    - `devicename` — `string`  e.g. `Chrome WebView Android`, `Chrome Linux`, `Chrome Linux`
+    - `identity` — `string`  e.g. `VENDOR_USER_ID`, `VENDOR_USER_ID`, `VENDOR_USER_ID`
+    - `ip` — `string`  e.g. `122.170.223.81`, `122.170.223.81`, `122.170.223.81`
+    - `platform` — `string`  e.g. `android`, `web`, `web`
     - `token` — `string`  e.g. `[REDACTED]`
 
 ### `settings`
 
-- `sessionsettings` — `object`
-  - `advanceslotbookingbuffer` — `object`
-    - `$numberint` — `string`  e.g. `60`, `60`, `2880`
-  - `allowonlyconsecutiveslotbooking` — `bool`  e.g. `true`, `true`, `true`
-  - `blockedadjacentslotbuffer` — `object`
-    - `$numberint` — `string`  e.g. `30`, `60`, `5`
-- `timezone` — `string`  e.g. `Asia/Kolkata`, `Asia/Kolkata`, `Asia/Kolkata`
+- `timezone` — `string`  e.g. `Asia/Kolkata`, `Asia/Kolkata`, `Etc/GMT-3`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__user`(
@@ -214,8 +224,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_011905_00061_iuhsy', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_012910_00097_kgadn', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

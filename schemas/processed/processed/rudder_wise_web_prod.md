@@ -1,19 +1,31 @@
 ---
-database: processed
+canonical: processed
 table: rudder_wise_web_prod
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/processed/rudder_lens
 format: INPUTFORMAT
 partition_keys:
 - dt
-last_synced: '2026-04-28T07:12:10+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:18:03+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.rudder_wise_web_prod`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -50,17 +62,17 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `type`: `page (×136)`, `track (×59)`, `identify (×5)`
-- `event`: `Page View (×20)`, `timeline-card-clicked (×6)`, `refresh (×5)`, `start_test_link (×3)`, `View answer key & Your responses (×3)`, `omr_answer (×3)`, `display_start_time (×1)`, `update-user-profile (×1)`
+- `type`: `page (×181)`, `track (×14)`, `identify (×5)`
 - `channel`: `web (×200)`
-- `context_app_version`: `2.44.0 (×153)`, `1.33.0 (×47)`
-- `context_timezone`: `GMT+0530 (×139)`, `GMT-0600 (×4)`, `GMT+0400 (×3)`, `GMT+0800 (×3)`, `GMT-0800 (×2)`, `GMT+0300 (×1)`, `GMT-0500 (×1)`
-- `context_locale`: `en-IN (×95)`, `en-US (×68)`, `en-GB (×35)`, `ar-EG (×1)`, `en-in (×1)`
+- `context_app_version`: `2.44.0 (×188)`, `1.33.0 (×11)`, `2.43.0 (×1)`
+- `context_timezone`: `GMT+0530 (×177)`, `GMT+0400 (×4)`, `GMT+0300 (×2)`, `GMT-0800 (×2)`, `GMT+0800 (×2)`, `GMT-0600 (×1)`
+- `context_locale`: `en-IN (×91)`, `en-US (×65)`, `en-GB (×42)`, `ur (×1)`, `en-in (×1)`
 - `dt`: `2023-11-13 (×200)`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.rudder_wise_web_prod`(

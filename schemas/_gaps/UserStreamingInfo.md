@@ -5,7 +5,7 @@ mongo_field_count: 19
 athena_field_count: 29
 matched: 11
 coverage_pct: 57.9
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `UserStreamingInfo` ↔ `processed.wise_app_backend__user_streaming_info`

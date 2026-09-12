@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_new_signups
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise_new_signups/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:21+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:31:06+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_new_signups`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,6 +41,8 @@ sampled_rows: 200
 | `students` | `bigint` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_new_signups`(
@@ -54,8 +70,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_015627_00043_ainc2', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_021214_00097_ptjrg', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

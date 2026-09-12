@@ -2,10 +2,10 @@
 collection: "announcements"
 athena_table: "wise_app_backend__announcements"
 mongo_field_count: 26
-athena_field_count: 49
+athena_field_count: 48
 matched: 14
 coverage_pct: 53.8
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `announcements` ↔ `processed.wise_app_backend__announcements`
@@ -62,7 +62,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `comments.[].createdat.$date.$numberlong` | `string` | JSON path |
 | `comments.[].deleted` | `bool` | JSON path |
 | `comments.[].deletedby` | `string` | JSON path |
-| `comments.[].edited` | `bool` | JSON path |
 | `comments.[].editedat` | `object` | JSON path |
 | `comments.[].editedat.$date` | `object` | JSON path |
 | `comments.[].editedat.$date.$numberlong` | `string` | JSON path |

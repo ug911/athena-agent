@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_user_stats
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise_user_stats/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:25+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:31:23+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_user_stats`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -45,12 +59,14 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `does owner use their own zoom?`: `false (×195)`, `true (×4)`
-- `churn status`: `VERY HIGH (No meetings for > 2 weeks) (×8)`, `VERY HIGH (Meetings dropped to < 10%) (×5)`, `HIGH (Meetings dropped to < 25%) (×3)`, `MEDIUM (Meetings dropped to < 50%) (×2)`
+- `does owner use their own zoom?`: `false (×192)`, `true (×7)`
+- `churn status`: `VERY HIGH (No meetings for > 2 weeks) (×7)`, `VERY HIGH (Meetings dropped to < 10%) (×4)`, `MEDIUM (Meetings dropped to < 50%) (×4)`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_user_stats`(
@@ -95,8 +111,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_015649_00043_jnr2s', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_021237_00142_yrqt7', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

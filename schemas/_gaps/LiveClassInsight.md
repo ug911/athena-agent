@@ -2,10 +2,10 @@
 collection: "LiveClassInsight"
 athena_table: "wise_app_backend__liveclassinsight"
 mongo_field_count: 66
-athena_field_count: 47
+athena_field_count: 44
 matched: 24
 coverage_pct: 36.4
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `LiveClassInsight` ↔ `processed.wise_app_backend__liveclassinsight`
@@ -88,9 +88,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `participants.[]` | `object` | JSON path |
 | `participants.[].attendanceduration.$numberint` | `string` | JSON path |
 | `participants.[].attentiveduration.$numberint` | `string` | JSON path |
-| `participants.[].customerkey` | `string` | JSON path |
-| `participants.[].iszoomuser` | `bool` | JSON path |
 | `participants.[].speakingduration.$numberint` | `string` | JSON path |
 | `participants.[].videoonduration.$numberint` | `string` | JSON path |
-| `participants.[].zoomuserid` | `string` | JSON path |
 | `__v.$numberint` | `string` | JSON path |

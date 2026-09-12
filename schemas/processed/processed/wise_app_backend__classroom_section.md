@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__classroom_section
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/classroom_section/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:34+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:22:35+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__classroom_section`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,42 +41,44 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `6463559c455c4a5106d33797`, `646357326c7cce77b1175c09`, `646358096c7cce2d52175ee3`
+- `$oid` — `string`  e.g. `65facb5e56cc197e4868e6d8`, `65fae73e9a41ad45fa44cc02`, `65fb2e81c435b160e0fe153b`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `6463559c73240d281d18e23f`, `646357316c7cce405c175c04`, `646357316c7cce405c175c04`
+- `$oid` — `string`  e.g. `64eeeb0eff3b0606f4871eaf`, `65e809f03a487963f65e8b83`, `6585aa0fef6a94765e7b4154`
 
 ### `sortkey`
 
-- `$numberint` — `string`  e.g. `1`, `1`, `2`
+- `$numberint` — `string`  e.g. `2`, `5`, `2`
 
 ### `entities`
 
   - `[]` — `object`
     - `entityid` — `object`
-      - `$oid` — `string`  e.g. `646355bb8a6da828f0576ac3`, `646dfaf40fded9486a4dfc66`, `646dfb8dff666ded5f04793e`
+      - `$oid` — `string`  e.g. `65facb7440f45fa9ea23230c`, `65fae75a552e381ba42115a0`, `65fb2e974f8c0a53a9245083`
     - `entitytype` — `string`  e.g. `RESOURCE`, `RESOURCE`, `RESOURCE`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1684231580856`, `1684231986445`, `1684232201770`
+  - `$numberlong` — `string`  e.g. `1710934878062`, `1710942014097`, `1710960257724`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1685430185202`, `1714030094686`, `1710783673414`
+  - `$numberlong` — `string`  e.g. `1710934900690`, `1710942042792`, `1710960305950`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__classroom_section`(
@@ -89,8 +105,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003123_00025_n9cwa', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003250_00007_5ej78', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

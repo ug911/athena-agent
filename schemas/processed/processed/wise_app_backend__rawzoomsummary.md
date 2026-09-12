@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__rawzoomsummary
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/RawZoomSummary/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:51+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:27:24+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__rawzoomsummary`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -24,40 +38,42 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `693bbfdbc05630afe596e711`, `693bbfddc05630afe596e81b`, `693bbfe5c05630afe596ed80`
+- `$oid` — `string`  e.g. `69b129b813cc1073afefc55d`, `69b13aa913cc1073af01d1f3`, `69b129bc13cc1073afefca6e`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1765523419744`, `1765523421402`, `1765523429280`
+  - `$numberlong` — `string`  e.g. `1773218232130`, `1773222569666`, `1773218236128`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1765523419744`, `1765523421402`, `1765523429280`
+  - `$numberlong` — `string`  e.g. `1773218232189`, `1773222569680`, `1773221398351`
 
 ### `sessionid`
 
-- `$oid` — `string`  e.g. `693bbcae7a8b51d228a705b7`, `693bbc94af2de4e24f499dc2`, `6932fd4664462e176fa30101`
+- `$oid` — `string`  e.g. `69b11cbf4a1aeef703f8f228`, `6992ced6ca0c44da2f9cf45e`, `6998147c512d5e87c7155283`
 
 ### `summaries`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `693bbfdbaf2de4e24f4a2083`, `693bbfdd72e8ff63aab2629a`, `693bbfe57a8b51d228a7781b`
-    - `meetinguuid` — `string`  e.g. `zYCUlkeGTsqHkG/bbuhlFw==`, `sfNWaWinRHu2B+1myy7HKQ==`, `cVYh1ZZ3RlmyU/nctCHKpw==`
+      - `$oid` — `string`  e.g. `69b129b8ceab13003ba439e6`, `69b129b8e222ac24cb98d85e`, `69b13aa9e222ac24cb9c2c7e`
+    - `meetinguuid` — `string`  e.g. `ENcNIUkKRgWyGspgZ2dmcg==`, `ENcNIUkKRgWyGspgZ2dmcg==`, `q70XS5qIShunSxybKTiXTg==`
     - `summarydetails` — `array<object>|array<unknown>`
       - `[].summarydetails[]` — `object`
-        - `label` — `string`  e.g. `No Man's Sky Success Acknowledgment`, `LEGO Batman and Game Awards`, `Printing Options and Pre-test Completion`
-        - `summary` — `string`  e.g. `Aryoko expressed gratitude on behalf of the Hello Games team`, `Aryoko hosted a show featuring Batman and announced the upco`, `The meeting focused on clarifying printing options and discu`
-    - `summaryoverview` — `string`  e.g. `Aryoko represented the Hello Games team to express gratitude`, `The meeting began with a discussion of printing options and `, `Leanne discussed Mass Life Science, but the details of the c`
-    - `summarytitle` — `string`  e.g. `Meeting Summary for Shaima Mustafa Fawzi (International Scho`, `Meeting Summary for Aryoko Aditya Nugroho (International Sch`, `Meeting Summary for Jasmine Kaur (5 days/week, 45 mins)`
+        - `label` — `string`  e.g. `Presentation Team Assignments Discussion`, `Team PPT Presentation Surprise Planning`, `Student Behavior and Presentation Management`
+        - `summary` — `string`  e.g. `The team discussed preparations for an upcoming presentation`, `The meeting focused on planning a surprise activity involvin`, `The meeting focused on managing student behavior and assigni`
+    - `summaryoverview` — `string`  e.g. `The meeting primarily focused on planning a surprise present`, `The meeting primarily focused on planning a surprise present`, `In this tutoring session, Divya and Ava worked through math `
+    - `summarytitle` — `string`  e.g. `Meeting Summary for Six G Teacher (Grade 6G April Batch 2025`, `Meeting Summary for Six G Teacher (Grade 6G April Batch 2025`, `Meeting Summary for Ava (3 days/week)`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__rawzoomsummary`(
@@ -81,10 +97,20 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_012947_00232_axhk6', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_014247_00052_df3qm', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->
 
 <!-- Add human notes (descriptions, gotchas, example filters) below this line. -->
+
+### AI summary availability
+
+- **One row per (session, summary batch); `summaries` is a JSON array.** A row can exist with an empty array, so presence of a row is *not* proof a summary was generated. Gate on `summaries IS NOT NULL AND summaries <> '[]'`.
+- Join to sessions on `json_extract_scalar(sessionid, '$["$oid"]') = zoomers_v3.zoom_id` (or `wise_app_backend__zoom._id` `$oid`).
+- Sibling artifact tables keyed the same way: `wise_app_backend__rawsessiontranscript` (VTT transcript files) and
+  `wise_app_backend__session_ai_data` (AI revision notes + generated quiz ids). All three are independent —
+  a session can have any subset.
+- Coverage as of Aug 2026: ~93% of IN tutors running 4+ sessions/week have summaries; transcripts lag
+  (~86% in IN, materially lower in NA). Summary coverage > transcript coverage in both regions.

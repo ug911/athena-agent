@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: webapp__payout_users
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/webapp/payout_users/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:13:21+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:20:07+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.webapp__payout_users`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,31 +39,33 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `69b7fff4fa0c76000164d2ee`, `6982e735624652000197d196`, `695b70c6b32d9900017e57a7`
+- `$oid` — `string`  e.g. `6a69af91b151c70001f5972d`, `6a047b5f24d71500017af76c`, `69b7fff4fa0c76000164d2ee`
 
 ### `user_id`
 
-- `$oid` — `string`  e.g. `658a4aa59e3651f30527edd9`, `68ecbef3b9932c954a59df74`, `6618d87ba46d5d07b4d87f42`
+- `$oid` — `string`  e.g. `6a69a791002fa65af6ef1ab9`, `6a00bc278b92db95a279be8b`, `658a4aa59e3651f30527edd9`
 
 ### `updated_at`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1773666293547`, `1770186549896`, `1767600327211`
+  - `$numberlong` — `string`  e.g. `1785311122559`, `1778678623991`, `1773666293547`
 
 ### `created_at`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1773666292791`, `1770186549188`, `1767600326533`
+  - `$numberlong` — `string`  e.g. `1785311121717`, `1778678623262`, `1773666292791`
 
 ### `primary_payout_account_id`
 
-- `$oid` — `string`  e.g. `69b7fff5fa0c76000164d2ef`, `6982e735624652000197d197`, `695b70c7b32d9900017e57a8`
+- `$oid` — `string`  e.g. `6a69af92b151c70001f5972e`, `6a047b5f24d71500017af76d`, `69b7fff5fa0c76000164d2ef`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.webapp__payout_users`(
@@ -74,8 +90,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_010750_00088_j4z3f', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_011529_00025_qq29b', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -2,10 +2,10 @@
 collection: "RegistrationForm"
 athena_table: "wise_app_backend__registration_form"
 mongo_field_count: 7
-athena_field_count: 28
+athena_field_count: 36
 matched: 6
 coverage_pct: 85.7
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `RegistrationForm` ↔ `processed.wise_app_backend__registration_form`
@@ -35,6 +35,13 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `createdat.$date.$numberlong` | `string` | JSON path |
 | `fields.[]` | `object` | JSON path |
 | `fields.[].options` | `object` | JSON path |
+| `fields.[].options.1` | `string` | JSON path |
+| `fields.[].options.2` | `string` | JSON path |
+| `fields.[].options.3` | `string` | JSON path |
+| `fields.[].options.4` | `string` | JSON path |
+| `fields.[].options.5` | `string` | JSON path |
+| `fields.[].options.6` | `string` | JSON path |
+| `fields.[].options.7` | `string` | JSON path |
 | `fields.[].options.a` | `string` | JSON path |
 | `fields.[].options.b` | `string` | JSON path |
 | `fields.[].options.c` | `string` | JSON path |
@@ -44,5 +51,6 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `fields.[].questiontext` | `string` | JSON path |
 | `fields.[].required` | `bool` | JSON path |
 | `fields.[].type` | `string` | JSON path |
+| `settings.required` | `bool` | JSON path |
 | `updatedat.$date` | `object` | JSON path |
 | `updatedat.$date.$numberlong` | `string` | JSON path |

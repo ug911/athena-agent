@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__institutegroup
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/InstituteGroup/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:30+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:24:29+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__institutegroup`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,13 +39,13 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `type`: `LIVE (×149)`, `RECORDED (×51)`
+- `type`: `LIVE (×148)`, `RECORDED (×52)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -52,6 +66,8 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 - `$oid` — `string`  e.g. `63a4008dc8d767a361f9bc95`, `64ccca0ac5cac4002e2d53eb`, `64ccca0ac5cac4002e2d53eb`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__institutegroup`(
@@ -76,8 +92,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003527_00016_b4hh6', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003743_00097_g49vs', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

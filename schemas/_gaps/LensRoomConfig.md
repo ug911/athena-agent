@@ -2,36 +2,21 @@
 collection: "LensRoomConfig"
 athena_table: "wise_app_backend__lens_room_config"
 mongo_field_count: 19
-athena_field_count: 18
-matched: 7
-coverage_pct: 36.8
-last_diffed: "2026-04-28T11:07:30+00:00"
+athena_field_count: 55
+matched: 19
+coverage_pct: 100.0
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `LensRoomConfig` ↔ `processed.wise_app_backend__lens_room_config`
 
 - **Mongo source**: [`src/models/LensRoomConfig.js`](../source/mongo/LensRoomConfig.md)
 - **Athena counterpart**: [`schemas/processed/processed/wise_app_backend__lens_room_config.md`](../processed/processed/wise_app_backend__lens_room_config.md)
-- **Coverage**: 7/19 Mongo fields are present in Athena (**36.8%**).
+- **Coverage**: 19/19 Mongo fields are present in Athena (**100.0%**).
 
 ## In Mongo, missing from Athena
 
-These fields are declared in the Mongoose schema but the Athena lake pipeline doesn't expose them. Either widen the extractor or note the field as JSON-only inside an existing varchar column.
-
-| Path | Type | Ref | Required |
-| --- | --- | --- | --- |
-| `polls[].question` | `String` |  | required |
-| `polls[].questionType` | `String` |  |  |
-| `polls[].options` | `<PollOptionsSchema>` |  | required |
-| `polls[].type` | `String` |  | required |
-| `polls[].correctAnswers` | `Array<String>` |  |  |
-| `polls[].maxAnswers` | `Number` |  |  |
-| `polls[].isWordCloud` | `Boolean` |  |  |
-| `feedbackConfig.enabled` | `Boolean` |  |  |
-| `feedbackConfig.question` | `String` |  |  |
-| `discussionConfig.enabled` | `Boolean` |  |  |
-| `discussionConfig.autoApproval` | `Boolean` |  |  |
-| `discussionConfig.allowAnonymous` | `Boolean` |  |  |
+_None — every Mongo field has a counterpart in Athena._
 
 ## In Athena, missing from Mongo
 
@@ -44,5 +29,28 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `__v.$numberint` | `string` | JSON path |
 | `createdat.$date` | `object` | JSON path |
 | `createdat.$date.$numberlong` | `string` | JSON path |
+| `polls.[]` | `object` | JSON path |
+| `polls.[].maxanswers.$numberint` | `string` | JSON path |
+| `polls.[].options.a` | `object` | JSON path |
+| `polls.[].options.a.text` | `string` | JSON path |
+| `polls.[].options.b` | `object` | JSON path |
+| `polls.[].options.b.text` | `string` | JSON path |
+| `polls.[].options.c` | `object` | JSON path |
+| `polls.[].options.c.text` | `string` | JSON path |
+| `polls.[].options.d` | `object` | JSON path |
+| `polls.[].options.d.text` | `string` | JSON path |
+| `polls.[].options.e` | `object` | JSON path |
+| `polls.[].options.e.text` | `string` | JSON path |
 | `updatedat.$date` | `object` | JSON path |
 | `updatedat.$date.$numberlong` | `string` | JSON path |
+| `leaderboardconfig.configurations` | `array<object>` | JSON path |
+| `leaderboardconfig.configurations.configurations[]` | `object` | JSON path |
+| `leaderboardconfig.configurations.configurations[].category` | `string` | JSON path |
+| `leaderboardconfig.configurations.configurations[].criteria` | `string` | JSON path |
+| `leaderboardconfig.configurations.configurations[].duration` | `object` | JSON path |
+| `leaderboardconfig.configurations.configurations[].duration.$numberint` | `string` | JSON path |
+| `leaderboardconfig.configurations.configurations[].points` | `object` | JSON path |
+| `leaderboardconfig.configurations.configurations[].points.$numberint` | `string` | JSON path |
+| `leaderboardconfig.visibletoparticipants` | `bool` | JSON path |
+| `agendaids.[]` | `object` | JSON path |
+| `agendaids.[].$oid` | `string` | JSON path |

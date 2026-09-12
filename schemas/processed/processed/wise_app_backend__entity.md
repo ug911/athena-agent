@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__entity
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/entity/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:47+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:23:02+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__entity`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -29,23 +43,23 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `entitysubtype`: `AD_HOC (×181)`, `SCHEDULED (×9)`, `FILE (×5)`, `OFFLINE (×1)`, `DISCUSSION (×1)`, `LINK (×1)`
-- `entitytype`: `SESSION (×191)`, `RESOURCE (×6)`, `TEST (×2)`, `DISCUSSION (×1)`
-- `archived`: `false (×26)`, `true (×5)`
+- `entitysubtype`: `SCHEDULED (×187)`, `AD_HOC (×7)`, `FILE (×2)`, `video (×2)`, `DISCUSSION (×1)`
+- `entitytype`: `SESSION (×194)`, `RESOURCE (×4)`, `TEST (×1)`, `DISCUSSION (×1)`
+- `archived`: `false (×168)`, `true (×25)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `6383905a0bd8695cd5e4a591`, `638391663812375a5aa391ae`, `6383970626069262b76e7caa`
+- `$oid` — `string`  e.g. `637f25299a6196165f4362bb`, `637f2547b056c63eb93688c2`, `637f25b64aef7fb801458c45`
 
 ### `entityid`
 
-- `$oid` — `string`  e.g. `6383905af32540416fb7776c`, `637bba0b7f472530365805f3`, `6383970638129a2439b42943`
+- `$oid` — `string`  e.g. `637f2529438fb09d1f6933db`, `637f2547438fb0eb876933e3`, `637f2583e5de0500010c5ef4`
 
 ### `__v`
 
@@ -53,19 +67,25 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `63838e6d624bebda48039c46`, `637bb9c7b9f7ac02303cb6bc`, `638074246b0e96bcbbfaf5eb`
+- `$oid` — `string`  e.g. `5f24056820955e1aff464608`, `5f24056820955e1aff464608`, `5f24056820955e1aff464608`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1669566554405`, `1669568642057`, `1669568262226`
+  - `$numberlong` — `string`  e.g. `1669276969465`, `1669276999430`, `1669277110000`
 
 ### `sortkey`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1668011457460`, `1669568642022`, `1669568262226`
+  - `$numberlong` — `string`  e.g. `1669287600000`, `1669276999430`, `1669277110000`
+
+### `metadata`
+
+- `subtype` — `string`  e.g. `youtube`, `youtube`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__entity`(
@@ -94,8 +114,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003114_00097_khk45', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003322_00016_dgq2k', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

@@ -5,7 +5,7 @@ mongo_field_count: 9
 athena_field_count: 23
 matched: 7
 coverage_pct: 77.8
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `EntityInteraction` ↔ `processed.wise_app_backend__entity_interaction`

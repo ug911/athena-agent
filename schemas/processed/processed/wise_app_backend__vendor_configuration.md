@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__vendor_configuration
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/VendorConfiguration/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:17:51+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:29:36+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__vendor_configuration`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,44 +39,46 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `62aad9e52d986f0022c8217f`, `62ac0f94d9c16b002342b6d1`, `64747a8c7aa3589fab228e70`
+- `$oid` — `string`  e.g. `62aad9e52d986f0022c8217f`, `6476fbbaf17d1d6787862b15`, `6476fbbaf17d1d6787862b1e`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `6270c3ba05f7a631abb3be88`, `6238668770c3360adddee5e7`, `63b5269d04c8f235eb5f4c77`
+- `$oid` — `string`  e.g. `6270c3ba05f7a631abb3be88`, `62739bfc5de04b201c5fa934`, `62cbb342cdd40f67cc08b16d`
 
 ### `webhooks`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `684c0178f0107734e8b10f79`, `6530f75d8ee13548263ca7a4`, `6530f7744b6813fbc73bb4c5`
-    - `auth` — `string`  e.g. `c0c54be07f12f1aaeed8027e9de3529d`, `66443c3808d7d4ef15fc827206fdd2e7`, `1c20ebfeeb24e524c7a860c8cd283686`
+      - `$oid` — `string`  e.g. `66e284892c810c7fcf8f8721`, `66f2e256c74cc82f77e207db`, `654a605afd7c34119f9b7a98`
+    - `auth` — `string`  e.g. `65da68852b830209f6bcbeac32e0840a`, `65da68852b830209f6bcbeac32e0840a`, `baae216b0f69fce47114b826ba109aab`
     - `enabled` — `bool`  e.g. `true`, `true`, `true`
     - `events` — `array<string>`
       - `[].events[]` — `string`  e.g. `MeetingStartedEvent`, `MeetingEndedEvent`, `ParticipantJoinedMeetingEvent`
     - `method` — `string`  e.g. `POST`, `POST`, `POST`
-    - `name` — `string`  e.g. `Webhook Subscription 1`, `Webhook Subscription 1`, `Webhook Subscription 2`
-    - `url` — `string`  e.g. `https://engg.yourphysio.in/api/events/treatmentzoomevents`, `https://bambinos.live/api/wise/meeting-ended`, `https://bambinos.live/api/wise/participant-joined`
+    - `name` — `string`  e.g. `Webhook Subscription 1`, `Webhook Subscription`, `Webhook Subscription`
+    - `url` — `string`  e.g. `https://engg.yourphysio.in/api/events/treatmentzoomevents`, `https://api-qadmin.eapp.vidyamandir.com/qadmin/zoom/webhooke`, `https://api-qadmin.devtest.thestudypod.com/quiz/zoom/webhook`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1655364069755`, `1655443348262`, `1655443348262`
+  - `$numberlong` — `string`  e.g. `1655364069755`, `1685519290462`, `1685519290462`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1742456924317`, `1742456924317`, `1742456924317`
+  - `$numberlong` — `string`  e.g. `1742456924317`, `1742564647941`, `1742456924317`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__vendor_configuration`(
@@ -87,8 +103,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_012236_00043_qvvav', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_013231_00007_jw5xe', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

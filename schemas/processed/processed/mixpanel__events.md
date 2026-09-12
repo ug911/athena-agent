@@ -1,21 +1,33 @@
 ---
-database: processed
+canonical: processed
 table: mixpanel__events
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/mixpanel/processed_events
 format: INPUTFORMAT
 partition_keys:
 - year
 - month
 - day
-last_synced: '2026-04-28T07:11:42+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:17:25+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.mixpanel__events`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -72,6 +84,7 @@ sampled_rows: 0
 **Partition keys:** `year`, `month`, `day`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.mixpanel__events`(

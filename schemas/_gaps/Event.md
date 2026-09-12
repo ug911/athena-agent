@@ -2,10 +2,10 @@
 collection: "Event"
 athena_table: "wise_app_backend__event"
 mongo_field_count: 5
-athena_field_count: 129
+athena_field_count: 157
 matched: 4
 coverage_pct: 80.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `Event` ↔ `processed.wise_app_backend__event`
@@ -36,22 +36,21 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `payload.assessment.id` | `string` | JSON path |
 | `payload.assessment.maxmark` | `object` | JSON path |
 | `payload.assessment.maxmark.$numberint` | `string` | JSON path |
+| `payload.assessment.name` | `string` | JSON path |
 | `payload.class` | `object` | JSON path |
+| `payload.class.classnumber` | `object` | JSON path |
+| `payload.class.classnumber.$numberint` | `string` | JSON path |
 | `payload.class.id` | `string` | JSON path |
 | `payload.class.meetingid` | `object|string` | JSON path |
 | `payload.class.meetingid.$numberdouble` | `string` | JSON path |
 | `payload.class.name` | `string` | JSON path |
 | `payload.class.namespace` | `string` | JSON path |
 | `payload.class.subject` | `string` | JSON path |
-| `payload.data` | `object` | JSON path |
-| `payload.data.quizzes` | `object` | JSON path |
-| `payload.data.quizzes.$numberint` | `string` | JSON path |
-| `payload.data.revisionnotes` | `object` | JSON path |
-| `payload.data.revisionnotes.$numberint` | `string` | JSON path |
 | `payload.discussion` | `object` | JSON path |
 | `payload.discussion.comment` | `object` | JSON path |
 | `payload.discussion.comment.attachments` | `array<object>` | JSON path |
 | `payload.discussion.comment.attachments.discussion.comment.attachments[]` | `object` | JSON path |
+| `payload.discussion.comment.attachments.discussion.comment.attachments[]._id` | `string` | JSON path |
 | `payload.discussion.comment.attachments.discussion.comment.attachments[].filename` | `string` | JSON path |
 | `payload.discussion.comment.attachments.discussion.comment.attachments[].path` | `string` | JSON path |
 | `payload.discussion.comment.attachments.discussion.comment.attachments[].s3filepath` | `string` | JSON path |
@@ -61,15 +60,37 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `payload.discussion.comment.attachments.discussion.comment.attachments[].type` | `string` | JSON path |
 | `payload.discussion.comment.comment` | `string` | JSON path |
 | `payload.discussion.comment.createdat` | `string` | JSON path |
+| `payload.discussion.comment.deleted` | `bool` | JSON path |
 | `payload.discussion.comment.editedat` | `string` | JSON path |
+| `payload.discussion.comment.id` | `string` | JSON path |
 | `payload.discussion.comment.userid` | `string` | JSON path |
 | `payload.discussion.id` | `string` | JSON path |
+| `payload.discussion.poll` | `bool` | JSON path |
+| `payload.discussion.title` | `string` | JSON path |
 | `payload.institute` | `object` | JSON path |
 | `payload.institute.id` | `string` | JSON path |
 | `payload.institute.namespace` | `string` | JSON path |
+| `payload.newvalue` | `object` | JSON path |
+| `payload.newvalue.settings` | `object` | JSON path |
+| `payload.newvalue.settings.autoaccept` | `bool` | JSON path |
+| `payload.oldvalue` | `object` | JSON path |
+| `payload.oldvalue.settings` | `object` | JSON path |
+| `payload.oldvalue.settings.autoaccept` | `bool` | JSON path |
 | `payload.participant` | `object` | JSON path |
 | `payload.participant.id` | `string` | JSON path |
 | `payload.participant.profile` | `string` | JSON path |
+| `payload.payment_order` | `object` | JSON path |
+| `payload.payment_order.amount` | `object` | JSON path |
+| `payload.payment_order.amount.$numberint` | `string` | JSON path |
+| `payload.payment_order.currency` | `string` | JSON path |
+| `payload.payment_order.gateway_order_id` | `string` | JSON path |
+| `payload.payment_order.id` | `string` | JSON path |
+| `payload.payment_order.payee_user_id` | `string` | JSON path |
+| `payload.payment_order.payer_user_id` | `string` | JSON path |
+| `payload.payment_order.payment_gateway` | `string` | JSON path |
+| `payload.payment_order.payment_transaction_id` | `string` | JSON path |
+| `payload.payment_order.payment_type` | `string` | JSON path |
+| `payload.payment_order.status` | `string` | JSON path |
 | `payload.resource` | `object` | JSON path |
 | `payload.resource.id` | `string` | JSON path |
 | `payload.resource.name` | `string` | JSON path |
@@ -89,8 +110,14 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `payload.session.scheduledstarttime` | `string` | JSON path |
 | `payload.session.starttime` | `string` | JSON path |
 | `payload.session.type` | `string` | JSON path |
+| `payload.session.updates` | `object` | JSON path |
+| `payload.session.updates.scheduledendtime` | `string` | JSON path |
+| `payload.session.updates.scheduledstarttime` | `string` | JSON path |
+| `payload.session.updates.start_time` | `string` | JSON path |
+| `payload.session.updatetype` | `string` | JSON path |
 | `payload.student` | `object` | JSON path |
 | `payload.student.id` | `string` | JSON path |
+| `payload.student.namespace` | `string` | JSON path |
 | `payload.submission` | `object` | JSON path |
 | `payload.submission.endtime` | `string` | JSON path |
 | `payload.submission.id` | `string` | JSON path |
@@ -141,6 +168,7 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `payload.verification.data.identifier` | `string` | JSON path |
 | `payload.verification.data.idtype` | `string` | JSON path |
 | `payload.verification.data.ip` | `string` | JSON path |
+| `payload.verification.data.namespace` | `string` | JSON path |
 | `payload.verification.data.resendcount` | `object` | JSON path |
 | `payload.verification.data.resendcount.$numberint` | `string` | JSON path |
 | `payload.verification.data.resendwindow` | `string` | JSON path |

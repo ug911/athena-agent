@@ -1,18 +1,30 @@
 ---
-database: backend
+canonical: backend
 table: webapp__payment_orders_2
 type: table
 layer: raw
+regions:
+  in: backend
 location: s3://[REDACTED-BUCKET]/production/webapp/payment_orders
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:05:09+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:04:14+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `backend.webapp__payment_orders_2`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `backend` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -35,6 +47,7 @@ sampled_rows: 0
 | `payout_id` | `string` | from deserializer |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `backend.webapp__payment_orders_2`(

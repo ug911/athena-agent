@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__pollvote
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/pollvote/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:16:25+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:26:33+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__pollvote`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -26,41 +40,43 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `answer`: `A (×99)`, `B (×89)`, `C (×8)`, `E (×2)`, `D (×2)`
+- `answer`: `A (×102)`, `B (×86)`, `C (×8)`, `E (×2)`, `D (×2)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `6182aafd1bfea56817e2cc00`, `6182b0510237606d39157ae4`, `6182b0949d5d752b2faa314e`
+- `$oid` — `string`  e.g. `6182aafd1bfea56817e2cc00`, `6182b0949d5d752b2faa314e`, `6182b09a0237601c54157e49`
 
 ### `pollid`
 
-- `$oid` — `string`  e.g. `6182aa7b26d85d30ccfdb81d`, `6182afaf1e35063537b306a3`, `6182aade02376075b4153356`
+- `$oid` — `string`  e.g. `6182aa7b26d85d30ccfdb81d`, `6182aade02376075b4153356`, `6182aab10706d4bfc31fb009`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `5f8584769d2846d453284a63`, `5f12d7d088cd370409e738ec`, `5f7eb96821bf334707fe7e76`
+- `$oid` — `string`  e.g. `5f8584769d2846d453284a63`, `5f7eb96821bf334707fe7e76`, `5f7eb96821bf334707fe7e76`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1635953405560`, `1635954769689`, `1635954836071`
+  - `$numberlong` — `string`  e.g. `1635953405560`, `1635954836071`, `1635954842783`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1635953405560`, `1635954769689`, `1635954836071`
+  - `$numberlong` — `string`  e.g. `1635953405560`, `1635954836071`, `1635954842783`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__pollvote`(
@@ -86,8 +102,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_010747_00167_3idnc', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_011529_00025_8e75t', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

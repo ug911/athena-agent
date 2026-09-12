@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: liveclassinsight
 type: view
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:11:28+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:17:10+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.liveclassinsight`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -31,6 +45,8 @@ sampled_rows: 0
 | `__v` | `string` |  |
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE VIEW processed.liveclassinsight AS

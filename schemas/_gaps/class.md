@@ -2,17 +2,17 @@
 collection: "class"
 athena_table: "wise_app_backend__class"
 mongo_field_count: 96
-athena_field_count: 90
-matched: 47
-coverage_pct: 49.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+athena_field_count: 93
+matched: 48
+coverage_pct: 50.0
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `class` ↔ `processed.wise_app_backend__class`
 
 - **Mongo source**: [`src/models/Classroom.js`](../source/mongo/class.md)
 - **Athena counterpart**: [`schemas/processed/processed/wise_app_backend__class.md`](../processed/processed/wise_app_backend__class.md)
-- **Coverage**: 47/96 Mongo fields are present in Athena (**49.0%**).
+- **Coverage**: 48/96 Mongo fields are present in Athena (**50.0%**).
 
 ## In Mongo, missing from Athena
 
@@ -26,7 +26,6 @@ These fields are declared in the Mongoose schema but the Athena lake pipeline do
 | `zoomLink.sessionId` | `String` |  |  |
 | `zoomLink.meetingStarted` | `Boolean` |  |  |
 | `zoomLink.provider` | `String` |  |  |
-| `zoomLink.registrationEnabled` | `Boolean` |  |  |
 | `zoomLink.metadata` | `Object` |  |  |
 | `hidden` | `Boolean` |  |  |
 | `archivedAt` | `Date` |  |  |
@@ -89,6 +88,8 @@ These fields exist in the Athena table but aren't declared in the current Mongoo
 | `pendingrequest.[].$oid` | `string` | JSON path |
 | `joinedrequest.[]` | `object` | JSON path |
 | `joinedrequest.[].$oid` | `string` | JSON path |
+| `coteacherrequests.[]` | `object` | JSON path |
+| `coteacherrequests.[].$oid` | `string` | JSON path |
 | `coteachers.[]` | `object` | JSON path |
 | `coteachers.[].$oid` | `string` | JSON path |
 | `timing.[]` | `object` | JSON path |

@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__class
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/class/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:09+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:21:47+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__class`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -45,32 +59,33 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `namespace`: `wise (×111)`, `zeal (×78)`, `vital (×4)`, `acadedge (×4)`, `nuqoosherah (×2)`, `rise (×1)`
-- `archived`: `false (×200)`
-- `disablereminder`: `false (×168)`
-- `lockclassroom`: `false (×148)`
+- `namespace`: `wise (×95)`, `lifeskilllearnings (×31)`, `theiasakademia (×24)`, `ipec_eduserv (×23)`, `vital (×12)`, `eclass (×9)`, `rise (×4)`, `trice_prime (×1)`, `image_classes (×1)`
+- `archived`: `false (×198)`, `true (×2)`
+- `disablereminder`: `false (×177)`
+- `lockclassroom`: `false (×38)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `5f1c100abeaf861a4dfb009c`, `5f24056820955e1aff464608`, `5f4bbf9638a21be52f0b8e8d`
+- `$oid` — `string`  e.g. `5f1c100abeaf861a4dfb009c`, `5f24056820955e1aff464608`, `5f54433b3dcd1771696a371d`
 
 ### `zoomlink`
 
-- `join_url` — `string`  e.g. `https://zoom.us/j/99218613889?pwd=cXh4UDk3cUdkR1pWeEZkcHRHSl`
-- `meetinguuid` — `string`  e.g. `T4gs2pu1QIafYi4P0kPQZw==`
+- `join_url` — `string`  e.g. `https://wise-live.zoom.us/j/91313748331?pwd=bTZEb0luZEJnay9W`
+- `meetinguuid` — `string`  e.g. `SM/m/gQRQNK6DP2m3aNMsg==`
 - `mettingended` — `bool`  e.g. `true`, `true`, `true`
-- `mettingid` — `string`  e.g. `99218613889`
+- `mettingid` — `string`  e.g. `91313748331`
 - `password` — `string`  e.g. `[REDACTED]`
-- `start_url` — `string`  e.g. `https://zoom.us/s/99218613889?zak=eyJ6bV9za20iOiJ6bV9vMm0iLC`
+- `registrationenabled` — `bool`  e.g. `false`
+- `start_url` — `string`  e.g. `https://wise-live.zoom.us/s/91313748331?zak=eyJ0eXAiOiJKV1Qi`
 - `starttime` — `object`
   - `$date` — `object`
-    - `$numberlong` — `string`  e.g. `1642399312083`, `1777279160826`, `1650368733094`
+    - `$numberlong` — `string`  e.g. `1642399312083`, `1778232882021`, `1627966976222`
 - `timezone` — `string`  e.g. `Asia/Calcutta`
 
 ### `pendingadmins`
@@ -94,12 +109,13 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `coteacherrequests`
 
-
+  - `[]` — `object`
+    - `$oid` — `string`  e.g. `60ead9f2c317317e6ed5e6b6`, `612fc2605f3a3b0217f4b1eb`, `5f4f7dc565d1d75c36c881a8`
 
 ### `coteachers`
 
   - `[]` — `object`
-    - `$oid` — `string`  e.g. `5f24052520955e1aff464606`, `61eacd6ad629f04e583b84ee`, `609faac6e4f4d71eb0672d1f`
+    - `$oid` — `string`  e.g. `5f24052520955e1aff464606`, `602d030e247f6042e1a49486`, `5ff1c342dc3e91fa95bc5130`
 
 ### `timing`
 
@@ -111,11 +127,11 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `5f12d7d088cd370409e738ec`, `5f24052520955e1aff464606`, `5f4bbf3938a21ba5bd0b8e8b`
+- `$oid` — `string`  e.g. `5f12d7d088cd370409e738ec`, `5f24052520955e1aff464606`, `5f4f7dc565d1d75c36c881a8`
 
 ### `classnumber`
 
-- `$numberint` — `string`  e.g. `930031639`, `327790671`, `173353960`
+- `$numberint` — `string`  e.g. `930031639`, `327790671`, `590338605`
 
 ### `timingversion`
 
@@ -135,7 +151,7 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 - `magicjointokenconfig` — `object` (nullable)
   - `enabledon` — `object`
     - `$date` — `object`
-      - `$numberlong` — `string`  e.g. `1651123898550`, `1709372343859`, `1671556448199`
+      - `$numberlong` — `string`  e.g. `1651123898550`, `1709372343859`, `1655710818944`
   - `loginrequired` — `bool`  e.g. `false`, `false`, `false`
   - `registrationrequired` — `bool`  e.g. `false`, `false`, `false`
   - `token` — `string`  e.g. `[REDACTED]`
@@ -149,7 +165,7 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1595674634835`, `1596196200489`, `1598799766775`
+  - `$numberlong` — `string`  e.g. `1595674634835`, `1596196200489`, `1599357755520`
 
 ### `deletedstudents`
 
@@ -166,17 +182,19 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
   - `[]` — `object`
     - `reason` — `string`  e.g. `SUSPEND`, `FEE_DELAY`, `FEE_DELAY`
     - `userid` — `object`
-      - `$oid` — `string`  e.g. `6200f1e9df223de403f26533`, `5f154a7e88cd370409e739be`, `5f12d7d088cd370409e738ec`
+      - `$oid` — `string`  e.g. `6200f1e9df223de403f26533`, `61979952f87200bff5a3127c`, `6198ed10f83f2c5cae530341`
 
 ### `instituteid`
 
-- `$oid` — `string`  e.g. `61fb71e08a1e29d5377950c7`, `61f2d3edb05c886b68933877`, `628248251aac4d000792f1ad`
+- `$oid` — `string`  e.g. `61fb71e08a1e29d5377950c7`, `61f2d3edb05c886b68933877`, `628248254b26fc00082a094e`
 
 ### `__v`
 
 - `$numberint` — `string`  e.g. `0`, `0`, `0`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__class`(
@@ -221,8 +239,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_002958_00007_xkyhq', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003453_00070_gqk5w', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

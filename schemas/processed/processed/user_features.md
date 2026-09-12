@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: user_features
 type: view
 layer: processed
+regions:
+  in: processed
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:12:56+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:19:14+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.user_features`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -140,6 +152,7 @@ sampled_rows: 0
 | `days_since_last_test` | `bigint` |  |
 
 ## DDL
+
 
 ```sql
 CREATE VIEW processed.user_features AS

@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__chat
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/Chat/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:00+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:21:22+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__chat`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -29,13 +43,13 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `chattype`: `CLASSROOM (×102)`, `INSTITUTE (×98)`
+- `chattype`: `GROUP (×200)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -55,14 +69,6 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 - `$oid` — `string`  e.g. `655b3d81c327ce0025351d4c`, `655b3d81c327ce0025351d4c`, `63edd5a6a7f290704ee2224c`
 
-### `classid`
-
-- `$oid` — `string`  e.g. `66e014490b753c1e38a8aa39`, `66fbd319883b43ab05f3c5c8`, `6482cf7b27385167990c4e25`
-
-### `chatwithid`
-
-- `$oid` — `string`  e.g. `66e012ddd08d46625f41c7e3`, `66e012ddd08d46625f41c7e3`, `67172dd8cef0bf2270fadc56`
-
 ### `participants`
 
   - `[]` — `object`
@@ -79,6 +85,8 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
   - `$numberlong` — `string`  e.g. `1741592577633`, `1749060743129`, `1740641915340`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__chat`(
@@ -107,8 +115,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003048_00016_np32w', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003405_00025_k6428', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

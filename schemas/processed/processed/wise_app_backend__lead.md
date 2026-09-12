@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__lead
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/lead/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:15:37+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:24:44+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__lead`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -28,15 +42,15 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `64452ee8a3b1b6f2d15a051a`, `644a1349cee286d25ebe08ee`, `645b93b59e1a7f30173a819b`
+- `$oid` — `string`  e.g. `64c28d8119302e350d5cc3ed`, `64c28dd151349d081aae8334`, `64c28df687a88a7c8b649c7d`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `64452c5e806af866c8b696a9`, `644a1247cee2864affbe074a`, `645b93449e1a7fd4c93a7f57`
+- `$oid` — `string`  e.g. `64be2728e63baf454aca8bb1`, `64be2728e63baf454aca8bb1`, `64be2728e63baf454aca8bb1`
 
 ### `__v`
 
@@ -45,14 +59,16 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1682255592508`, `1682576201894`, `1683723189197`
+  - `$numberlong` — `string`  e.g. `1690471809934`, `1690471889262`, `1690471926850`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1682255889549`, `1682576201894`, `1683729621179`
+  - `$numberlong` — `string`  e.g. `1690471809934`, `1690471889262`, `1690471926850`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__lead`(
@@ -80,8 +96,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_005738_00142_p3eij', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_010330_00025_hfg9t', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

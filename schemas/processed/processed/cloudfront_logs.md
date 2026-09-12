@@ -1,19 +1,31 @@
 ---
-database: processed
+canonical: processed
 table: cloudfront_logs
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/production/cloudfront-logs
 format: INPUTFORMAT
 partition_keys:
 - dt
-last_synced: '2026-04-28T07:10:31+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:14:58+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.cloudfront_logs`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -56,28 +68,29 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `location`: `BOM78-P6 (×64)`, `DEL54-C1 (×53)`, `CCU50-C1 (×47)`, `DEL51-P3 (×19)`, `BOM50-C1 (×10)`, `HYD50-C2 (×2)`, `MAA51-P2 (×1)`, `MAA51-C2 (×1)`, `MAA50-C2 (×1)`, `BLR50-P1 (×1)`, `BLR50-C3 (×1)`
+- `location`: `CCU50-P1 (×52)`, `MAA50-P2 (×39)`, `DEL54-P4 (×37)`, `BLR50-C3 (×34)`, `HYD50-C2 (×26)`, `BOM78-P6 (×8)`, `PNQ50-P1 (×3)`, `BOM78-P4 (×1)`
 - `method`: `GET (×200)`
 - `host`: `d1qt34njyktlf8.cloudfront.net (×200)`
-- `referrer`: `- (×196)`, `https://streaming.wiseapp.live/video-player/wise-video-player.html (×4)`
-- `query_string`: `- (×196)`, `token=[REDACTED-JWT] (×4)`
+- `referrer`: `- (×200)`
+- `query_string`: `- (×148)`, `token=[REDACTED-JWT] (×52)`
 - `cookie`: `- (×200)`
-- `result_type`: `Miss (×106)`, `Hit (×85)`, `RefreshHit (×5)`, `Error (×4)`
+- `result_type`: `Miss (×158)`, `Hit (×36)`, `RefreshHit (×4)`, `Error (×2)`
 - `host_header`: `streaming.wiseapp.live (×200)`
 - `request_protocol`: `https (×200)`
 - `xforwarded_for`: `- (×200)`
-- `ssl_protocol`: `TLSv1.3 (×187)`, `TLSv1.2 (×13)`
-- `ssl_cipher`: `TLS_AES_128_GCM_SHA256 (×187)`, `ECDHE-RSA-AES128-GCM-SHA256 (×13)`
-- `response_result_type`: `Miss (×107)`, `Hit (×88)`, `RefreshHit (×5)`
-- `http_version`: `HTTP/1.1 (×196)`, `HTTP/2.0 (×4)`
+- `ssl_protocol`: `TLSv1.3 (×174)`, `TLSv1.2 (×26)`
+- `ssl_cipher`: `TLS_AES_128_GCM_SHA256 (×174)`, `ECDHE-RSA-AES128-GCM-SHA256 (×26)`
+- `response_result_type`: `Miss (×160)`, `Hit (×36)`, `RefreshHit (×4)`
+- `http_version`: `HTTP/1.1 (×115)`, `HTTP/2.0 (×85)`
 - `fle_status`: `- (×200)`
-- `x_edge_detailed_result_type`: `Miss (×106)`, `Hit (×85)`, `RefreshHit (×5)`, `ClientCommError (×4)`
+- `x_edge_detailed_result_type`: `Miss (×158)`, `Hit (×36)`, `RefreshHit (×4)`, `ClientCommError (×2)`
 - `sc_content_type`: `application/octet-stream (×200)`
-- `dt`: `2022-09-02 (×200)`
+- `dt`: `2023-07-10 (×192)`, `2022-12-30 (×7)`, `2022-07-15 (×1)`
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.cloudfront_logs`(

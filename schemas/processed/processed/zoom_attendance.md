@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: zoom_attendance
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/zoom_attendance/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:28+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:31:33+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.zoom_attendance`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -45,20 +59,22 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `class_id`: `6854c5af6fa36cdb2ee32de3 (×200)`
-- `class_name`: `THREE E TEACHER (×200)`
-- `subject`: ` K8 School Staffroom Link - 3 to 5 Wing (×200)`
-- `ct_live`: `673185642d8443c682174117 (×200)`
-- `isownerzoom`: `false (×200)`
-- `ownerid`: `66ed10ce1a7ba04e4467c482 (×200)`
-- `zoom_id`: `696ee7167179451c42b7a28e (×48)`, `69324130ed869aa7fd7db1c4 (×30)`, `69d7a4817a1e450cd82c295d (×23)`, `690f1899bffc3be89c48f933 (×22)`, `68e60812acb5d5123c900a71 (×20)`, `6894473d76657e1ae96e7ae3 (×20)`, `692f9e7543cc4aee533af854 (×18)`, `691d800d5b064f1e93c20129 (×12)`, `69e75d75b4f8d4457764f6bb (×6)`, `697894c9cb33cd30a67b1b16 (×1)`
-- `type`: `SCHEDULED (×200)`
+- `class_id`: `60cfee44bef839e09882e6c3 (×200)`
+- `class_name`: `Chaitanya Charitamrita:Shlokas (×200)`
+- `subject`: `Shlokas  (×200)`
+- `ct_live`: `60c6fcee0e0c3a0019fac4e2 (×200)`
+- `isownerzoom`: `false (×170)`
+- `ownerid`: `60c6fcee0e0c3a0019fac4e2 (×200)`
+- `zoom_id`: `639bf1d35391852c3c07a21b (×30)`, `68eb7f2ae846e7654dfe6e14 (×24)`, `65ac9a2897479c4687d40564 (×21)`, `64bcc33d01212cb8e82557bb (×20)`, `67a6da9b74d677bd2e242cfd (×19)`, `6a7954176c6974f85252779e (×18)`, `656c00f9972f09ffe48be2be (×17)`, `67e8c8c6e072810b511f16ba (×13)`, `65da984877a03ca4e542b100 (×11)`, `6a40a35c885f3c6a39e151c9 (×11)`, `65f4f6d8ee96c076c7904522 (×8)`, `6896f25c47d3846f4ccf1d05 (×5)`, `65fce1097d5e5eead1879919 (×3)`
+- `type`: `AD_HOC (×200)`
 - `meetingstatus`: `ENDED (×200)`
-- `student_isteacher`: `false (×78)`
+- `student_isteacher`: `false (×29)`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.zoom_attendance`(
@@ -103,8 +119,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_015359_00151_c2mt8', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_020926_00043_87xv7', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

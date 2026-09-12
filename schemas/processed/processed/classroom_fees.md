@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: classroom_fees
 type: view
 layer: processed
+regions:
+  in: processed
 location: null
 format: null
 partition_keys: []
-last_synced: '2026-04-28T07:10:23+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:14:43+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.classroom_fees`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,6 +37,7 @@ sampled_rows: 0
 | `metadata` | `string` |  |
 
 ## DDL
+
 
 ```sql
 CREATE VIEW processed.classroom_fees AS

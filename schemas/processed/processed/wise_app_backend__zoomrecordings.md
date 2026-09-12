@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__zoomrecordings
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/zoomRecordings/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:17+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:30:56+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__zoomrecordings`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -27,30 +41,30 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `5ffc54ca62f3dd8063b6d88a`, `60095e652e17bd807a482432`, `60096bdf5e9d6cb8badfeddf`
+- `$oid` — `string`  e.g. `609b5b0fc36ae541d792a9a5`, `609b5d918c1bc3490c2cee53`, `609b5e31980e0c45894b3127`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1610372298157`, `1611226725142`, `1611230175768`
+  - `$numberlong` — `string`  e.g. `1620794127301`, `1620794769128`, `1620794929740`
 
 ### `recordings`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `5ffc54ccdb29d900071e5082`, `60095e783aecac00093b9d2a`, `60096be69cd88200073746d1`
+      - `$oid` — `string`  e.g. `609b5b175a94a30007b51c77`, `609b5d954150aa00078bc33d`, `609b5d965a94a30007b51d00`
     - `createdat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1610372207000`, `1611221821000`, `1611227317000`
+        - `$numberlong` — `string`  e.g. `1620791561000`, `1620791801000`, `1620793572000`
     - `duration` — `object`
-      - `$numberint` — `string`  e.g. `43`, `4266`, `2029`
+      - `$numberint` — `string`  e.g. `2412`, `315`, `537`
     - `filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/sessi`, `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/sessi`, `https://wise-app-s3-bucket.s3.ap-south-1.amazonaws.com/sessi`
     - `filesize` — `object`
-      - `$numberint` — `string`  e.g. `1444824`, `196507930`, `43907264`
+      - `$numberint` — `string`  e.g. `68085040`, `12841608`, `35326219`
 
 ### `__v`
 
@@ -58,17 +72,19 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `zoomobjectid`
 
-- `$oid` — `string`  e.g. `60240aad3b2178b36e174d48`, `602689a0c1ed0161a6e79eb9`, `6027df6208a8072cdebb607f`
+- `$oid` — `string`  e.g. `609b507cbf946e88143ffac9`, `609b4b48094d6e417a0f87cd`, `609b4c15ff485460ca9bbb64`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `5f816738c7d380f4b59e90eb`, `601d41a8690ab040f1537186`, `5f6f656348df0955b6c7bb05`
+- `$oid` — `string`  e.g. `607ea95378a74bdabab02595`, `608d4b34685f5f1ba6452c6c`, `609220c859087015253b2d90`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `5f6e97177d7d965f091e69d0`, `600f9f2a13635f57ba58f06e`, `5f6e97177d7d965f091e69d0`
+- `$oid` — `string`  e.g. `607ea8cf3136381eea22eb34`, `600f9f2a13635f57ba58f06e`, `609220910449c6065ca25cb4`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__zoomrecordings`(
@@ -95,8 +111,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_013316_00007_mwvhi', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_014710_00052_pwset', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

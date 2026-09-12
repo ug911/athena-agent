@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__zoom
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/zoom/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:18:07+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:30:26+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__zoom`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -55,65 +69,73 @@ sampled_rows: 200
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 200 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 200 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
-- `attendancerecorded`: `true (×161)`, `false (×39)`
-- `mettingended`: `true (×149)`, `false (×51)`
-- `licensed`: `true (×148)`, `false (×52)`
+- `attendancerecorded`: `true (×147)`, `false (×53)`
+- `mettingended`: `true (×139)`, `false (×61)`
+- `licensed`: `true (×137)`, `false (×63)`
 - `disablecommenting`: `false (×200)`
-- `start_url`: `- (×144)`
-- `join_url`: `- (×144)`
-- `meetingstarted`: `true (×148)`, `false (×52)`
-- `archived`: `false (×197)`, `true (×3)`
-- `type`: `SCHEDULED (×142)`, `AD_HOC (×58)`
-- `meetingstatus`: `ENDED (×149)`, `UPCOMING (×35)`, `MISSED (×12)`, `CANCELLED (×4)`
-- `recordingshared`: `true (×76)`, `false (×18)`
+- `start_url`: `- (×66)`
+- `join_url`: `- (×66)`
+- `meetingstarted`: `true (×132)`, `false (×68)`
+- `archived`: `false (×195)`, `true (×5)`
+- `type`: `SCHEDULED (×132)`, `AD_HOC (×65)`, `OFFLINE (×3)`
+- `meetingstatus`: `ENDED (×139)`, `UPCOMING (×49)`, `MISSED (×7)`, `CANCELLED (×5)`
+- `recordingshared`: `true (×76)`, `false (×19)`
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `67a1d83840756c5f51da39e6`, `695e69874a1d77ab2c9202ca`, `695e6a99a5097e0527ab72a6`
+- `$oid` — `string`  e.g. `660f8c26561c412a02219dd9`, `660f9164a2154a9f1854c828`, `660f934c13579480bad63137`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `67a1d06d2628b531bebc40a1`, `693a4baa30d50e7789ca2f41`, `695e56edfe4a1366ea6e1da0`
+- `$oid` — `string`  e.g. `65e8755fece1d121b1d5c659`, `660f91300b999f25d5bb779a`, `660f93170b999f611dbbbd53`
 
 ### `userid`
 
-- `$oid` — `string`  e.g. `66cdc5f537bd18687b678691`, `695e179928118f629e483933`, `6874de2e7c49d0a2e779dbdc`
+- `$oid` — `string`  e.g. `65e17e842f91ac1adab7f63a`, `657ffeaad12ab976d21e9c65`, `65fe711f8b9cc6ebd8f6b536`
 
 ### `start_time`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1739845800000`, `1783492200000`, `1767795353474`
+  - `$numberlong` — `string`  e.g. `1712575473361`, `1712813408882`, `1716268513658`
 
 ### `participants`
 
   - `[]` — `object`
     - `absolutepercentattendance` — `object`
-      - `$numberint` — `string`  e.g. `99`, `97`, `68`
-    - `customerkey` — `string`  e.g. `NA|Z_67a2d0c910b0279ce6935bfc`, `NA|Z_67a2d0c910b0279ce6935bfc`, `NA|Z_66ce7823ac2b1909cc0ed8b0`
+      - `$numberint` — `string`  e.g. `87`, `31`, `97`
+    - `attendancepercentage` — `object`
+      - `$numberint` — `string`  e.g. `0`, `0`, `0`
+    - `credits` — `object`
+      - `$numberdouble` — `string`  e.g. `0.75`
+      - `$numberint` — `string`  e.g. `1`, `1`, `1`
+    - `customerkey` — `string`  e.g. `NA|Z_6694fa4fc94d26ab471b2630`, `NA|U_6669400f567ebeb8fb24032e`, `NA|U_667c0a1edf5e936cd3a269ef`
     - `duration` — `object`
-      - `$numberint` — `string`  e.g. `2926`, `2905`, `1667`
+      - `$numberint` — `string`  e.g. `2179`, `0`, `0`
     - `firstentrytime` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1767795367000`, `1767795387000`, `1767886188000`
+        - `$numberlong` — `string`  e.g. `1712575756000`, `1712575489000`, `1712577219000`
     - `inmeetingduration` — `object`
-      - `$numberint` — `string`  e.g. `2926`, `2888`, `1667`
-    - `isteacher` — `bool`  e.g. `true`, `false`, `true`
+      - `$numberint` — `string`  e.g. `1692`, `2025`, `3673`
+    - `isteacher` — `bool`  e.g. `true`, `true`, `true`
     - `lastexittime` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1767798293000`, `1767798292000`, `1767887855000`
+        - `$numberlong` — `string`  e.g. `1712577985000`, `1712577992000`, `1712577991000`
     - `name` — `string`  e.g. `[REDACTED]`
+    - `offline` — `bool`  e.g. `false`, `true`, `false`
     - `relativepercentattendance` — `object`
-      - `$numberint` — `string`  e.g. `100`, `98`, `69`
+      - `$numberint` — `string`  e.g. `100`, `35`, `100`
     - `user_email` — `string`  e.g. `[REDACTED]`
-    - `user_id` — `string`  e.g. `16795648`, `16797696`, `16798720`
+    - `user_id` — `string`  e.g. `16805888`, `16778240`, `16812032`
+    - `userduration` — `object`
+      - `$numberint` — `string`  e.g. `0`, `0`, `0`
     - `wiseuserid` — `object`
-      - `$oid` — `string`  e.g. `6874de2e7c49d0a2e779dbdc`, `66c0a7e9c446c9dc064dd3f1`, `6940fa30e6d9baa1da2ae883`
+      - `$oid` — `string`  e.g. `65fbd7c1e202d2817cbbf53e`, `6613c7343cfccf97cff4583e`, `660e9b0e79ef94fdb4d03f11`
 
 ### `comments`
 
@@ -122,12 +144,12 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1738659896759`, `1767795079052`, `1767795353475`
+  - `$numberlong` — `string`  e.g. `1712294950025`, `1712296292319`, `1712296780047`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1739853552334`, `1767795079052`, `1767798607913`
+  - `$numberlong` — `string`  e.g. `1712579105998`, `1728042851748`, `1728042851748`
 
 ### `__v`
 
@@ -135,93 +157,88 @@ _Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may 
 
 ### `duration`
 
-- `$numberint` — `string`  e.g. `2926000`, `1667000`, `9398000`
+- `$numberint` — `string`  e.g. `2503000`, `3589000`, `3661000`
 
 ### `end_time`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1767798293000`, `1767887855000`, `1767805324000`
+  - `$numberlong` — `string`  e.g. `1712577992000`, `1712817004000`, `1716272181000`
 
 ### `scheduledstarttime`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1739845800000`, `1783492200000`, `1767886200000`
+  - `$numberlong` — `string`  e.g. `1712575800000`, `1712813400763`, `1716267600678`
 
 ### `scheduledendtime`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1739851200000`, `1783495800000`, `1767889800000`
+  - `$numberlong` — `string`  e.g. `1712579400000`, `1712817000763`, `1716271200678`
 
 ### `participant`
 
-- `$numberint` — `string`  e.g. `1`, `0`, `11`
+- `$numberint` — `string`  e.g. `3`, `1`, `1`
 
 ### `maxparticipantduration`
 
-- `$numberint` — `string`  e.g. `2905`, `0`, `9324`
+- `$numberint` — `string`  e.g. `2179`, `3468`, `3625`
 
 ### `metadata`
 
 - `autorecord` — `bool`  e.g. `true`, `true`, `true`
-- `cancellationmetadata` — `object`
-  - `approved` — `bool`  e.g. `false`
-  - `requestedby` — `string`  e.g. `694708b128118f629eeef690`
-  - `requestedon` — `object`
-    - `$date` — `object`
-      - `$numberlong` — `string`  e.g. `1770421555637`
-  - `requestnote` — `string`  e.g. `Sorry I am going on holiday this mid-term so I can’t have my`
-- `endedby` — `string`  e.g. `6763b746b9579e4c94f4fe1c`, `68a82e3adc426fe2bd3335c8`, `6736eeb39dcd88eb74e5386a`
-- `endreason` — `string`  e.g. `end_meeting`, `start_new`, `end_meeting`
+- `endedby` — `string`  e.g. `6a2ffff1904c8925d456d619`, `69d4e18998ee51775f3010e8`
+- `endreason` — `string`  e.g. `host_waiting`, `waiting_meeting_cron`, `waiting_meeting_cron`
 - `isownerzoom` — `bool`  e.g. `false`, `false`, `false`
-- `lensenabled` — `bool`  e.g. `false`, `false`, `false`
+- `lensenabled` — `bool`  e.g. `false`, `true`, `true`
+- `linkwashing` — `bool`  e.g. `true`
 - `ownerid` — `object`
-  - `$oid` — `string`  e.g. `64f9654d3bb4912ed85547d1`, `662a38bb7952f676b4f5493e`, `65c99aa5f556af274e65837e`
+  - `$oid` — `string`  e.g. `65c9cb4799d4bfaa0c260207`, `64dcd26ce94bcfef6f8625b7`, `64dcd26ce94bcfef6f8625b7`
 - `paiduser` — `bool`  e.g. `true`, `true`, `true`
 - `poolname` — `string`  e.g. `DEFAULT`, `DEFAULT`, `DEFAULT`
-- `recurrenceid` — `string`  e.g. `67a1d83840756c5f51da39d9`, `695e69874a1d77ab2c9202ad`, `695e6b3437f7882b9bb92e3a`
-- `registrationenabled` — `bool`  e.g. `true`, `true`, `true`
+- `recurrenceid` — `string`  e.g. `6a4e02d541b9900549694781`, `6a4e03d6ed0591b31de62db3`, `6a4e03e6b9a4e5a6750fe4a2`
+- `registrationenabled` — `bool`  e.g. `true`, `true`
 - `restartedsessions` — `array<object>|array<unknown>`
   - `restartedsessions[]` — `object`
-    - `meetinguuid` — `string`  e.g. `DI1iZzPBQLyLyRmFNiLR7A==`
+    - `meetinguuid` — `string`  e.g. `jgaPdUjERBm/tqfryen0kA==`, `pf9c66I6Q9SkVnwKupUvkw==`, `AzpLUmHmRZGcRvnzaDkZGg==`
     - `sessionid` — `object`
-      - `$oid` — `string`  e.g. `6916f87e565cee7720051a1c`
-- `tags` — `` (nullable)
-- `waitingmeeting` — `bool`  e.g. `true`
+      - `$oid` — `string`  e.g. `6a4e4d013447d975a55643dc`, `6a4e283fca57d945203becf4`, `6a4e2877321882d97aae27da`
+- `waitingmeeting` — `bool`  e.g. `true`, `true`, `true`
 - `webinar` — `bool`  e.g. `false`, `false`, `false`
 - `zoomadminaccountid` — `string`  e.g. `63f8b2037eb779515cf43d21`, `63f8b2037eb779515cf43d21`, `63f8b2037eb779515cf43d21`
-- `zoomuseraccountid` — `string`  e.g. `66fa93bcc493790018d7b429`, `681db5c6d7bfefa6dad4d01a`, `66fa77d1763295008ca2dda1`
-- `zoomuserid` — `string`  e.g. `zWOg8ExdSc-J8iide_YVuQ`, `ktrOYCJOQJ-dHF0KZ0gSRQ`, `XeW1TnxIRyOMjhg2K-kcdw`
+- `zoomuseraccountid` — `string`  e.g. `66fa77e2763295008ca2dde9`, `66fa77e9763295008ca2de05`, `66fa77bc763295008ca2dd45`
+- `zoomuserid` — `string`  e.g. `VVwE2b6wR0i8daiiTMqYvg`, `totq-tR6RvObP8S-sEzqkA`, `XHoOtdXnQb603i6s2lQUZA`
 
 ### `recordings`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `695e9b0340ae8ceb5adfc546`, `695ea7284e6b5229fe752171`, `695e8fb6e43a15e488a3ab01`
+      - `$oid` — `string`  e.g. `6613e221a6a86f4944bce4ae`, `660fce8f1ab65459bb82df4a`, `660fa3cbae710aaddc410af2`
     - `duration` — `object`
-      - `$numberint` — `string`  e.g. `9395`, `3981`, `1792`
+      - `$numberint` — `string`  e.g. `2500`, `412`, `3446`
     - `file` — `object`
       - `_id` — `object`
-        - `$oid` — `string`  e.g. `692476df9ccea6b19ade8dc1`, `69170c3bfee67c6d82d6e5f1`, `6917134b4073436bcf0e9ddf`
+        - `$oid` — `string`  e.g. `6613e221a6a86f98d7bce4af`, `660fce8f1ab654003382df4b`, `660fa3cbae710a0b18410af3`
       - `filename` — `string`  e.g. `video.m3u8`, `video.m3u8`, `video.m3u8`
       - `path` — `string`  e.g. `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://streaming.wiseapp.live/video-player/wise-video-playe`
       - `s3filepath` — `string`  e.g. `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/strea`, `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/strea`, `https://wise-app-s3-bucket.s3-ap-south-1.amazonaws.com/strea`
-      - `s3key` — `string`  e.g. `streaming_videos/66fbb998e82bde040df69db5/695e6cc7e4335a33aa`, `streaming_videos/687e42910933d0d619f41d47/695e74a34a1d77ab2c`, `streaming_videos/67bc781cf6b7db0bcc3b51cb/695e82e356b0de8685`
+      - `s3key` — `string`  e.g. `streaming_videos/65c9cb4799d4bfaa0c260207/660f8c26561c412a02`, `streaming_videos/653360da131853429f1684bb/660fcbbf65f0367107`, `streaming_videos/64f1c364d64223528ddb0dce/660f942da2154aee3e`
       - `size` — `object`
-        - `$numberint` — `string`  e.g. `183288189`, `112798249`, `62792552`
+        - `$numberint` — `string`  e.g. `85659036`, `15142750`, `73093631`
       - `subtype` — `string`  e.g. `hls_video`, `hls_video`, `hls_video`
       - `type` — `string`  e.g. `video`, `video`, `video`
     - `partindex` — `object`
       - `$numberint` — `string`  e.g. `1`, `1`, `1`
     - `sessionindex` — `object`
       - `$numberint` — `string`  e.g. `1`, `1`, `1`
-    - `type` — `string`  e.g. `RECORDING`, `RECORDING`, `YOUTUBE`
-    - `url` — `string`  e.g. `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://www.youtube.com/watch?v=mG7WL8V_2EI`
+    - `type` — `string`  e.g. `RECORDING`, `RECORDING`, `RECORDING`
+    - `url` — `string`  e.g. `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://streaming.wiseapp.live/video-player/wise-video-playe`, `https://streaming.wiseapp.live/video-player/wise-video-playe`
 
 ### `rawrecordings`
 
 
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__zoom`(
@@ -276,8 +293,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_015156_00169_vgjsv', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_020726_00007_6egjx', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

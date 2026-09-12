@@ -5,7 +5,7 @@ mongo_field_count: 45
 athena_field_count: 97
 matched: 32
 coverage_pct: 71.1
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `assignments` ↔ `processed.wise_app_backend__assignments`

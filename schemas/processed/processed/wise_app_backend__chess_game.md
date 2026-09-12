@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__chess_game
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/chess_game/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:05+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:21:38+00:00'
 sampled_rows: 54
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__chess_game`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -36,7 +50,7 @@ sampled_rows: 54
 
 ## Enum-like columns
 
-_String columns with ≤20 distinct values in 54 sampled rows. Distribution shown as `value (×count)`._
+_String columns with ≤20 distinct values in 54 sampled rows from `IN`. Distribution shown as `value (×count)`._
 
 - `status`: `ENDED (×54)`
 - `endreason`: `ENDED_BY_TEACHER (×36)`, `RESIGNATION (×17)`, `CHECKMATE (×1)`
@@ -44,7 +58,7 @@ _String columns with ≤20 distinct values in 54 sampled rows. Distribution show
 
 ## Inferred JSON structure
 
-_Inferred from 54 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 54 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
@@ -106,6 +120,8 @@ _Inferred from 54 sampled rows on 2026-04-28. Not authoritative — values may b
 
 ## DDL
 
+_From `IN` (processed)._
+
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__chess_game`(
   `_id` string, 
@@ -140,8 +156,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003136_00197_77mqg', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003225_00196_ruhpw', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->

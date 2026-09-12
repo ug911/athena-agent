@@ -1,18 +1,30 @@
 ---
-database: processed
+canonical: processed
 table: rudder_upsc_prod
 type: table
 layer: processed
+regions:
+  in: processed
 location: s3://[REDACTED-BUCKET]/processed/rudder_upsc_prod/dt=2022-01-31/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:12:05+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:17:53+00:00'
 sampled_rows: 0
+sampled_region: null
 ---
 
 # `processed.rudder_upsc_prod`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+
+_Only present in **IN**._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -33,6 +45,7 @@ sampled_rows: 0
 | `dt` | `string` |  |
 
 ## DDL
+
 
 ```sql
 CREATE EXTERNAL TABLE `processed.rudder_upsc_prod`(

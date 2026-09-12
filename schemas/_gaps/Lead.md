@@ -5,7 +5,7 @@ mongo_field_count: 5
 athena_field_count: 16
 matched: 5
 coverage_pct: 100.0
-last_diffed: "2026-04-28T11:07:30+00:00"
+last_diffed: "2026-09-08T08:05:41+00:00"
 ---
 
 # Schema gap: `Lead` ↔ `processed.wise_app_backend__lead`

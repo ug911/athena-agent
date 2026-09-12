@@ -1,18 +1,32 @@
 ---
-database: processed
+canonical: processed
 table: wise_app_backend__classroom_fees
 type: table
 layer: processed
+regions:
+  in: processed
+  na: processed_na
 location: s3://[REDACTED-BUCKET]/processed/wise-app-backend/ClassroomFee/
 format: INPUTFORMAT
 partition_keys: []
-last_synced: '2026-04-28T07:14:27+00:00'
+schema_parity: identical
+last_synced: '2026-08-11T13:22:19+00:00'
 sampled_rows: 200
+sampled_region: in
 ---
 
 # `processed.wise_app_backend__classroom_fees`
 
-## Columns
+## Region availability
+
+| Region | Athena database |
+| --- | --- |
+| `IN` | `processed` |
+| `NA` | `processed_na` |
+
+_Schema parity: **identical** across regions._
+
+## Columns (IN)
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -25,64 +39,71 @@ sampled_rows: 200
 
 ## Inferred JSON structure
 
-_Inferred from 200 sampled rows on 2026-04-28. Not authoritative — values may be missing or have additional keys._
+_Inferred from 200 sampled rows from `IN` on 2026-08-11. Not authoritative — values may be missing or have additional keys._
 
 ### `_id`
 
-- `$oid` — `string`  e.g. `603bcfe17732af12be8e1250`, `603bd0c9f7e5383c4525a493`, `603b790bf7e5385cb425897b`
+- `$oid` — `string`  e.g. `624b04a3db8952a1051dba2d`, `6254379a5def3f05aee3d981`, `62d27c9e1f216d881fd8da4a`
 
 ### `classid`
 
-- `$oid` — `string`  e.g. `603bcf6be295055c488a42fd`, `603bd0b4430c4f765acb46a1`, `603b3dc3dcc5f021464c62a5`
+- `$oid` — `string`  e.g. `624b045339d53f6400c320de`, `6093c1e9efaf930c03a17ee4`, `62d27c9e1848b4fcb1689955`
 
 ### `createdat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1614532577326`, `1614532809818`, `1614510347305`
+  - `$numberlong` — `string`  e.g. `1649083555752`, `1649686426772`, `1657961630203`
 
 ### `updatedat`
 
 - `$date` — `object`
-  - `$numberlong` — `string`  e.g. `1614532577326`, `1614532809818`, `1614510347305`
+  - `$numberlong` — `string`  e.g. `1649083555752`, `1649686426772`, `1657961630203`
 
 ### `paymentoptions`
 
   - `[]` — `object`
     - `_id` — `object`
-      - `$oid` — `string`  e.g. `62d1229c59d78c89147c34d0`, `62d1229c8a155b1171f71cd9`, `62d1229c6fe8f1d16feb2b38`
+      - `$oid` — `string`  e.g. `62d123216f0c72d2fbad4fec`, `62d1232283bc207346ee1c70`, `62d27c9e84b5c899da21d2f3`
     - `createdat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1657873052468`, `1657873052471`, `1657873052464`
+        - `$numberlong` — `string`  e.g. `1657873185592`, `1657873186076`, `1657961630203`
     - `installments` — `array<object>`
       - `[].installments[]` — `object`
         - `_id` — `object`
-          - `$oid` — `string`  e.g. `62d1229c59d78c8f437c34d1`, `62d1229c59d78c8e1e7c34d2`, `62d1229c8a155b80fbf71cda`
+          - `$oid` — `string`  e.g. `62d123216f0c72151dad4fed`, `62d1232283bc209d5cee1c71`, `62d27c9e84b5c830f721d2f4`
         - `amount` — `object`
           - `currency` — `string`  e.g. `INR`, `INR`, `INR`
           - `value` — `object`
-            - `$numberint` — `string`  e.g. `100000`, `100000`, `75000`
+            - `$numberint` — `string`  e.g. `3000`, `1000`, `100000`
+        - `chargeafterdays` — `object`
+          - `$numberint` — `string`  e.g. `0`
+        - `dueafterdays` — `object`
+          - `$numberint` — `string`  e.g. `0`, `0`, `50`
         - `dueon` — `object`
           - `$date` — `object`
-            - `$numberlong` — `string`  e.g. `1614556800000`, `1617235200000`, `1612137600000`
+            - `$numberlong` — `string`  e.g. `1648771200000`, `1648771200000`, `1657929600000`
         - `index` — `object`
-          - `$numberint` — `string`  e.g. `1`, `2`, `0`
+          - `$numberint` — `string`  e.g. `0`, `0`, `1`
         - `starton` — `object`
           - `$date` — `object`
-            - `$numberlong` — `string`  e.g. `1613260800000`, `1615939200000`, `1610841600000`
+            - `$numberlong` — `string`  e.g. `1647475200000`, `1647475200000`, `1656633600000`
+    - `timezone` — `string`  e.g. `Asia/Kolkata`
     - `totalamount` — `object`
       - `currency` — `string`  e.g. `INR`, `INR`, `INR`
       - `value` — `object`
-        - `$numberint` — `string`  e.g. `200000`, `75000`, `1050000`
-    - `type` — `string`  e.g. `INSTALLMENT`, `UPFRONT`, `INSTALLMENT`
+        - `$numberint` — `string`  e.g. `3000`, `1000`, `100000`
+    - `type` — `string`  e.g. `UPFRONT`, `UPFRONT`, `UPFRONT`
     - `updatedat` — `object`
       - `$date` — `object`
-        - `$numberlong` — `string`  e.g. `1657873052468`, `1657873052471`, `1657873052464`
+        - `$numberlong` — `string`  e.g. `1657873185592`, `1657873186076`, `1657961630203`
 
 ### `metadata`
 
-- `migrated` — `bool`  e.g. `true`, `true`, `true`
+- `migrated` — `bool`  e.g. `true`, `true`
 
 ## DDL
+
+_From `IN` (processed)._
 
 ```sql
 CREATE EXTERNAL TABLE `processed.wise_app_backend__classroom_fees`(
@@ -107,8 +128,8 @@ TBLPROPERTIES (
   'parquet.compression'='GZIP', 
   'totalSize'='-1', 
   'transactional'='false', 
-  'trino_query_id'='20260428_003145_00007_cwqi3', 
-  'trino_version'='0.215-24582-g0575ac4')
+  'trino_query_id'='20260811_003224_00007_cdip5', 
+  'trino_version'='0.215-24619-g93e00a8')
 ```
 
 <!-- HUMAN NOTES BELOW -->
