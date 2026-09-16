@@ -536,6 +536,19 @@ deeper, under `value`. Encoding varies by `op`: seed rows `$numberInt` (8 IN row
 `currency`, and never store money as a float — integer minor units + currency code, end to end.
 A cross-currency total is a wrong number that looks completely plausible.
 
+**(e) "Does this tenant mark X?" — check class name, session title, and tags separately, and say which.**
+eighttimeseight marks demo sessions by **class name** (`session_facts_v3.course_name` = `Demo Slot N`,
+26 active classes / 12,610 sessions in-window), not by session title (3 hits) and not by tags
+(`class.metadata.tags` and `zoom.metadata.tags` empty on all of them). Both counts were correct
+measurements of different things, and the title-only one reached a published plan as "demo is not
+derivable". See [[20260916-eighttimeseight-demo-slot-classes-derivable-walkins-invisible]].
+
+**(f) Walk-in Zoom participants are dropped by the facts.** `facts_v3.py:249` filters
+`participants[]` on `wiseUserId IS NOT NULL`, so anyone who joined by link without matching an
+enrolled student (a demo prospect, a name mismatch) vanishes from `session_participant_facts_v3`.
+Demo attendance therefore reads as **zero** in the participant fact while `session_facts_v3.
+participant_count` is positive. Check `participant_count` before concluding nobody came.
+
 ## 6.4 Bound future-dated windows
 Recurring schedules project years out — fleet `max(session_date)` **2052-10-21**. Always bound:
 `session_date >= current_date AND session_date < current_date + interval '90' day`.
