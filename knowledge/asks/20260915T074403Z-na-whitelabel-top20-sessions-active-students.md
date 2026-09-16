@@ -27,3 +27,34 @@ Query: `examples/na-whitelabel-top20-sessions-active-students.sql`. Query id 29a
   class is enrolled but few attend.
 - Excluded tenants: wise, wise-demo, make-up-testing, makeuptesting, acme (none of the last three had NA
   sessions in the window), plus NULL-namespace institutes.
+
+## CORRECTION 2026-09-16 — the attendance-based column above is inflated
+`spf_v3.attended` means "present in the session's `participants[]` list", which the app pre-populates
+with enrolled students; it is NOT "showed up". Verified on eighttimeseight Aug 2026: `attended=true`
+11,645 rows, of which only 2,734 have `attend_minutes > 0` (b8236e0b). Use `attend_minutes > 0`.
+Recomputed for the 20 tenants (dd1823ee, run 16 Sep so Sep 1–15 now complete):
+
+| tenant | Aug listed → real | Sep 1–15 listed → real |
+|---|---|---|
+| thinktankjr | 352 → 341 | 335 → 332 |
+| takalam | 257 → 246 | 289 → 266 |
+| journey-school | 230 → 212 | 228 → 201 |
+| kyo-standard-test-prep | 315 → 295 | 260 → 227 |
+| therapsy | 217 → **112** | 295 → **115** |
+| my-private-professor | 110 → 99 | 106 → 94 |
+| next-level-education | 152 → **63** | 117 → **58** |
+| eliteedge-advisors | 79 → 76 | 64 → 62 |
+| exploreapollotuition | 23 → 22 | 68 → 66 |
+| dyscalculia-tutoring | 75 → 67 | 59 → 51 |
+| pirates | 97 → **39** | 93 → **52** |
+| smartwill | 348 → 295 | 371 → 299 |
+| mathwave-education-acade | 11 → 4 | 25 → 11 |
+| brightfutureacademy | 63 → 53 | 115 → 74 |
+| english-in-the-us | 40 → 38 | 36 → 34 |
+| bora-portuguese | 31 → 26 | 32 → 29 |
+| nlenglishacademy | 159 → 152 | 158 → 145 |
+| mathszx-1522 | 18 → 15 | 21 → 18 |
+| afshar | 46 → 41 | 51 → 44 |
+| sira | 5 → 3 | 4 → 3 |
+
+Session counts and classroom-based counts are unaffected. The example SQL has been fixed.

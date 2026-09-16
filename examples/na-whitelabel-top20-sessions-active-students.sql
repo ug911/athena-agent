@@ -38,13 +38,13 @@ cls AS (  -- classroom-based: every ACCEPTED student in any class that held a co
   JOIN enrol e ON e.class_id = c.class_id
   GROUP BY t.tenant
 ),
-att AS (  -- attendance-based: distinct students who actually attended a conducted session that month
+att AS (  -- attendance-based: attend_minutes > 0. NOT p.attended, which is true for pre-listed absentees
   SELECT t.tenant,
          count(DISTINCT CASE WHEN sf.m='aug' THEN p.student_id END) AS aug_students_att,
          count(DISTINCT CASE WHEN sf.m='sep' THEN p.student_id END) AS sep_students_att
   FROM sf JOIN tenant t ON t.institute_id = sf.institute_id
   JOIN lake_cdc.session_participant_facts_v3 p
-    ON p.institute_id = sf.institute_id AND p.session_id = sf.session_id AND p.attended
+    ON p.institute_id = sf.institute_id AND p.session_id = sf.session_id AND p.attend_minutes > 0
   GROUP BY t.tenant
 )
 SELECT s.tenant, s.aug_full, s.aug_1_15, s.sep_1_15,

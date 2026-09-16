@@ -105,6 +105,9 @@ are also truncated to ~24 chars. Prefer `institute_id`. See
 - **Columns:** `region, session_id, institute_id, session_date, student_id, student_name,
   student_email, class_id, course_name, teacher_id, teacher_name, attended, attend_minutes,
   is_enrolled, fee_amount, credits_consumed, src_ts, refreshed_at`
+- **⚠ `attended` is NOT attendance.** It is `participants[].wiseUserId IS NOT NULL`, and the app
+  pre-lists enrolled students, so it is true for absentees (eighttimeseight Aug 2026: 11,645
+  `attended` rows, only 2,734 with minutes > 0). **Use `attend_minutes > 0` for "showed up".**
 - **Contains future sessions** (93,504 NA rows `>= current_date`, all `is_enrolled`), so it answers
   attendance *and* upcoming from one table.
 - **Canonical query:**
