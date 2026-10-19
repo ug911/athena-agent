@@ -89,3 +89,18 @@ Sensitive columns (`loginpin`, `phonenumber`, `email`, `password`, `token`, `sec
 5. Draft the query. Apply hard rules above.
 6. Validate via MCP (`EXPLAIN` + `LIMIT 100`).
 7. Return the SQL with a brief explanation of the columns used and any assumptions.
+
+## Working standards (synced 12 Oct 2026)
+
+- **Code**: ponytail — lazy/minimal, no speculative abstractions, reuse before writing new.
+- **Chat responses**: caveman — terse, no ceremony, technical substance stays intact.
+- **Publishing documents (updated 16 Oct 2026)**: every document a human reviews — specs,
+  design docs, implementation plans, proposals, reports, audits, memos, analyses — is
+  published as a well-structured Unity Wiki doc (unity CLI, work account), organised into a
+  Unity folder per project with an overview doc. A `.md` copy in the repo is a working file
+  only; the Unity doc is what Utkarsh reviews, and its URL goes in the report. Only
+  CLAUDE.md/AGENTS.md and scratchpad briefs/goals stay `.md`-only.
+- **UI/UX work**: `design-taste-frontend` skill + `ui-ux-pro-max` skill, with Emil
+  Kowalski-style restraint — purposeful motion, no gratuitous animation, polish over
+  decoration.
+
